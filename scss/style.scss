@@ -72,13 +72,40 @@
 	-webkit-user-select: none;
 }
 
+$color-list: #fff, rgba(0,0,0,0);
+
+$primary-color: #3acdd5;
+
+@mixin gradient($direction, $color-list) {
+	background: -webkit-linear-gradient($direction, $color-list);
+	background: -moz-linear-gradient($direction, $color-list);
+	background: -o-linear-gradient($direction, $color-list);
+	background: linear-gradient($direction, $color-list);
+}
+
 // miobile first - начало срабатывания от *px и больше
 
+a:link {
+	color: #000;
+}
+
+a:visited {
+	color: #000;
+}
+
+a:hover {
+	color: $primary-color;
+}
+
+a:active {
+	color: #3523D3;
+}
+
 input:focus {
-	box-shadow: 0px 0px 15px 0px #444;
+	box-shadow: 0px 0px 15px 5px #222;
  }
 
-.mob-container {
+.header-container {
 	margin: 0 6vw 0 6vw;
 }
 
@@ -160,7 +187,7 @@ input:focus {
 	padding: 1em 2.5em 0.8em 2.5em;
 	border-radius: 100px;
 	color: #fff;
-	background-color: #3acdd5;
+	background-color: $primary-color;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
 }
 
@@ -169,7 +196,7 @@ input:focus {
 	margin-bottom: 4vh;
 }
 
-// category
+// items
 
 .header {
 	font-family: 'Quotus Thin';
@@ -190,6 +217,7 @@ input:focus {
 .list-items-container {
 	display: flex;
 	flex-direction: column;
+	margin: 0 1vw 0 1vw;
 }
 
 .list-items {
@@ -223,17 +251,19 @@ input:focus {
 // newsletter
 
 .newsletter {
+	position: relative;
 	&__one-line {
 		font-family: 'Quotus Bold', serif;
 		text-align: center;
 		font-size: 25px;
-		line-height: 1.8;
 	}
 	&__two-line {
 		font-family: 'Quotus Thin', serif;
 		text-transform: uppercase;
 		text-align: center;
 		font-size: 25px;
+		display: block;
+		margin-top: 0.5em;
 	}
 	&__description {
 		font-family: 'Roboto Medium', serif;
@@ -242,15 +272,151 @@ input:focus {
 		margin: 1.5em 0 1.5em 0;
 	}
 	&__form {
-		margin: 2.5em 0 2.5em 0;
+		background: url("images/footer/bg-mobile.jpg") 0 0/cover no-repeat;
+		padding: 1.5em 0 3em 0;
 	}
 	&__email {
 		font-family: 'Roboto Medium', serif;
 		background-color: #ccc;
-		width: 100%;
+		width: 80%;
+		font-size: 24px;
+		padding: 20px;
+		margin-bottom: 0.7em;
+		text-align: center;
+		border-radius: 100px;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 0.7em;
+	}
+	&__btn {
+		font-family: 'Roboto Medium', serif;
+		background-color: $primary-color;
+		color: #fff;
+		width: 55%;
 		font-size: 24px;
 		padding: 20px 10px 20px 10px;
 		text-align: center;
 		border-radius: 100px;
+		text-transform: uppercase;
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 0.7em;
+	}
+	&__gradient {
+		position: absolute;
+		width: 100%;
+		height: 15%;
+		bottom: 0px;
+		@include gradient(bottom, $color-list);
 	}
 }
+
+// links
+
+.links {
+	&__header {
+		font-family: 'Quotus Bold', serif;
+		font-size: 30px;
+		text-align: center;
+		width: 85%;
+	}
+	&__items {
+		font-family: 'Roboto Light', serif;
+		font-size: 20px;
+		text-align: center;
+		display: block;
+	}
+	&__item {
+		color: #000;
+		display: block;
+		padding: 10px 30px;
+	}
+}
+
+// social
+
+.social {
+	margin-top: 4em;
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+.fab {
+	font-size: 46px;
+	display: block;
+	margin: 0 0.3em 0.8em 0.3em;
+	line-height: .7;
+}
+
+// accordeon
+
+ .half {
+	width: 100%;
+	padding: 0 6vw;
+ }
+
+ .tab {
+	position: relative;
+	margin-bottom: 1px;
+	width: 100%;
+	overflow: hidden;
+ }
+ .tab:first-child {
+	margin-top: 1.5em;
+ }
+ .tab input {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+ }
+ .tab label {
+	position: relative;
+	display: block;
+	font-weight: bold;
+	padding: 1.5em 0 1.5em 1em;
+	word-wrap: break-word;
+	cursor: pointer;
+ }
+ .tab-content {
+	max-height: 0;
+	overflow: hidden;
+	-webkit-transition: max-height .35s;
+	-o-transition: max-height .35s;
+	transition: max-height .35s;
+ }
+ /* :checked */
+ .tab input:checked ~ .tab-content {
+	max-height: 100vh;
+ }
+ /* Icon */
+ .tab label::after {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 85%;
+	display: block;
+	width: 3em;
+	height: 3em;
+	line-height: 3;
+	text-align: center;
+	-webkit-transition: all .35s;
+	-o-transition: all .35s;
+	transition: all .35s;
+ }
+ .tab input[type=checkbox] + label::after {
+	content: "\25BC";
+ }
+ .tab input[type=radio] + label::after {
+	content: "\25BC";
+ }
+ .tab input[type=checkbox]:checked + label::after {
+	transform: rotate(180deg);
+ }
+ .tab input[type=radio]:checked + label::after {
+	transform: rotateX(180deg);
+ }
