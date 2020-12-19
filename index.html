@@ -11,12 +11,29 @@
    <meta name="copyright" content="code from Sergei Sivenkov, free use design has been improved by Sergei Sivenkov">
 	<title>Veltry - trip stuff</title>
 	<link rel="stylesheet" href="style.css">
-	<link rel="shortcut icon" href="images/icon.png">
+	<link rel="shortcut icon" href="images/icons/icon.png">
 	<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/4871a893c0.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <main>
+<section class="tools">
+	<div class="cart" onmouseover="ChangeOver1(this)" onmouseout="ChangeOut1(this)">
+		<svg aria-hidden="true" width="36" height="30" viewBox="0 0 36 30" id = "star">
+			<linearGradient id="linear-gradient" gradientUnits="objectBoundingBox" gradientTransform="rotate(90, .5, .5)">
+				<stop offset="0" stop-color="#41e4ec"></stop>
+				<stop offset=".25" stop-color="#3acdd5"></stop>
+				<stop offset="1" stop-color="#19676b"></stop>
+			</linearGradient>
+			<path class="path1" width="100%" height="100%" d="M31.5 24.096V22.02H10.26l1.44-2.234 20.7-1.755L36 6.064H8.28L6.84 0H0v2.074h5.04L9.72 18.83l-2.88 5.106v3.032C6.84 28.564 8.28 30 10.08 30c1.8 0 3.42-1.436 3.42-3.032s-1.62-3.032-3.42-3.032H27v3.032C27 28.564 28.62 30 30.42 30c1.8 0 3.42-1.436 3.42-3.032 0-1.436-.9-2.394-2.34-2.872z"></path>
+		</svg>
+	</div>
+	<div class="search" onmouseover="ChangeOver2(this)" onmouseout="ChangeOut2(this)">
+		<svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" id = "star">
+			<path class="path2" width="100%" height="100%" d="M4.245 24.733A14.462 14.458 0 0023.37 25.92l9.578 9.575a1.801 1.8 0 002.546-2.546l-9.577-9.575A14.48 14.476 0 004.245 4.25a14.484 14.48 0 000 20.482zM6.79 6.8a10.884 10.88 0 11-3.187 7.695A10.806 10.803 0 016.79 6.796z"></path>
+		</svg>
+	</div>
+</section>
 <header class="intro">
 	<div class="header-container text-center-position">
 		<div class="logo">
@@ -181,52 +198,54 @@
 
 <!-- links -->
 <section class="links">
-
-	<div class="wrapper">
-		<div class="half">
-		  <div class="tab">
-			 <input id="tab-one" type="checkbox" name="tabs">
-			 <label for="tab-one"><h4 class="links__header">Shop now</h4></label>
-			 <div class="tab-content">
-				<ul class="links__items">
-					<li><a class="links__item" href="#cameras">Cameras</a></li>
-					<li><a class="links__item" href="#lens">Lenses</a></li>
-					<li><a class="links__item" href="#camps">Camps</a></li>
-					<li><a class="links__item" href="#bags">Bags</a></li>
-					<li class="links__item">Collections</li>
-					<li class="links__item">Gifts</li>
-					<li class="links__item">Offers</li>
-				</ul>
-			 </div>
-		  </div>
-		  <div class="tab">
-			 <input id="tab-two" type="checkbox" name="tabs">
-			 <label for="tab-two"><h4 class="links__header">About Veltry</h4></label>
-			 <div class="tab-content">
-				<ul class="links__items">
-					<li class="links__item">About us</li>
-					<li class="links__item">Veltry core values</li>
-					<li class="links__item">Affiliate program</li>
-					<li class="links__item">Work with us</li>
-					<li class="links__item">In the media</li>
-				</ul>
-			 </div>
-		  </div>
-		  <div class="tab">
-			 <input id="tab-three" type="checkbox" name="tabs">
-			 <label for="tab-three"><h4 class="links__header">Help</h4></label>
-			 <div class="tab-content">
-				<ul class="links__items">
-					<li class="links__item">Payment options</li>
-					<li class="links__item">Bulk orders</li>
-					<li class="links__item">International orders</li>
-					<li class="links__item">Contact us</li>
-					<li class="links__item">Copyrights</li>
-					<li class="links__item">Site map</li>
-				</ul>
-			 </div>
-		  </div>
+	<div class="tab">
+		<input id="tab-one" type="checkbox">
+		<label for="tab-one">
+			<h4 class="links__header">Shop now</h4>
+		</label>
+		<div class="tab-content">
+		<ul class="links__items">
+			<li><a class="links__item" href="#cameras">Cameras</a></li>
+			<li><a class="links__item" href="#lens">Lenses</a></li>
+			<li><a class="links__item" href="#camps">Camps</a></li>
+			<li><a class="links__item" href="#bags">Bags</a></li>
+			<li class="links__item">Collections</li>
+			<li class="links__item">Gifts</li>
+			<li class="links__item">Offers</li>
+		</ul>
 		</div>
+	</div>
+	<div class="tab">
+		<input id="tab-two" type="checkbox">
+		<label for="tab-two">
+			<h4 class="links__header">About Veltry</h4>
+		</label>
+		<div class="tab-content">
+		<ul class="links__items">
+			<li class="links__item">About us</li>
+			<li class="links__item">Veltry core values</li>
+			<li class="links__item">Affiliate program</li>
+			<li class="links__item">Work with us</li>
+			<li class="links__item">In the media</li>
+		</ul>
+		</div>
+	</div>
+	<div class="tab">
+		<input id="tab-three" type="checkbox">
+		<label for="tab-three">
+			<h4 class="links__header">Help</h4>
+		</label>
+		<div class="tab-content">
+		<ul class="links__items">
+			<li class="links__item">Payment options</li>
+			<li class="links__item">Bulk orders</li>
+			<li class="links__item">International orders</li>
+			<li class="links__item">Contact us</li>
+			<li class="links__item">Copyrights</li>
+			<li class="links__item">Site map</li>
+		</ul>
+		</div>
+	</div>
 </section>
 
 <!-- social -->
@@ -239,6 +258,7 @@
 	</ul>
 </section>
 <footer></footer>
+<script src="script.js"></script>
 </main>
 </body>
 </html>
