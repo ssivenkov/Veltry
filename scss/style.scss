@@ -75,6 +75,7 @@
 $color-list: #fff, rgba(0,0,0,0);
 
 $primary-color: #3acdd5;
+$primary-light-color: #21ecf7;
 
 @mixin gradient($direction, $color-list) {
 	background: -webkit-linear-gradient($direction, $color-list);
@@ -148,7 +149,6 @@ input:focus {
 .logo {
 	text-align: center;
 	display: inline-block;
-	word-wrap: break-word;
 	margin: 0 auto;
 		.logo__text {
 			color: #000;
@@ -231,6 +231,10 @@ input:focus {
 	color: #fff;
 	background-color: $primary-color;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+	&:hover {
+		background-color: $primary-light-color;
+		box-shadow: 0 0 10px 1px $primary-light-color;
+	}
 }
 
 .link-btn-position {
@@ -245,7 +249,7 @@ input:focus {
 	font-size: 30px;
 	color: #242424;
 	text-transform: uppercase;
-	margin-top: 1.5em;
+	padding-top: 1.5em;
 	display: block;
 	word-wrap: break-word;
 }
@@ -287,14 +291,35 @@ input:focus {
 			display: block;
 			word-wrap: break-word;
 		}
+		&__cost-box {
+			display: flex;
+			justify-content: center;
+			margin-top: 15px;
+			margin-bottom: 50px;
+		}
 		&__cost {
+			display: inline-block;
 			font-family: 'Roboto Bold', serif;
-			font-size: 20px;
+			font-size: 26px;
 			text-align: center;
-			margin-bottom: 2.5em;
-			display: block;
 			word-wrap: break-word;
 		}
+		&__cart-icon {
+			display: inline-block;
+			font-size: 32px;
+			margin-left: 15px;
+		}
+		&__cart-icon:hover {
+			color: #3acdd5;
+		}
+}
+
+.separation-line {
+	height: 2px;
+	width: 55vw;
+	display: block;
+	margin: 0 auto;
+	background-color: #000;
 }
 
 // newsletter
@@ -312,7 +337,7 @@ input:focus {
 		font-family: 'Quotus Thin', serif;
 		text-transform: uppercase;
 		text-align: center;
-		font-size: 25px;
+		font-size: 28px;
 		display: block;
 		margin-top: 0.5em;
 		display: block;
@@ -320,6 +345,7 @@ input:focus {
 	}
 	&__description {
 		font-family: 'Roboto Medium', serif;
+		text-align: center;
 		font-size: 16px;
 		margin: 1.5em 0 1.5em 0;
 		display: block;
@@ -334,13 +360,14 @@ input:focus {
 		background-color: #ccc;
 		width: 80%;
 		font-size: 24px;
-		padding: 20px;
+		padding: 15px;
 		margin-bottom: 0.7em;
 		text-align: center;
 		border-radius: 100px;
 		display: block;
 		margin: 0 auto;
 		margin-bottom: 0.7em;
+		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
 	}
 	&__btn {
 		font-family: 'Roboto Medium', serif;
@@ -348,7 +375,7 @@ input:focus {
 		color: #fff;
 		width: 50%;
 		font-size: 24px;
-		padding: 20px 0;
+		padding: 15px 0;
 		text-align: center;
 		border-radius: 100px;
 		text-transform: uppercase;
@@ -356,7 +383,13 @@ input:focus {
 		word-wrap: break-word;
 		margin: 0 auto;
 		margin-bottom: 0.7em;
+		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
 	}
+	&__btn:hover {
+		background-color: $primary-light-color;
+		box-shadow: 0 0 10px 1px $primary-light-color;
+	}
+
 	&__gradient {
 		position: absolute;
 		width: 100%;
@@ -374,6 +407,8 @@ input:focus {
 		font-size: 30px;
 		text-align: center;
 		display: block;
+		width: 65%;
+		margin: 0 auto;
 		word-wrap: break-word;
 	}
 	&__items {
@@ -384,7 +419,7 @@ input:focus {
 	}
 	&__item {
 		color: #000;
-		padding: 1.5vw 8vw;
+		padding: 0.6em 1.5em;
 		display: block;
 		word-wrap: break-word;
 	}

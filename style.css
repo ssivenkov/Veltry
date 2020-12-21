@@ -34,7 +34,6 @@ body {
   height: 100%;
   width: 100%;
   font-size: 100%;
-  /*line-height: 1;*/
   font-size: 14px;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -194,7 +193,6 @@ input:focus {
 .logo {
   text-align: center;
   display: inline-block;
-  word-wrap: break-word;
   margin: 0 auto;
 }
 .logo .logo__text {
@@ -277,6 +275,10 @@ input:focus {
   background-color: #3acdd5;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
 }
+.link-btn:hover {
+  background-color: #21ecf7;
+  box-shadow: 0 0 10px 1px #21ecf7;
+}
 
 .link-btn-position {
   margin-top: 4vh;
@@ -288,7 +290,7 @@ input:focus {
   font-size: 30px;
   color: #242424;
   text-transform: uppercase;
-  margin-top: 1.5em;
+  padding-top: 1.5em;
   display: block;
   word-wrap: break-word;
 }
@@ -331,13 +333,34 @@ input:focus {
   display: block;
   word-wrap: break-word;
 }
+.list-items__cost-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
 .list-items__cost {
+  display: inline-block;
   font-family: 'Roboto Bold', serif;
-  font-size: 20px;
+  font-size: 26px;
   text-align: center;
-  margin-bottom: 2.5em;
-  display: block;
   word-wrap: break-word;
+}
+.list-items__cart-icon {
+  display: inline-block;
+  font-size: 32px;
+  margin-left: 15px;
+}
+.list-items__cart-icon:hover {
+  color: #3acdd5;
+}
+
+.separation-line {
+  height: 2px;
+  width: 55vw;
+  display: block;
+  margin: 0 auto;
+  background-color: #000;
 }
 
 .newsletter {
@@ -354,7 +377,7 @@ input:focus {
   font-family: 'Quotus Thin', serif;
   text-transform: uppercase;
   text-align: center;
-  font-size: 25px;
+  font-size: 28px;
   display: block;
   margin-top: 0.5em;
   display: block;
@@ -362,6 +385,7 @@ input:focus {
 }
 .newsletter__description {
   font-family: 'Roboto Medium', serif;
+  text-align: center;
   font-size: 16px;
   margin: 1.5em 0 1.5em 0;
   display: block;
@@ -376,13 +400,14 @@ input:focus {
   background-color: #ccc;
   width: 80%;
   font-size: 24px;
-  padding: 20px;
+  padding: 15px;
   margin-bottom: 0.7em;
   text-align: center;
   border-radius: 100px;
   display: block;
   margin: 0 auto;
   margin-bottom: 0.7em;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
 }
 .newsletter__btn {
   font-family: 'Roboto Medium', serif;
@@ -390,7 +415,7 @@ input:focus {
   color: #fff;
   width: 50%;
   font-size: 24px;
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
   border-radius: 100px;
   text-transform: uppercase;
@@ -398,6 +423,11 @@ input:focus {
   word-wrap: break-word;
   margin: 0 auto;
   margin-bottom: 0.7em;
+  box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+}
+.newsletter__btn:hover {
+  background-color: #21ecf7;
+  box-shadow: 0 0 10px 1px #21ecf7;
 }
 .newsletter__gradient {
   position: absolute;
@@ -415,6 +445,8 @@ input:focus {
   font-size: 30px;
   text-align: center;
   display: block;
+  width: 65%;
+  margin: 0 auto;
   word-wrap: break-word;
 }
 .links__items {
@@ -425,7 +457,7 @@ input:focus {
 }
 .links__item {
   color: #000;
-  padding: 1.5vw 8vw;
+  padding: 0.6em 1.5em;
   display: block;
   word-wrap: break-word;
 }
