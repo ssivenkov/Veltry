@@ -1,12 +1,12 @@
 @import "null.scss";
 
 @font-face {
-	font-family: 'Quotus Bold';
-	src: url('fonts/Quotus-Bold.eot');
-	src: url('fonts/Quotus-Bold.eot?#iefix') format('embedded-opentype'),
-		  url('fonts/Quotus-Bold.ttf') format('truetype'),
-		  url('fonts/Quotus-Bold.woff') format('woff'),
-		  url('fonts/Quotus-Bold.woff2') format('woff2');
+	font-family: 'Roboto Slab';
+	src: url('fonts/Roboto-Slab.eot');
+	src: url('fonts/Roboto-Slab.eot?#iefix') format('embedded-opentype'),
+		  url('fonts/Roboto-Slab.ttf') format('truetype'),
+		  url('fonts/Roboto-Slab.woff') format('woff'),
+		  url('fonts/Roboto-Slab.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -73,7 +73,6 @@
 }
 
 $color-list: #fff, rgba(0,0,0,0);
-
 $primary-color: #3acdd5;
 $primary-light-color: #21ecf7;
 
@@ -83,8 +82,6 @@ $primary-light-color: #21ecf7;
 	background: -o-linear-gradient($direction, $color-list);
 	background: linear-gradient($direction, $color-list);
 }
-
-// miobile first - начало срабатывания от *px и больше
 
 a:active {
 	color: #000;
@@ -143,14 +140,14 @@ input:focus {
 // intro
 
 .intro {
-	background: #777 url(images/header/bg.jpg) 50%/cover no-repeat;
+	background: #777 url(images/header/bg1.jpg) 50%/cover no-repeat;
 }
 
 .logo {
 	text-align: center;
 	display: inline-block;
 	margin: 0 auto;
-		.logo__text {
+		&__text {
 			color: #000;
 			letter-spacing: -3px;
 			line-height: 1;
@@ -166,23 +163,30 @@ input:focus {
 
 .title {
 	text-transform: uppercase;
-	font-family: 'Quotus Bold';
+	font-family: 'Quotus Thin', sans-serif;
 	font-size: 20px;
 	display: block;
 	word-wrap: break-word;
-		.title__2row {
+	line-height: 1;
+		&__2row {
+			font-family: 'Roboto Slab', sans-serif;
 			display: block;
-			font-family: 'Quotus Bold';
 			font-size: 40px;
 			margin-top: 0.3em;
 			color: #fff;
+			text-shadow:  #000 0px 0px 4px, #000 0px 2px 10px;
 			display: block;
 			word-wrap: break-word;
+			line-height: 1;
 		}
 }
 
 .white-bg {
 	background-color: #fff;
+}
+
+.polygon,.people {
+	display: none;
 }
 
 .subtitle-position {
@@ -191,15 +195,15 @@ input:focus {
 }
 
 .subtitle {
-	font-family: 'Quotus Bold';
+	font-family: 'Roboto Slab', sans-serif;
 	font-size: 40px;
 	color: #272626;
 	display: inline-block;
 	word-wrap: break-word;
 	width: 100%;
 	margin-top: .5em;
-		.subtitle__2row {
-			font-family: 'Quotus Thin';
+		&__2row {
+			font-family: 'Quotus Thin', sans-serif;
 			text-transform: uppercase;
 			display: block;
 			margin-top: 0.2em;
@@ -210,7 +214,7 @@ input:focus {
 
 .subtitle__desc {
 	text-align: left;
-	font-family: 'Roboto Light';
+	font-family: 'Roboto Light', serif;
 	font-size: 18px;
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -223,7 +227,7 @@ input:focus {
 	word-wrap: break-word;
 	width: 50%;
 	margin: 0 auto;
-	font-family: 'Roboto Bold';
+	font-family: 'Roboto Bold', sans-serif;
 	font-size: 14px;
 	text-transform: uppercase;
 	padding: 1em 0 0.8em 0;
@@ -245,7 +249,7 @@ input:focus {
 // items
 
 .header {
-	font-family: 'Quotus Thin';
+	font-family: 'Quotus Thin', sans-serif;
 	font-size: 30px;
 	color: #242424;
 	text-transform: uppercase;
@@ -255,7 +259,7 @@ input:focus {
 }
 
 .subheader {
-	font-family: 'Roboto Regular';
+	font-family: 'Roboto Regular', serif;
 	font-size: 16px;
 	color: #242424;
 	margin-top: 1.5em;
@@ -277,41 +281,42 @@ input:focus {
 		display: block;
 		width: 100%;
 	}
-		&__image {
-			display: block;
-			margin: 0 auto;
-			width: 100%;
-		}
-		&__description {
-			font-family: 'Roboto Medium', serif;
-			font-size: 16px;
-			text-align: center;
-			margin-top: 1em;
-			margin-bottom: 0.5em;
-			display: block;
-			word-wrap: break-word;
-		}
-		&__cost-box {
-			display: flex;
-			justify-content: center;
-			margin-top: 15px;
-			margin-bottom: 50px;
-		}
-		&__cost {
-			display: inline-block;
-			font-family: 'Roboto Bold', serif;
-			font-size: 26px;
-			text-align: center;
-			word-wrap: break-word;
-		}
-		&__cart-icon {
-			display: inline-block;
-			font-size: 32px;
-			margin-left: 15px;
-		}
-		&__cart-icon:hover {
-			color: #3acdd5;
-		}
+	&__image {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+	}
+	&__description {
+		font-family: 'Roboto Medium', serif;
+		font-size: 16px;
+		text-align: center;
+		margin-top: 1em;
+		margin-bottom: 0.5em;
+		display: block;
+		word-wrap: break-word;
+	}
+	&__cost-box {
+		display: flex;
+		justify-content: center;
+		margin-top: 15px;
+		margin-bottom: 50px;
+	}
+	&__cost {
+		display: inline-block;
+		font-family: 'Roboto Bold', sans-serif;
+		font-size: 26px;
+		text-align: center;
+		word-wrap: break-word;
+		line-height: 1.4;
+	}
+	&__cart-icon {
+		display: inline-block;
+		font-size: 32px;
+		margin-left: 15px;
+	}
+	&__cart-icon:hover {
+		color: #3acdd5;
+	}
 }
 
 .separation-line {
@@ -327,7 +332,8 @@ input:focus {
 .newsletter {
 	position: relative;
 	&__one-line {
-		font-family: 'Quotus Bold', serif;
+		font-family: 'Roboto Slab', sans-serif;
+		font-weight: 700;
 		text-align: center;
 		font-size: 25px;
 		display: block;
@@ -356,9 +362,10 @@ input:focus {
 		padding: 1.5em 0 3em 0;
 	}
 	&__email {
-		font-family: 'Roboto Medium', serif;
+		font-family: 'Roboto Medium', sans-serif;
 		background-color: #ccc;
-		width: 80%;
+		width: 85%;
+		max-width: 100%;
 		font-size: 24px;
 		padding: 15px;
 		margin-bottom: 0.7em;
@@ -370,10 +377,11 @@ input:focus {
 		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
 	}
 	&__btn {
-		font-family: 'Roboto Medium', serif;
+		font-family: 'Roboto Medium', sans-serif;
 		background-color: $primary-color;
 		color: #fff;
 		width: 50%;
+		max-width: 100%;
 		font-size: 24px;
 		padding: 15px 0;
 		text-align: center;
@@ -403,7 +411,7 @@ input:focus {
 
 .links {
 	&__header {
-		font-family: 'Quotus Bold', serif;
+		font-family: 'Roboto Slab', sans-serif;
 		font-size: 30px;
 		text-align: center;
 		display: block;
@@ -546,3 +554,174 @@ input:focus {
  .tab input[type=radio]:checked + label:after {
 	transform: rotateX(180deg);
  }
+
+// tablet design
+
+@media only screen and (min-width: 768px) and (min-height: 768px) {
+
+// tools
+
+	.search {
+		width: 96px;
+		height: 96px;
+		background-color: #fff;
+		& svg {
+			left: 12px;
+			top: 10px;
+		}
+	}
+
+	.cart {
+		width: 96px;
+		height: 96px;
+		& svg {
+			left: 8px;
+			top: 16px;
+		}
+	}
+
+// intro
+	.logo {
+		&__text {
+			font-size: 10vmin;
+			padding-top: 5vmin;
+		}
+	}
+	
+	.title {
+		margin-top: 4vmin;
+		font-size: 5vmin;
+			&__2row {
+				font-size: 10vmin;
+				margin-top: 3vmin;
+			}
+	}
+
+	.subtitle-position {
+		margin-top: 20vmin;
+	}
+	
+	.subtitle {
+		font-size: 8vmin;
+		margin-top: 3vmin;
+			&__2row {
+				margin-top: 0.2em;
+			}
+	}
+	
+	.subtitle__desc {
+		font-size: 4vmin;
+	}
+	
+	.link-btn {
+		font-size: 5.12vmin;
+		padding: 0.8em 0 0.8em 0;
+		border-radius: 100vmin;
+	}
+	
+	.link-btn-position {
+		margin-top: 4vmin;
+		margin-bottom: 8vmin;
+	}
+
+// items
+	.header {
+		font-size: 8.6vmin;
+	}
+
+	.subheader {
+		font-size: 3.7vmin;
+	}
+
+	.list-items {
+		&__description {
+			font-size: 3.7vmin;
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+		}
+		&__cost-box {
+			margin-top: 1vmin;
+			margin-bottom: 10vmin;
+		}
+		&__cost {
+			font-size: 6vmin;
+		}
+		&__cart-icon {
+			font-size: 8vmin;
+			margin-left: 3vmin;
+		}
+	}
+
+	.separation-line {
+		height: 0.5vmin;
+		width: 65vw;
+	}
+
+// newsletter
+	.newsletter {
+		&__one-line {
+			font-size: 7vmin;
+		}
+		&__two-line {
+			font-size: 7vmin;
+			margin-top: 0.5em;
+		}
+		&__description {
+			font-size: 4vmin;
+			margin: 1.5em 0 1.5em 0;
+		}
+		&__form {
+			padding: 1.5em 0 3em 0;
+		}
+		&__email {
+			width: 80%;
+			font-size: 6vmin;
+			margin-bottom: 1em;
+			margin-bottom: 1em;
+			padding: 3vmin;
+			border-radius: 100vmin;
+		}
+		&__btn {
+			width: 40%;
+			font-size: 5vmin;
+			padding: 0.5em 0;
+			margin-bottom: 1em;
+			border-radius: 100vmin;
+		}
+	}
+
+// links
+	.links {
+		&__header {
+			font-size: 7vmin;
+		}
+		&__items {
+			font-size: 5vmin;
+		}
+		&__item {
+			padding: 0.4em 1.5em;
+		}
+	}
+
+// social
+	.fab {
+		font-size: 10vmin;
+		margin: 0 0.2em 0.4em 0.3em;
+		line-height: 1;
+	}
+}
+
+// accordeon
+
+.tab input[type=checkbox] + label:after {
+	font-size: 4vmin;
+ }
+ .tab input[type=radio] + label:after {
+	font-size: 4vmin;
+ }
+
+// desktop design
+
+@media only screen and (min-width: 1224px) {
+	
+}

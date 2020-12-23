@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="content-language" content="en">
 	<meta name="robots" content="index, nofollow">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<meta name="keywords" content="travel, stuff, buy">
 	<meta name="description" content="The best trip stuff with delivery to any state!">
 	<meta name="author" content="Sergei Sivenkov">
@@ -19,18 +19,18 @@
 <main>
 <section class="tools">
 	<div class="cart" onmouseover="ChangeOver1(this)" onmouseout="ChangeOut1(this)">
-		<svg aria-hidden="true" width="36" height="30" viewBox="0 0 36 30" id = "star">
+		<svg class="cartsize" aria-hidden="true" width="36" height="30" viewBox="0 0 36 30" id = "star">
 			<linearGradient id="linear-gradient" gradientUnits="objectBoundingBox" gradientTransform="rotate(90, .5, .5)">
 				<stop offset="0" stop-color="#41e4ec"></stop>
 				<stop offset=".25" stop-color="#3acdd5"></stop>
 				<stop offset="1" stop-color="#19676b"></stop>
 			</linearGradient>
-			<path class="path1" width="100%" height="100%" d="M31.5 24.096V22.02H10.26l1.44-2.234 20.7-1.755L36 6.064H8.28L6.84 0H0v2.074h5.04L9.72 18.83l-2.88 5.106v3.032C6.84 28.564 8.28 30 10.08 30c1.8 0 3.42-1.436 3.42-3.032s-1.62-3.032-3.42-3.032H27v3.032C27 28.564 28.62 30 30.42 30c1.8 0 3.42-1.436 3.42-3.032 0-1.436-.9-2.394-2.34-2.872z"></path>
+			<path class="path1" d="M31.5 24.096V22.02H10.26l1.44-2.234 20.7-1.755L36 6.064H8.28L6.84 0H0v2.074h5.04L9.72 18.83l-2.88 5.106v3.032C6.84 28.564 8.28 30 10.08 30c1.8 0 3.42-1.436 3.42-3.032s-1.62-3.032-3.42-3.032H27v3.032C27 28.564 28.62 30 30.42 30c1.8 0 3.42-1.436 3.42-3.032 0-1.436-.9-2.394-2.34-2.872z"></path>
 		</svg>
 	</div>
 	<div class="search" onmouseover="ChangeOver2(this)" onmouseout="ChangeOut2(this)">
-		<svg aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" id = "star">
-			<path class="path2" width="100%" height="100%" d="M4.245 24.733A14.462 14.458 0 0023.37 25.92l9.578 9.575a1.801 1.8 0 002.546-2.546l-9.577-9.575A14.48 14.476 0 004.245 4.25a14.484 14.48 0 000 20.482zM6.79 6.8a10.884 10.88 0 11-3.187 7.695A10.806 10.803 0 016.79 6.796z"></path>
+		<svg class="searchsize" aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" id = "star">
+			<path class="path2" d="M4.245 24.733A14.462 14.458 0 0023.37 25.92l9.578 9.575a1.801 1.8 0 002.546-2.546l-9.577-9.575A14.48 14.476 0 004.245 4.25a14.484 14.48 0 000 20.482zM6.79 6.8a10.884 10.88 0 11-3.187 7.695A10.806 10.803 0 016.79 6.796z"></path>
 		</svg>
 	</div>
 </section>
@@ -39,14 +39,20 @@
 		<div class="logo">
 			<p class="logo__text">Veltry</p>
 		</div>
+		<img class="people" src="images/header/people.png" alt="people">
 		<h1 class="title">find everything you need<span class="title__2row">for a trip</span></h1>
 	</div>
+	<svg class="polygon" viewBox="0 0 768 204.955">
+		<path d="M0 0v204.955h768V162.9z"/>
+	</svg>
 	<div class="subintro">
 		<div class="white-bg">
 			<div class="header-container subtitle-position">
 				<h2 class="subtitle">Best Travel<span class="subtitle__2row">accessories</span></h2>
-				<p class="subtitle__desc">With our accessories you will have an unforgettable stay, many impressions and memories</p>
-				<a class="link-btn link-btn-position" href="#bags">view all</a>
+				<div class="white-bg-tablet">
+					<p class="subtitle__desc">With our accessories you will have an unforgettable stay, many impressions and memories</p>
+					<a class="link-btn link-btn-position" href="#bags">view all</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -238,7 +244,7 @@
 		<p class="newsletter__description">Subscribe to our newsletter to receive email notifications of promotions and new arrivals</p>
 	</div>
 	<div class="newsletter__form">
-		<input type="email" class="newsletter__email" placeholder="Enter your E-mail" required>
+		<input type="email" class="newsletter__email" placeholder="Enter your E-mail" required autocomplete="email" autocapitalize="off" autocorrect="off">
 		<button type="submit" class="newsletter__btn">send</button>
 		<div class="newsletter__gradient"></div>
 	</div>
