@@ -1,5 +1,6 @@
-// tools
-	//cnange color 
+
+// tools cnange color
+
 const path1 = document.querySelector('.path1');
 function ChangeOver1() {
 	path1.setAttribute('fill', 'url(#linear-gradient)');
@@ -20,7 +21,8 @@ function ChangeOut2() {
 	document.getElementsByClassName('search')[0].style="background-image: linear-gradient(180deg, #dddddd, #777777)";
 };
 
-	// cnange size
+// cnange size
+
 function setup_for_width(size) {
 	const cartsize = document.querySelector('.cartsize');
 	const searchsize = document.querySelector('.searchsize');
@@ -39,3 +41,20 @@ function setup_for_width(size) {
 let size = window.matchMedia( "(min-width: 768px)" );
 size.addListener(setup_for_width);
 setup_for_width(size);
+
+// patallax
+
+let bg1 = document.querySelector('.mouse-parallax-bg1');
+window.addEventListener('mousemove', function(e) {
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    bg1.style.transform = 'translate(-' + x * 20 + 'px, -' + y * 20 + 'px)';
+});
+
+let bg2 = document.querySelector('.mouse-parallax-bg2');
+window.addEventListener('mousemove', function(e) {
+    let x = e.clientX / window.innerWidth;
+    let y = e.clientY / window.innerHeight;
+    bg2.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
+});
+

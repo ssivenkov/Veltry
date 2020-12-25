@@ -83,12 +83,22 @@ $primary-light-color: #21ecf7;
 	background: linear-gradient($direction, $color-list);
 }
 
+@mixin no-select {
+	-ms-user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
 a:active {
 	color: #000;
 }
 
 input:focus {
 	box-shadow: 0px 0px 15px 5px #222;
+}
+
+.intro-container {
+	margin: 0 6vw 0 6vw;
 }
 
 .header-container {
@@ -140,7 +150,7 @@ input:focus {
 // intro
 
 .intro {
-	background: #777 url(images/header/bg1.jpg) 50%/cover no-repeat;
+	/*background: #777 url(images/header/bg1.jpg) 50%/cover no-repeat;*/
 }
 
 .logo {
@@ -185,7 +195,7 @@ input:focus {
 	background-color: #fff;
 }
 
-.polygon,.people {
+.polygon,.people,.people-container {
 	display: none;
 }
 
@@ -216,8 +226,7 @@ input:focus {
 	text-align: left;
 	font-family: 'Roboto Light', serif;
 	font-size: 18px;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	margin: 1em 0 1em 0;
 	display: block;
 	word-wrap: break-word;
 }
@@ -253,7 +262,6 @@ input:focus {
 	font-size: 30px;
 	color: #242424;
 	text-transform: uppercase;
-	padding-top: 1.5em;
 	display: block;
 	word-wrap: break-word;
 }
@@ -325,6 +333,7 @@ input:focus {
 	display: block;
 	margin: 0 auto;
 	background-color: #000;
+	margin-bottom: 10vmin;
 }
 
 // newsletter
@@ -706,7 +715,7 @@ input:focus {
 // social
 	.fab {
 		font-size: 10vmin;
-		margin: 0 0.2em 0.4em 0.3em;
+		margin: 0 0.3em 0.5em 0.3em;
 		line-height: 1;
 	}
 }
@@ -723,5 +732,180 @@ input:focus {
 // desktop design
 
 @media only screen and (min-width: 1224px) {
-	
+
+// tools
+	.tools {
+		opacity: .2;
+		display: none;
+	}
+
+// intro
+
+	.mouse-parallax {
+		height: 70%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		overflow: hidden;
+		z-index: 1;
+	}
+
+	.mouse-parallax-bg1 {
+		position: absolute;
+		background-image: url('images/header/bg1.jpg');
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 110%;
+		height: 98%;
+		transition: all 0.1s ease;
+		z-index: 1;
+	}
+
+	.mouse-parallax-bg2 {
+		position: absolute;
+		background-image: url('images/header/bg2.png');
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		width: 110%;
+		height: 98%;
+		transition: all 0.1s ease;
+		z-index: 1;
+	}
+
+	.logo-and-title {
+		width: 100%;
+		z-index: 10;
+	}
+
+	.intro-container {
+		margin: 0 7vmax 0 7vmax;
+	}
+
+	.intro {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		min-height: 70vh;
+		position: relative;
+		overflow-y: hidden;
+	}
+
+	.flex-start {
+		align-self: flex-start;
+	}
+
+	.logo {
+		&__text {
+			font-size: 3.5vmax;
+			padding-top: 3vmax;
+		}
+	}
+
+	.title {
+		margin: 4vmax 0 4vmax 0;
+		font-size: 2vmax;
+		letter-spacing: 0.05em;
+		text-shadow:  #fff 0px 0px 4px, #fff 0px 2px 10px;
+			&__2row {
+				font-size: 6vmax;
+				margin-top: 20px;
+				letter-spacing: 0.035em;
+			}
+	}
+
+	.subintro {
+		z-index: 10;
+		width: 100%;
+		height: 100%;
+	}
+
+	.polygon-container {
+		position: relative;
+		bottom: -1px;
+		z-index: 10;
+	}
+
+	.polygon {
+		display: block;
+		fill: #fff;
+		width: 100%;
+		z-index: 5;
+	}
+
+	.people-container {
+		display: block;
+		position: relative;
+		height: auto;
+		z-index: 2;
+	}
+
+	.people {
+		position: absolute;
+		display: block;
+		right: 0;
+		top: -16vw;
+		width: 25%;
+		z-index: 1;
+		@include no-select;
+	}
+
+	.subtitle-wrapper {
+		position: relative;
+		width: 100%;
+		top: -14vmax;
+		z-index: 10;
+	}
+
+	.white-bg {
+		background-color: rgba(255, 255, 255, 0);
+	}
+
+	.subintro {
+	}
+
+	.subtitle__wrapper {
+		width: 100%;
+	}
+
+	.subtitle-position {
+		margin-top: 0;
+		text-align: left;
+	}
+
+	.subtitle {
+		font-size: 3vmax;
+		margin-top: 0;
+			&__2row {
+				margin-top: 0;
+			}
+	}
+
+	.subtitle__desc {
+		font-size: 1.5vmax;
+		margin: 2.5vmax 0 2.5vmax 0;
+	}
+
+	.btn-wrapper {
+		display: inline;
+	}
+
+	.link-btn {
+		width: auto;
+		display: inline-block;
+		font-size: 1.5vmax;
+		padding: 0.6em 2.5em 0.6em 2.5em;
+		border-radius: 100vmin;
+		text-align: center;
+		margin: 0;
+		margin-left: 25%;
+	}
+
+	.link-btn-position {
+		margin-top: 0vmin;
+		margin-bottom: 0vmin;
+	}
+
+
 }
