@@ -58,3 +58,18 @@ window.addEventListener('mousemove', function(e) {
     bg2.style.transform = 'translate(-' + x * 50 + 'px, -' + y * 50 + 'px)';
 });
 
+// smooth scroll
+
+let anchors = document.querySelectorAll('header a[href*="#"]');
+
+for (anchor of anchors) {
+  if (anchor) {
+    anchor.addEventListener('click', function(e){
+      e.preventDefault();
+      anchorId = this.getAttribute('href');
+      document.querySelector(anchorId).scrollIntoView({
+        behavior: 'smooth', block: 'start'
+      })
+    })
+  }
+}

@@ -115,6 +115,24 @@ input:focus {
 
 // scroll
 
+	// ie
+	
+body {
+	scrollbar-track-color: #ffffff;
+	scrollbar-arrow-color: #56999f;
+	scrollbar-face-color: $primary-color;
+	scrollbar-shadow-color: #56999f;
+}
+
+	// firefox
+
+html, body {
+	scrollbar-color: $primary-color #ffffff;
+	scrollbar-width: auto;
+}
+
+	// webkit
+
 body {
 	overflow: overlay;
 }
@@ -130,11 +148,11 @@ body {
 ::-webkit-scrollbar-thumb {
 	-webkit-border-radius: 0.25vw;
 	border-radius: 50px;
-	background: linear-gradient(to bottom, #56999f 0%, #223e41 100%);
+	background-image: linear-gradient(to bottom, #56999f 0%, #223e41 100%);
 }
 
 ::-webkit-scrollbar-thumb:hover{
-	background: linear-gradient(to bottom, #45f6ff 0%, #1e6a6e 100%);
+	background-image: linear-gradient(to bottom, #45f6ff 0%, #1e6a6e 100%);
 }
 
 ::-webkit-resizer{
@@ -146,8 +164,7 @@ body {
 }
 
 ::-webkit-scrollbar{
-	min-width: 10px;
-	width: 1vmax;
+	width: 1.7vmin;
 }
 
 ::-webkit-scrollbar-track-piece:start {
@@ -226,6 +243,7 @@ body {
 	display: block;
 	word-wrap: break-word;
 	line-height: 1;
+	text-shadow:  #fff 0px 0px 4px, #fff 0px 2px 10px;
 		&__2row {
 			font-family: 'Roboto Slab', sans-serif;
 			display: block;
@@ -279,6 +297,10 @@ body {
 	word-wrap: break-word;
 }
 
+.btn-wrapper a {
+	color: #fff;
+}
+
 .link-btn {
 	display: block;
 	word-wrap: break-word;
@@ -292,9 +314,12 @@ body {
 	color: #fff;
 	background-color: $primary-color;
 	box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+	text-shadow:  #000 0px 0px 4px;
+	transition: box-shadow .25s linear;
 	&:hover {
 		background-color: $primary-light-color;
 		box-shadow: 0 0 10px 1px $primary-light-color;
+		transition: box-shadow .12s linear;
 	}
 }
 
@@ -370,9 +395,11 @@ body {
 		font-size: 32px;
 		margin-left: 15px;
 		cursor: pointer;
+		transition: color .075s linear;
 	}
 	&__cart-icon:hover {
 		color: $primary-color;
+		transition: color .075s linear;
 	}
 }
 
@@ -468,16 +495,21 @@ body {
 		margin: 0 auto;
 		margin-bottom: 0.7em;
 		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+		text-shadow:  #000 0px 0px 4px;
+		transition: box-shadow .25s linear;
+		position: relative;
+		z-index: 10;
 	}
 	&__btn:hover {
 		background-color: $primary-light-color;
 		box-shadow: 0 0 10px 1px $primary-light-color;
+		transition: box-shadow .07s linear;
 	}
 
 	&__gradient {
 		position: absolute;
 		width: 100%;
-		height: 15%;
+		height: 12%;
 		bottom: -1px;
 		@include gradient(bottom, $color-list);
 	}
@@ -520,12 +552,15 @@ body {
 	}
 	&__list a:link {
 		color: #000;
+		transition: color .07s linear;
 	}
 	&__list a:visited {
 		color: #000;
+		transition: color .07s linear;
 	}
 	&__list a:hover {
 		color: $primary-color;
+		transition: color .07s linear;
 	}
 }
 
@@ -878,7 +913,6 @@ body {
 		margin: 4vmax 0 4vmax 0;
 		font-size: 2vmax;
 		letter-spacing: 0.05em;
-		text-shadow:  #fff 0px 0px 4px, #fff 0px 2px 10px;
 			&__2row {
 				text-align: center;
 				font-size: 6vmax;
@@ -933,9 +967,6 @@ body {
 		background-color: rgba(255, 255, 255, 0);
 	}
 
-	.subintro {
-	}
-
 	.subtitle__wrapper {
 		width: 100%;
 	}
@@ -976,6 +1007,4 @@ body {
 		margin-top: 0vmin;
 		margin-bottom: 0vmin;
 	}
-
-
 }
