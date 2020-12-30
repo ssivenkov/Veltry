@@ -1,4 +1,4 @@
-let project_folder = require("path").basename(__dirname); for convenience
+let project_folder = require("path").basename(__dirname);
 let source_folder = "#src";
 
 let fs = require('fs');
@@ -78,6 +78,7 @@ function css() {
 		)
 		.pipe(
 			autoprefixer({
+				grid: true,
 				overrideBrowserslist: ["last 5 versions"],
 				cascade: true
 			})
