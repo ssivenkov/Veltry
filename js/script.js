@@ -17,7 +17,7 @@ function testWebP(callback) {
 	}
 	});
 
-// tools cnange color
+// tools cnange color on click
 const path1 = document.querySelector('.path1');
 function ChangeOver1() {
 	path1.setAttribute('fill', 'url(#linear-gradient)');
@@ -38,15 +38,15 @@ function ChangeOut2() {
 	document.getElementsByClassName('search')[0].style="background-image: linear-gradient(180deg, #dddddd, #777777)";
 };
 
-// cnange size
+// tools resize on tablet
 function setup_for_width(size) {
 	const cartsize = document.querySelector('.cartsize');
 	const searchsize = document.querySelector('.searchsize');
 	if (size.matches) {
-		cartsize.setAttribute('width', '72');
-		cartsize.setAttribute('height', '60');
-		searchsize.setAttribute('width', '72');
-		searchsize.setAttribute('height', '72');
+		cartsize.setAttribute('width', '54');
+		cartsize.setAttribute('height', '45');
+		searchsize.setAttribute('width', '54');
+		searchsize.setAttribute('height', '54');
 		} else {
 			cartsize.setAttribute('width', '36');
 			cartsize.setAttribute('height', '30');
@@ -74,14 +74,65 @@ window.addEventListener('mousemove', function(e) {
 });
 
 // smooth scroll
-let anchors = document.querySelectorAll('header a[href*="#"]');
-
-for (anchor of anchors) {
-  if (anchor) {
-    anchor.addEventListener('click', function(e){
+let headers = document.querySelectorAll('header a[href*="#"]');
+for (header of headers) {
+  if (header) {
+	header.addEventListener('click', function(e){
       e.preventDefault();
-      anchorId = this.getAttribute('href');
-      document.querySelector(anchorId).scrollIntoView({
+      headerId = this.getAttribute('href');
+      document.querySelector(headerId).scrollIntoView({
+        behavior: 'smooth', block: 'start'
+      })
+    })
+  }
+}
+
+let bags = document.querySelectorAll('section a[href="#bags"]');
+for (bag of bags) {
+  if (bag) {
+	bag.addEventListener('click', function(e){
+      e.preventDefault();
+      bagId = this.getAttribute('href');
+      document.querySelector(bagId).scrollIntoView({
+        behavior: 'smooth', block: 'start'
+      })
+    })
+  }
+}
+
+let camps = document.querySelectorAll('section a[href="#camps"]');
+for (camp of camps) {
+  if (camp) {
+	camp.addEventListener('click', function(e){
+      e.preventDefault();
+      campId = this.getAttribute('href');
+      document.querySelector(campId).scrollIntoView({
+        behavior: 'smooth', block: 'start'
+      })
+    })
+  }
+}
+
+let lenses = document.querySelectorAll('section a[href="#lenses"]');
+for (lense of lenses) {
+  if (lense) {
+	lense.addEventListener('click', function(e){
+      e.preventDefault();
+      lenseId = this.getAttribute('href');
+      document.querySelector(lenseId).scrollIntoView({
+        behavior: 'smooth', block: 'start'
+      })
+    })
+  }
+}
+
+let cameras = document.querySelectorAll('section a[href="#cameras"]');
+for (camera of cameras) {
+  if (camera) {
+	camera.addEventListener('click', function(e){
+      e.preventDefault();
+      cameraId = this.getAttribute('href');
+      document.querySelector(cameraId).scrollIntoView({
         behavior: 'smooth', block: 'start'
       })
     })
