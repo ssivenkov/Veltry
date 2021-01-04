@@ -138,11 +138,6 @@ a:active {
   color: #000;
 }
 
-input:focus {
-  -webkit-box-shadow: 0px 0px 15px 5px #3acdd5;
-          box-shadow: 0px 0px 15px 5px #3acdd5;
-}
-
 *::-moz-selection {
   color: #ffffff;
   background-color: #0dc2cc;
@@ -226,23 +221,64 @@ body {
   position: relative;
 }
 
-.search {
+.search-form {
   position: fixed;
   display: block;
-  z-index: 5;
-  width: 48px;
-  height: 48px;
+  top: 0;
   right: 0;
+  z-index: 10;
+}
+
+.search-input {
+  height: 48px;
+  width: 48px;
+  padding-right: 48px;
+  border: none;
+  border-bottom: 0px solid transparent;
+  outline: none;
+  background: transparent;
+  -webkit-transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+  -o-transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+  transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 25;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: 'Roboto-Slab', sans-serif;
+  font-size: 18px;
+  border-radius: 0 0 0 24px;
+}
+
+.search-input:focus {
+  width: calc(100vw - 64px);
+  z-index: 15;
+  padding: 0 57px 0 10px;
+  border-radius: 0 0 0 0;
+  border-bottom: 2px solid #000;
+  background: #fff;
+  cursor: initial;
+}
+
+.search-btn {
+  display: block;
+  border: none;
+  height: 48px;
+  width: 48px;
+  position: relative;
+  top: 0;
+  right: 0;
+  -webkit-transition: width 0.3s;
+  -o-transition: width 0.3s;
+  transition: width 0.3s;
+  cursor: pointer;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#777));
   background-image: -o-linear-gradient(top, #ddd, #777);
   background-image: linear-gradient(180deg, #ddd, #777);
   border-radius: 0 0 0 50%;
-}
-
-.search svg {
-  position: relative;
-  left: 6px;
-  top: 5px;
+  overflow: hidden;
+  z-index: 20;
 }
 
 .cart {
@@ -256,6 +292,8 @@ body {
   background-image: -o-linear-gradient(top, #ddd, #777);
   background-image: linear-gradient(180deg, #ddd, #777);
   border-radius: 0 0 50% 0;
+  z-index: 25;
+  cursor: pointer;
 }
 
 .cart svg {
@@ -338,7 +376,7 @@ intro-polygon-container.people,
   display: inline-block;
   word-wrap: break-word;
   width: 100%;
-  margin-top: .5em;
+  margin-top: 1.5vmax;
 }
 
 .subtitle__2row {
@@ -636,59 +674,64 @@ intro-polygon-container.people,
 }
 
 .newsletter__email::-webkit-input-placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email::-moz-placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email:-ms-input-placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email::-ms-input-placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email::placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email:-ms-input-placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email::-ms-input-placeholder {
-  color: #555555;
+  color: #555;
 }
 
 .newsletter__email:focus::-webkit-input-placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
 }
 
 .newsletter__email:focus::-moz-placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
 }
 
 .newsletter__email:focus:-ms-input-placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
 }
 
 .newsletter__email:focus::-ms-input-placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
 }
 
 .newsletter__email:focus::placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
 }
 
 .newsletter__email:focus:-ms-input-placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
 }
 
 .newsletter__email:focus::-ms-input-placeholder {
-  color: #cccccc;
+  color: rgba(0, 0, 0, 0);
+}
+
+.newsletter__email:focus {
+  -webkit-box-shadow: 0px 0px 15px 5px #3acdd5;
+          box-shadow: 0px 0px 15px 5px #3acdd5;
 }
 
 .newsletter__btn {
@@ -941,16 +984,25 @@ intro-polygon-container.people,
   line-height: .7;
 }
 
-@media only screen and (min-width: 768px) and (min-height: 768px) {
-  .search {
-    width: 72px;
+@media only screen and (min-width: 768px) {
+  .search-input {
     height: 72px;
-    background-color: #fff;
+    width: 72px;
+    padding-right: 72px;
+    font-size: 40px;
+    border-radius: 0 0 0 36px;
   }
 
-  .search svg {
-    left: 11px;
-    top: 8px;
+  .search-input:focus {
+    width: calc(100vw - 88px);
+    padding: 0 88px 0 15px;
+    border-bottom: 4px solid #000;
+    border-radius: 0 0 0 0;
+  }
+
+  .search-btn {
+    height: 72px;
+    width: 72px;
   }
 
   .cart {
@@ -964,27 +1016,27 @@ intro-polygon-container.people,
   }
 
   .logo__text {
-    font-size: 10vmin;
-    padding-top: 5vmin;
+    font-size: 5.5vmax;
+    padding-top: 3vmax;
   }
 
   .title {
-    margin-top: 4vmin;
-    font-size: 5vmin;
+    margin-top: 5vmax;
+    font-size: 2.8vmax;
   }
 
   .title__2row {
-    font-size: 10vmin;
-    margin-top: 3vmin;
+    font-size: 8vmax;
+    margin-top: 1vmax;
   }
 
   .subtitle-position {
-    margin-top: 20vmin;
+    margin-top: 12vmax;
   }
 
   .subtitle {
     font-size: 5vmax;
-    margin-top: 3vmin;
+    margin-top: 3vmax;
   }
 
   .subtitle__2row {
@@ -998,12 +1050,12 @@ intro-polygon-container.people,
   .link-btn {
     font-size: 3vmax;
     padding: 0.8em 0 0.8em 0;
-    border-radius: 100vmin;
+    border-radius: 100vmax;
   }
 
   .link-btn-position {
     margin-top: 4vmax;
-    margin-bottom: 20vmax;
+    margin-bottom: 25vmax;
   }
 
   .header {
@@ -1214,13 +1266,108 @@ intro-polygon-container.people,
 }
 
 @media only screen and (min-width: 1224px) {
-  input:focus {
-    -webkit-box-shadow: 0px 0px 15px 5px #000;
-            box-shadow: 0px 0px 15px 5px #000;
+  .tools {
+    position: relative;
   }
 
-  .tools {
-    display: none;
+  .search-wrapper {
+    position: absolute;
+    top: 4vmax;
+    right: 15vw;
+  }
+
+  .search-form {
+    position: relative;
+    display: block;
+    width: 40%;
+    margin: initial;
+    top: initial;
+    right: initial;
+    z-index: 20;
+  }
+
+  .search-input {
+    width: 20vw;
+    height: 2.2vmax;
+    border: 0.15vmax solid #000;
+    outline: none;
+    background: #fff;
+    padding-right: initial;
+    padding: 0 0.8vmax 0 0.8vmax;
+    -webkit-transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+    -o-transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+    transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+    position: relative;
+    top: initial;
+    right: initial;
+    z-index: 25;
+    cursor: initial;
+    overflow: initial;
+    font-size: 1vmax;
+    border-radius: 100px 0 0 100px;
+  }
+
+  .search-input:focus {
+    width: 20vw;
+    z-index: 25;
+    padding: 0 0.8vmax 0 0.8vmax;
+    border-radius: 100px 0 0 100px;
+    border-bottom: initial;
+    border: 0.15vmax solid #000;
+    background: #fff;
+  }
+
+  .search-btn {
+    position: absolute;
+    top: initial;
+    right: initial;
+    width: 2.2vmax;
+    height: 2.2vmax;
+    top: 0;
+    margin-left: 20vw;
+    border: none;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#777));
+    background-image: -o-linear-gradient(top, #ddd, #777);
+    background-image: linear-gradient(180deg, #ddd, #777);
+    border-radius: 0 50px 50px 0;
+    z-index: 20;
+    -webkit-transition: initial;
+    -o-transition: initial;
+    transition: initial;
+    display: initial;
+    overflow: hidden;
+  }
+
+  .search-btn svg {
+    position: relative;
+    left: -0.2vmax;
+    top: 0vmax;
+    width: 1.5vmax;
+    height: 1.5vmax;
+  }
+
+  .cart {
+    position: absolute;
+    top: 4vmax;
+    right: 9vw;
+    display: block;
+    z-index: 5;
+    width: 2.2vmax;
+    height: 2.2vmax;
+    left: initial;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#777));
+    background-image: -o-linear-gradient(top, #ddd, #777);
+    background-image: linear-gradient(180deg, #ddd, #777);
+    border-radius: 20% 20% 20% 20%;
+    z-index: 25;
+  }
+
+  .cart svg {
+    position: relative;
+    left: 0.21vmax;
+    top: 0.25vmax;
+    width: 1.7vmax;
+    height: 1.7vmax;
   }
 
   .mouse-parallax {
@@ -1520,6 +1667,11 @@ intro-polygon-container.people,
     font-size: 1.5vmax;
     margin-bottom: 1.5vmax;
     padding: 1vmax;
+  }
+
+  .newsletter__email:focus {
+    -webkit-box-shadow: 0px 0px 15px 5px #000;
+            box-shadow: 0px 0px 15px 5px #000;
   }
 
   .newsletter__btn {

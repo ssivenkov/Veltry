@@ -27,10 +27,15 @@
 			<path class="path1" d="M31.5 24.096V22.02H10.26l1.44-2.234 20.7-1.755L36 6.064H8.28L6.84 0H0v2.074h5.04L9.72 18.83l-2.88 5.106v3.032C6.84 28.564 8.28 30 10.08 30c1.8 0 3.42-1.436 3.42-3.032s-1.62-3.032-3.42-3.032H27v3.032C27 28.564 28.62 30 30.42 30c1.8 0 3.42-1.436 3.42-3.032 0-1.436-.9-2.394-2.34-2.872z"></path>
 		</svg>
 	</div>
-	<div class="search" onmouseover="ChangeOver2(this)" onmouseout="ChangeOut2(this)">
-		<svg class="searchsize" aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" id = "star">
-			<path class="path2" d="M4.245 24.733A14.462 14.458 0 0023.37 25.92l9.578 9.575a1.801 1.8 0 002.546-2.546l-9.577-9.575A14.48 14.476 0 004.245 4.25a14.484 14.48 0 000 20.482zM6.79 6.8a10.884 10.88 0 11-3.187 7.695A10.806 10.803 0 016.79 6.796z"></path>
-		</svg>
+	<div class="search-wrapper">
+		<form class="search-form" action="" method="get">
+			<input class="search-input" placeholder="Search..." type="text" required>
+			<button class="search-btn" type="submit"  onmouseover="ChangeOver2(this)" onmouseout="ChangeOut2(this)">
+				<svg class="searchsize" aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" id = "star">
+					<path class="path2" d="M4.245 24.733A14.462 14.458 0 0023.37 25.92l9.578 9.575a1.801 1.8 0 002.546-2.546l-9.577-9.575A14.48 14.476 0 004.245 4.25a14.484 14.48 0 000 20.482zM6.79 6.8a10.884 10.88 0 11-3.187 7.695A10.806 10.803 0 016.79 6.796z"></path>
+				</svg>
+			</button>
+		</form>
 	</div>
 </section>
 
@@ -258,14 +263,16 @@
 		<p class="newsletter__description">Subscribe to our newsletter, we promise to send only the most interesting</p>
 	</div>
 	<div class="newsletter__form">
-		<input type="email" class="newsletter__email" placeholder="Enter your E-mail" required autocomplete="email" autocapitalize="off" autocorrect="off">
-		<button type="submit" class="newsletter__btn">send</button>
-		<div class="newsletter__gradient"></div>
-		<div class="footer-polygon-container">
-			<svg class="footer-polygon" viewBox="0 0 768 144.455">
-				<path d="M768 0v144.455H0v-3.93z"/>
-			</svg>
-		</div>
+		<form action="">
+			<input type="email" required class="newsletter__email" name="email-form" placeholder="Enter your E-mail" autocomplete="email" autocapitalize="off" autocorrect="off">
+			<button type="submit" class="newsletter__btn">send</button>
+			<div class="newsletter__gradient"></div>
+			<div class="footer-polygon-container">
+				<svg class="footer-polygon" viewBox="0 0 768 144.455">
+					<path d="M768 0v144.455H0v-3.93z"/>
+				</svg>
+			</div>
+		</form>
 	</div>
 </section>
 
@@ -292,7 +299,7 @@
 		</label>
 		<div class="tab-content">
 			<ul class="links__items">
-				<li class="links__item">About us</li>
+				<li><a class="links__item" href="https://www.instagram.com/about/us" target="_blank">About us</a></li>
 				<li><a class="links__item" href="https://affiliate-program.amazon.com" target="_blank">Affiliate program</a></li>
 				<li><a class="links__item" href="https://workwithus.io/" target="_blank">Work with us</a></li>
 				<li><a class="links__item" href="https://rms3.templates.com/web-studio/prestashop-themes-type/58385.html" target="_blank">In the media</a></li>
@@ -332,7 +339,7 @@
 		<div>
 			<h4 class="links-desktop__header">About veltry</h4>
 				<ul class="links-desktop__items">
-					<li class="links-desktop__item">About us</li>
+					<li><a class="links-desktop__item" href="https://affiliate-program.amazon.com" target="_blank">About us</a></li>
 					<li><a class="links-desktop__item" href="https://affiliate-program.amazon.com" target="_blank">Affiliate program</a></li>
 					<li><a class="links-desktop__item" href="https://workwithus.io/" target="_blank">Work with us</a></li>
 					<li><a class="links-desktop__item" href="https://rms3.templates.com/web-studio/prestashop-themes-type/58385.html" target="_blank">In the media</a></li>

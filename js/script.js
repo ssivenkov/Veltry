@@ -31,11 +31,11 @@ function ChangeOut1() {
 const path2 = document.querySelector('.path2');
 function ChangeOver2() {
 	path2.setAttribute('fill', 'url(#linear-gradient)');
-	document.getElementsByClassName('search')[0].style="background-image: linear-gradient(0deg, #dddddd, #777777)";
+	document.getElementsByClassName('search-btn')[0].style="background-image: linear-gradient(0deg, #dddddd, #777777)";
 };
 function ChangeOut2() {
 	path2.removeAttribute('fill', 'url(#linear-gradient)');
-	document.getElementsByClassName('search')[0].style="background-image: linear-gradient(180deg, #dddddd, #777777)";
+	document.getElementsByClassName('search-btn')[0].style="background-image: linear-gradient(180deg, #dddddd, #777777)";
 };
 
 // tools resize on tablet
@@ -81,7 +81,7 @@ for (header of headers) {
       e.preventDefault();
       headerId = this.getAttribute('href');
       document.querySelector(headerId).scrollIntoView({
-        behavior: 'smooth', block: 'start'
+      	behavior: 'smooth', block: 'start'
       })
     })
   }
@@ -94,7 +94,7 @@ for (bag of bags) {
       e.preventDefault();
       bagId = this.getAttribute('href');
       document.querySelector(bagId).scrollIntoView({
-        behavior: 'smooth', block: 'start'
+      	behavior: 'smooth', block: 'start'
       })
     })
   }
@@ -107,7 +107,7 @@ for (camp of camps) {
       e.preventDefault();
       campId = this.getAttribute('href');
       document.querySelector(campId).scrollIntoView({
-        behavior: 'smooth', block: 'start'
+      	behavior: 'smooth', block: 'start'
       })
     })
   }
@@ -120,7 +120,7 @@ for (lense of lenses) {
       e.preventDefault();
       lenseId = this.getAttribute('href');
       document.querySelector(lenseId).scrollIntoView({
-        behavior: 'smooth', block: 'start'
+      	behavior: 'smooth', block: 'start'
       })
     })
   }
@@ -133,7 +133,7 @@ for (camera of cameras) {
       e.preventDefault();
       cameraId = this.getAttribute('href');
       document.querySelector(cameraId).scrollIntoView({
-        behavior: 'smooth', block: 'start'
+      	behavior: 'smooth', block: 'start'
       })
     })
   }
