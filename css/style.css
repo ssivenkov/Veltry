@@ -237,9 +237,9 @@ body {
   border-bottom: 0px solid transparent;
   outline: none;
   background: transparent;
-  -webkit-transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
-  -o-transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
-  transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
+  -webkit-transition: 0.4s cubic-bezier(0, 1, 0, 1);
+  -o-transition: 0.4s cubic-bezier(0, 1, 0, 1);
+  transition: 0.4s cubic-bezier(0, 1, 0, 1);
   position: absolute;
   top: 0;
   right: 0;
@@ -284,7 +284,6 @@ body {
 .cart {
   position: fixed;
   display: block;
-  z-index: 5;
   width: 48px;
   height: 48px;
   left: 0;
@@ -300,6 +299,158 @@ body {
   position: relative;
   left: 4px;
   top: 8px;
+}
+
+.cart__items-area {
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity .1s ease-in;
+  -o-transition: opacity .1s ease-in;
+  transition: opacity .1s ease-in;
+  position: fixed;
+  width: 90%;
+  background-color: #fff;
+  border: 2px solid #000;
+  z-index: 25;
+  left: 5vw;
+  top: 70px;
+}
+
+.cart__items-area::before,
+.cart__items-area::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: -22px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #000;
+  opacity: 0;
+  -webkit-transition: opacity .1s ease-in;
+  -o-transition: opacity .1s ease-in;
+  transition: opacity .1s ease-in;
+}
+
+.cart__items-area::after {
+  border-bottom: 10px solid white;
+  top: -19px;
+}
+
+.cart__empty-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100px;
+}
+
+.cart__empty-text {
+  width: 100%;
+  color: #777;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 18px;
+  font-family: Roboto, serif;
+  font-weight: 300;
+}
+
+.popup-cart-link {
+  position: fixed;
+  display: block;
+  width: 48px;
+  height: 48px;
+  left: 0;
+  top: 0;
+  background-image: initial;
+  border-radius: 0 0 50% 0;
+  z-index: 27;
+  cursor: pointer;
+}
+
+.popup-cart {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.popup-cart:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-cart:target .popup-cart__content {
+  -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+  opacity: 1;
+}
+
+.popup-cart__area {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup-cart__body {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+.popup-cart__content {
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px 3px #000;
+          box-shadow: 0 0 10px 3px #000;
+  color: #000;
+  max-width: 80vw;
+  padding: 30px;
+  position: relative;
+  -webkit-transform: translate(0px, -100%);
+      -ms-transform: translate(0px, -100%);
+          transform: translate(0px, -100%);
+  -webkit-transition: all 0.5s ease 0s;
+  -o-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.popup-cart__close {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  font-size: 15px;
+  color: #000;
+}
+
+.popup-cart__text {
+  width: 100%;
+  color: #777;
+  text-align: center;
+  word-wrap: break-word;
+  font-size: 18px;
+  font-family: Roboto, serif;
+  font-weight: 300;
 }
 
 .intro {
@@ -1015,6 +1166,11 @@ intro-polygon-container.people,
     top: 12px;
   }
 
+  .popup-cart-link {
+    width: 72px;
+    height: 72px;
+  }
+
   .logo__text {
     font-size: 5.5vmax;
     padding-top: 3vmax;
@@ -1351,7 +1507,6 @@ intro-polygon-container.people,
     top: 4vmax;
     right: 9vw;
     display: block;
-    z-index: 5;
     width: 2.2vmax;
     height: 2.2vmax;
     left: initial;
@@ -1368,6 +1523,17 @@ intro-polygon-container.people,
     top: 0.25vmax;
     width: 1.7vmax;
     height: 1.7vmax;
+  }
+
+  .popup-cart-link {
+    position: absolute;
+    width: 2.2vmax;
+    height: 2.2vmax;
+    left: initial;
+    top: 0;
+    right: 0;
+    background-image: initial;
+    border-radius: 20% 20% 20% 20%;
   }
 
   .mouse-parallax {
