@@ -14,7 +14,7 @@
    width="768"
    height="167.54248"
    viewBox="0 0 767.99997 167.54248"
-   sodipodi:docname="polygon.svg"
+   sodipodi:docname="intro.svg"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
   <metadata
      id="metadata16">
@@ -43,9 +43,9 @@
      inkscape:window-height="1057"
      id="namedview12"
      showgrid="true"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="433.04487"
-     inkscape:cy="4.5968574"
+     inkscape:zoom="90.50967"
+     inkscape:cx="4.047911"
+     inkscape:cy="1.5271386"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -59,7 +59,7 @@
   </sodipodi:namedview>
   <path
      style="fill:#000000;stroke:none;stroke-width:0.61078465px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="m 0,0 v 165.54248 l 768,2 v -4.64278 z"
+     d="M 0,0 V 167.54248 H 768 V 162.8997 Z"
      id="path20"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccc" />

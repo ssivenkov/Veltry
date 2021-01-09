@@ -350,7 +350,7 @@ html, body {
 	background-color: #fff;
 }
 
-.intro-polygon,intro-polygon-container.people,.people-container,.footer-polygon,.footer-polygon-container {
+.intro-polygon,intro-polygon-container,.intro-float-polygon,.people,.people-container,.footer-polygon,.footer-polygon-container {
 	display: none;
 }
 
@@ -361,10 +361,8 @@ html, body {
 
 .subtitle {
 	font-family: 'Roboto-Slab', sans-serif;
-	font-size: 40px;
+	font-size: 30px;
 	color: #272626;
-	display: inline-block;
-	word-wrap: break-word;
 	width: 100%;
 	margin-top: 1.5vmax;
 		&__2row {
@@ -372,7 +370,6 @@ html, body {
 			text-transform: uppercase;
 			display: block;
 			margin-top: 0.2em;
-			word-wrap: break-word;
 			width: 100%;
 		}
 }
@@ -382,9 +379,13 @@ html, body {
 	font-family: Roboto, serif;
 	font-weight: 300;
 	font-size: 18px;
-	margin: 1em 0 1em 0;
+	margin: 1em 0;
 	display: block;
-	word-wrap: break-word;
+}
+
+.subtitle__desc_indent {
+	text-indent: 2em;
+	margin: 1em 0;
 }
 
 .btn-wrapper a {
@@ -422,6 +423,11 @@ html, body {
 .link-btn-position {
 	margin-top: 4vh;
 	margin-bottom: 28vh;
+}
+
+.link-btn-position_min-margin {
+	margin-top: 5vh;
+	margin-bottom: 5vh;
 }
 
 // items
@@ -887,6 +893,11 @@ html, body {
 		margin-bottom: 25vmax;
 	}
 
+	.link-btn-position_min-margin {
+		margin-top: 5vmax;
+		margin-bottom: 5vmax;
+	}
+
 // items
 	.header {
 		font-size: 4vmax;
@@ -1161,8 +1172,8 @@ html, body {
 
 // intro
 	.mouse-parallax {
-		height: 70%;
 		width: 100%;
+		height: 44.5vmax;
 		position: absolute;
 		top: 0;
 		overflow: hidden;
@@ -1176,7 +1187,7 @@ html, body {
 		background-repeat: no-repeat;
 		background-size: cover;
 		width: 110%;
-		height: 98%;
+		height: 45vmax;
 		transition: all 0.1s ease;
 		z-index: 1;
 	}
@@ -1188,7 +1199,7 @@ html, body {
 		background-repeat: no-repeat;
 		background-size: cover;
 		width: 110%;
-		height: 98%;
+		height: 45vmax;
 		transition: all 0.1s ease;
 		z-index: 1;
 	}
@@ -1202,8 +1213,7 @@ html, body {
 	}
 
 	.intro-container {
-		margin: 0 7vmax 0 7vmax;
-		text-align: center;
+		margin: 0;
 	}
 
 	.scroll-wrapper {
@@ -1251,7 +1261,7 @@ html, body {
 		display: block;
 		position: relative;
 		height: auto;
-		z-index: 2;
+		z-index: 5;
 	}
 
 	.people {
@@ -1260,7 +1270,7 @@ html, body {
 		right: 0;
 		top: -16vw;
 		width: 25%;
-		z-index: 2;
+		z-index: 5;
 		@include no-select;
 	}
 
@@ -1274,13 +1284,29 @@ html, body {
 		display: block;
 		fill: #fff;
 		width: 100%;
-		z-index: 5;
+	}
+
+	.intro-float-polygon {
+		display: block;
+		opacity: 0.5;
+		z-index: 1;
+   	background: transparent;
+		height: 21.2vmax;
+		width: 100vw;
+		background-size: contain;
+		float: right;
+		shape-outside: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+		shape-margin: 1vmax;
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
+		@include no-select;
 	}
 
 	.subtitle-wrapper {
 		position: relative;
 		width: 100%;
-		top: calc(-14vmax - (-20vh + 5vmax) - 12vmin);
+		bottom: 21vmax;
+		/*top: calc(-14vmax - (-20vh + 5vmax) - 12vmin);*/
 		z-index: 10;
 	}
 
@@ -1299,15 +1325,21 @@ html, body {
 
 	.subtitle {
 		font-size: 3vmax;
-		margin-top: 0;
+		margin-top: 0em;
+		padding: 0 5vmax;
 			&__2row {
 				margin-top: 0;
 			}
 	}
 
 	.subtitle__desc {
-		font-size: 1.5vmax;
-		margin: 1.3vmax 0 1.3vmax 0;
+		font-size: 1.4vmax;
+		margin: 1.4vmax 0;
+		padding: 0 5vmax;
+	}
+
+	.subtitle__desc_indent {
+		margin: 2vmax 0;
 	}
 
 	.btn-wrapper {
@@ -1317,7 +1349,7 @@ html, body {
 	.link-btn {
 		width: auto;
 		display: inline-block;
-		font-size: 1.5vmax;
+		font-size: 1.4vmax;
 		padding: 0.6em 2.5em 0.6em 2.5em;
 		border-radius: 100vmin;
 		text-align: center;
@@ -1327,6 +1359,11 @@ html, body {
 
 	.link-btn-position {
 		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.link-btn-position_min-margin {
+		margin-top: 2vmax;
 		margin-bottom: 0;
 	}
 
