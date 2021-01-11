@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @mixin font($font_name, $file_name, $weight, $style) {
-
 	@font-face {
 		font-family: $font_name;
 		font-display: swap;
@@ -209,21 +208,6 @@ html, body {
 		border-bottom: 10px solid white;
 		top: -19px;
 	}
-	&__empty-wrapper {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		min-height: 100px;
-	}
-	&__empty-text {
-		width: 100%;
-		color: #777;
-		text-align: center;
-		word-wrap: break-word;
-		font-size: 18px;
-		font-family: Roboto, serif;
-		font-weight: 300;
-	}
 }
 
 // popup
@@ -296,8 +280,8 @@ html, body {
 		width: 100%;
 		color: #777;
 		text-align: center;
-		word-wrap: break-word;
-		font-size: 18px;
+		word-break: break-word;
+		font-size: 5.5vmin;
 		font-family: Roboto, serif;
 		font-weight: 300;
 	}
@@ -330,7 +314,7 @@ html, body {
 	font-family: 'Quotus-Thin', sans-serif;
 	font-size: 20px;
 	display: block;
-	word-wrap: break-word;
+	word-break: break-word;
 	line-height: 1;
 	text-shadow:  #fff 0px 0px 4px, #fff 0px 2px 10px;
 		&__2row {
@@ -341,7 +325,7 @@ html, body {
 			color: #fff;
 			text-shadow:  #000 0px 0px 4px, #000 0px 2px 10px;
 			display: block;
-			word-wrap: break-word;
+			word-break: break-word;
 			line-height: 1;
 		}
 }
@@ -350,7 +334,7 @@ html, body {
 	background-color: #fff;
 }
 
-.intro-polygon,intro-polygon-container,.intro-float-polygon,.people,.people-container,.footer-polygon,.footer-polygon-container {
+.intro-polygon,.intro-polygon-container,.intro-float-polygon,.people,.people-container,.footer-polygon,.footer-polygon-container {
 	display: none;
 }
 
@@ -364,12 +348,13 @@ html, body {
 	font-size: 30px;
 	color: #272626;
 	width: 100%;
-	margin-top: 1.5vmax;
+	padding-top: 1.5vmax;
+	word-break: break-word;
 		&__2row {
 			font-family: 'Quotus-Thin', sans-serif;
 			text-transform: uppercase;
 			display: block;
-			margin-top: 0.2em;
+			margin-top: 0;
 			width: 100%;
 		}
 }
@@ -378,6 +363,7 @@ html, body {
 	text-align: left;
 	font-family: Roboto, serif;
 	font-weight: 300;
+	word-break: break-word;
 	font-size: 18px;
 	margin: 1em 0;
 	display: block;
@@ -394,7 +380,7 @@ html, body {
 
 .link-btn {
 	display: block;
-	word-wrap: break-word;
+	word-break: break-word;
 	width: 50%;
 	margin: 0 auto;
 	font-family: Roboto, sans-serif;
@@ -421,8 +407,8 @@ html, body {
 }
 
 .link-btn-position {
-	margin-top: 4vh;
-	margin-bottom: 28vh;
+	margin-top: 20px;
+	margin-bottom: 35vmax;
 }
 
 .link-btn-position_min-margin {
@@ -431,13 +417,18 @@ html, body {
 }
 
 // items
+
+.bags, .camps, .cameras, .lenses {
+	padding-top: 3vmin;
+}
+
 .header {
 	font-family: 'Quotus-Thin', sans-serif;
 	font-size: 30px;
 	color: #242424;
 	text-transform: uppercase;
 	display: block;
-	word-wrap: break-word;
+	word-break: break-word;
 }
 
 .subheader {
@@ -448,7 +439,7 @@ html, body {
 	margin-top: 1.5em;
 	margin-bottom: 2em;
 	display: block;
-	word-wrap: break-word;
+	word-break: break-word;
 }
 
 .list-items-1-container {
@@ -501,27 +492,26 @@ html, body {
 		margin-top: 0.5em;
 		margin-bottom: 0.5em;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
+
 	}
 	&__cost-box {
-		display: flex;
-		justify-content: center;
-		margin-top: 5px;
+		text-align: center;
+		word-break: break-word;
 	}
 	&__cost {
-		display: flex;
-		align-items: center;
+		display: inline-block;
 		font-family: Roboto, sans-serif;
 		font-weight: 700;
 		font-size: 22px;
-		text-align: center;
-		word-wrap: break-word;
+		word-break: break-word;
 		line-height: 1.4;
 	}
 	&__cart-icon {
 		display: inline-block;
 		font-size: 30px;
-		margin-left: 5px;
+		margin-left: 1vmin;
+		margin-right: 1vmin;
 		cursor: pointer;
 		transition: color .075s linear;
 	}
@@ -541,6 +531,7 @@ html, body {
 	display: block;
 	margin: 0 auto;
 	background-color: #000;
+	margin-top: 0;
 	margin-bottom: 10vmin;
 }
 
@@ -554,7 +545,7 @@ html, body {
 		font-size: 25px;
 		text-shadow:  #fff 0px 0px 4px, #fff 0px 0px 10px, #fff 0px 0px 10px;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 	&__two-line {
 		font-family: 'Roboto-Slab', sans-serif;
@@ -565,7 +556,7 @@ html, body {
 		display: block;
 		margin-top: 0.5em;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 	&__description {
 		font-family: Roboto, serif;
@@ -576,7 +567,7 @@ html, body {
 		text-shadow:  #000 0px 0px 6px, #000 0px 0px 7px, #000 0px 0px 12px, #000 0px 0px 10px;
 		margin: 1.5em 0 1.5em 0;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 	&__form {
 		background: none;
@@ -632,7 +623,7 @@ html, body {
 		border-radius: 100px;
 		text-transform: uppercase;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
 		margin: 0 auto;
 		margin-bottom: 0.7em;
 		box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
@@ -674,7 +665,7 @@ html, body {
 		display: block;
 		width: 65%;
 		margin: 0 auto;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 	&__items {
 		font-family: Roboto, serif;
@@ -687,7 +678,7 @@ html, body {
 		color: #000;
 		padding: 0.4em 0;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 }
 
@@ -715,7 +706,7 @@ html, body {
 		display: block;
 		font-weight: bold;
 		padding: 0.8em 0 0.8em 0;
-		word-wrap: break-word;
+		word-break: break-word;
 		cursor: pointer;
 	}
 	& input:checked ~ .tab-content {
@@ -842,11 +833,21 @@ html, body {
 			left: 6px;
 			top: 12px;
 		}
+		
 	}
 
 	.popup-cart-link {
 		width: 72px;
 		height: 72px;
+	}
+
+	.popup-cart {
+		&__text {
+			font-size: 3.5vmax;
+		}
+		&__content {
+			padding: 3vmax;
+		}
 	}
 
 // intro
@@ -872,14 +873,16 @@ html, body {
 	
 	.subtitle {
 		font-size: 5vmax;
-		margin-top: 3vmax;
-			&__2row {
-				margin-top: 0.2em;
-			}
+		padding-top: 3vmax;
+		word-break: normal;
+		&__2row {
+			margin-top: 0.2em;
+		}
 	}
 	
 	.subtitle__desc {
 		font-size: 2.5vmax;
+		word-break: normal;
 	}
 	
 	.link-btn {
@@ -899,6 +902,11 @@ html, body {
 	}
 
 // items
+
+	.bags, .camps, .cameras, .lenses {
+		padding-top: 3vmin;
+	}
+
 	.header {
 		font-size: 4vmax;
 	}
@@ -910,7 +918,7 @@ html, body {
 	.list-items-1-container {
 		display: grid;
 		grid-template: auto / repeat(2, 2fr);
-		gap: 1.5vmax;
+		gap: 2vmin;
 		flex-direction: initial;
 		margin: 0 auto;
 	}
@@ -918,7 +926,7 @@ html, body {
 	.list-items-3-container {
 		display: grid;
 		grid-template: auto / repeat(3, 2fr);
-		gap: 1.5vmax;
+		gap: 2vmin;
 		flex-direction: initial;
 		margin: 0 auto;
 	}
@@ -926,7 +934,7 @@ html, body {
 	.list-items-4-container {
 		display: grid;
 		grid-template: auto / repeat(3, 2fr);
-		gap: 1.5vmax;
+		gap: 2vmin;
 		flex-direction: initial;
 		margin: 0 auto;
 	}
@@ -938,7 +946,7 @@ html, body {
 			grid-template: 1fr minmax(1px, auto) minmax(1px, auto) / 1fr;
 			grid-auto-rows: 1fr;
 			margin-bottom: 0;
-			padding: 1.2vmax;
+			padding: 2vmin;
 			background-color: #eee;
 			border-radius: 2vmin;
 			width: 100%;
@@ -962,7 +970,7 @@ html, body {
 			height: 100%;
 		}
 		&__description {
-			font-size: 1.7vmax;
+			font-size: 2.1vmin;
 			margin-top: 1em;
 			margin-bottom: 0.5em;
 		}
@@ -970,18 +978,16 @@ html, body {
 			margin-top: 1vmax;
 		}
 		&__cost {
-			font-size: 2.5vmax;
+			font-size: 3.8vmin;
 		}
 		&__cart-icon {
-			font-size: 3.5vmax;
-			margin-left: 1vmin;
+			font-size: 5vmin;
 		}
 	}
 
 	.separation-line {
-		margin-top: 9vmin;
-		margin-bottom: 7vmin;
-		width: 55%;
+		margin-top: 3vmin;
+		margin-bottom: 4vmin;
 	}
 
 // newsletter
@@ -1047,7 +1053,7 @@ html, body {
 			display: block;
 			font-weight: bold;
 			padding: 1.5em 0 1.5em 0;
-			word-wrap: break-word;
+			word-break: break-word;
 			cursor: pointer;
 		}
 	}
@@ -1170,6 +1176,15 @@ html, body {
 		border-radius: 20% 20% 20% 20%;
 	}
 
+	.popup-cart {
+		&__text {
+			font-size: 1.2vmax;
+		}
+		&__content {
+			padding: 2vmax;
+		}
+	}
+
 // intro
 	.mouse-parallax {
 		width: 100%;
@@ -1245,9 +1260,7 @@ html, body {
 		font-size: 2vmax;
 		letter-spacing: 0.05em;
 			&__2row {
-				text-align: center;
 				font-size: 6vmax;
-				margin-top: 20px;
 				letter-spacing: 0.035em;
 			}
 	}
@@ -1275,6 +1288,7 @@ html, body {
 	}
 
 	.intro-polygon-container {
+		display: block;
 		position: relative;
 		bottom: -1px;
 		z-index: 10;
@@ -1300,6 +1314,7 @@ html, body {
 		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
 		clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%);
 		@include no-select;
+		clear: right;
 	}
 
 	.subtitle-wrapper {
@@ -1324,8 +1339,7 @@ html, body {
 	}
 
 	.subtitle {
-		font-size: 3vmax;
-		margin-top: 0em;
+		font-size: 2.6vmax;
 		padding: 0 5vmax;
 			&__2row {
 				margin-top: 0;
@@ -1333,8 +1347,8 @@ html, body {
 	}
 
 	.subtitle__desc {
-		font-size: 1.4vmax;
-		margin: 1.4vmax 0;
+		font-size: 1.3vmax;
+		margin: 1.3vmax 0;
 		padding: 0 5vmax;
 	}
 
@@ -1349,7 +1363,7 @@ html, body {
 	.link-btn {
 		width: auto;
 		display: inline-block;
-		font-size: 1.4vmax;
+		font-size: 1.3vmax;
 		padding: 0.6em 2.5em 0.6em 2.5em;
 		border-radius: 100vmin;
 		text-align: center;
@@ -1368,6 +1382,11 @@ html, body {
 	}
 
 // items
+
+	.bags, .camps, .cameras, .lenses {
+		padding-top: 3vmin;
+	}
+
 	.header {
 		font-size: 2vmax;
 	}
@@ -1389,41 +1408,21 @@ html, body {
 	.list-items {
 		width: 65%;
 		&__description {
-			font-family: Roboto, serif;
-			font-weight: 500;
 			font-size: 0.85vmax;
-			text-align: center;
 			margin-top: 0;
 			margin-bottom: 0;
 			padding: 0.5vmax 0 0.5vmax 0;
 			display: block;
-			word-wrap: break-word;
 		}
 		&__cost-box {
-			display: flex;
-			justify-content: center;
 			margin-top: 0.5vmax;
 		}
 		&__cost {
-			display: inline-block;
-			font-family: Roboto, sans-serif;
-			font-weight: 700;
 			font-size: 1.5vmax;
-			text-align: center;
-			word-wrap: break-word;
-			line-height: 1.4;
 		}
 		&__cart-icon {
-			display: inline-block;
 			font-size: 1.7vmax;
-			margin-left: 0.5vmax;
 		}
-	}
-
-	.separation-line {
-		margin-top: 6vmin;
-		margin-bottom: 5vmin;
-		width: 50%;
 	}
 
 	.newsletter {
@@ -1436,7 +1435,7 @@ html, body {
 		&__one-line {
 			font-size: 2vmax;
 			display: block;
-			word-wrap: break-word;
+			word-break: break-word;
 			text-shadow: none;
 		}
 		&__two-line {
@@ -1529,7 +1528,7 @@ html, body {
 		width: 100%;
 		margin: 0 auto;
 		padding-bottom: 2vmax;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 	&__items {
 		font-family: Roboto, serif;
@@ -1542,7 +1541,7 @@ html, body {
 		color: #000;
 		padding: 0.4em 0;
 		display: block;
-		word-wrap: break-word;
+		word-break: break-word;
 	}
 }
 
