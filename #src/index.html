@@ -30,8 +30,34 @@
 			<a href="##" class="popup-cart__area"></a>
 			<div class="popup-cart__body">
 				<div class="popup-cart__content">
-					<a href="##" class="popup-cart__close"></a>
-					<div class="popup-cart__text">Now cart is empty</div>
+					<a href="##" class="popup-cart__close"><i class="fas fa-times-circle"></i></a>
+					<!-- <div class="popup-cart__empty">Now cart is empty</div> -->
+					<div class="cart-item">
+						<div class="cart-item__image-and-text">
+							<img class="cart-item__image" src="img/items/camps/1.png" alt="American tourister polyester black hard-sided 28.4 inch | 72.1 cm">
+							<p class="cart-item__description">Yongnuo EF YN 50mm F/1.8 1:1.8 standard prime lens for canon rebel digital camera works well with 5D, 7D, 60D, 70D, T3, T3i, T5, T5i, plus Nikon AF-S DX Nikkor 55-300mm F/4.5-5.6G ED VR telephoto zoom lens for Nikon DSLR camera</p>
+							<div class="cart-item__string-container">
+								<p class="cart-item__cost">$375.00</p>
+								<div class="amount amount-box">
+									<a class="amount__btn-addition">&plus;</a>
+									<p class="amount__number">1</p>
+									<a class="amount__btn-subtract">&minus;</a>
+								</div>
+								<p class="cart-item__trash-icon"><i class="fas fa-trash-alt"></i></p>
+							</div>
+						</div>
+					</div>
+					<div class="total-cost total-cost-box">
+						<div class="total-cost__line"></div>
+						<div class="total-cost__inner">
+							<p class="total-cost__text">Total cost:</p>
+							<p class="total-cost__cost">1000$</p>
+						</div>
+					</div>
+					<div class="order-buttons order-buttons-box">
+						<a href="##" class="order-buttons__close">close</a>
+						<a href="order_page" class="order-buttons__confirm">confirm</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -48,46 +74,45 @@
 	</div>
 </section>
 <main>
-<header class="intro">
+	<header class="intro">
 
-	<div class="mouse-parallax">
-		<div class="mouse-parallax-bg1"></div>
-		<div class="mouse-parallax-bg2"></div>
-	</div>
-
-	<div class="logo intro-container text-center z-index-max">
-		<p class="logo__text">Veltry</p>
-	</div>
-
-	<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row">for a trip</span></h1>
-
-	<div class="subintro">
-		<div class="people-container">
-			<img class="people" src="img/header/people.png" alt="people on stone">
+		<div class="mouse-parallax">
+			<div class="mouse-parallax-bg1"></div>
+			<div class="mouse-parallax-bg2"></div>
 		</div>
-		<div class="intro-polygon-container">
-			<svg class="intro-polygon" viewBox="0 0 768 167.542">
-				<path d="M0 0v167.542h768V162.9z"/>
-			</svg>
+
+		<div class="logo intro-container text-center z-index-max">
+			<p class="logo__text">Veltry</p>
 		</div>
-		<div class="subtitle-wrapper white-bg">
-			<div class="intro-container subtitle-position">
-				<div class="intro-float-polygon"></div>
-				<h2 class="subtitle">Best&nbsp;Travel<span class="subtitle__2row">accessories</span></h2>
-				<div class="subtitle__wrapper">
-					<p class="subtitle__desc">With our accessories you will have an unforgettable stay, many impressions and memories</p>
-					<div class="btn-wrapper">
-						<a class="link-btn link-btn-position" href="#bags">view all</a>
+
+		<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row">for a trip</span></h1>
+
+		<div class="subintro">
+			<div class="people-container">
+				<img class="people" src="img/header/people.png" alt="people on stone">
+			</div>
+			<div class="intro-polygon-container">
+				<svg class="intro-polygon" viewBox="0 0 768 167.542">
+					<path d="M0 0v167.542h768V162.9z"/>
+				</svg>
+			</div>
+			<div class="subtitle-wrapper white-bg">
+				<div class="intro-container subtitle-position">
+					<div class="intro-float-polygon"></div>
+					<h2 class="subtitle">Best&nbsp;Travel<span class="subtitle__2row">accessories</span></h2>
+					<div class="subtitle__wrapper">
+						<p class="subtitle__desc">With our accessories you will have an unforgettable stay, many impressions and memories</p>
+						<div class="btn-wrapper">
+							<a class="link-btn link-btn-position" href="#bags">view all</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-</header>
+	</header>
 
-<!-- items -->
-<section id="bags" class="bags">
+		<section id="bags" class="bags">
 	<div class="white-bg">
 		<div class="header-container">
 			<h3 class="header text-center">bags</h3>
@@ -99,7 +124,7 @@
 				<p class="list-items__description">American tourister polyester black hard-sided 28.4 inch | 72.1 cm</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$63.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -108,7 +133,7 @@
 				<p class="list-items__description">American tourister polyester black hard-sided ribbed 29.5 inch | 74.9 cm</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$75.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -117,7 +142,7 @@
 				<p class="list-items__description">Nasher miles manarola hard-sided luggage blue set of trolley/travel/tourist bag 27 inch | 68.6 cm</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$44.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -126,7 +151,7 @@
 				<p class="list-items__description">Nasher miles santorini orange PP hard-sided luggage set of 1 trolley/travel/tourist bag 27,3 inch | 69.3 cm</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$50.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -135,7 +160,7 @@
 				<p class="list-items__description">Nasher miles olivia green ribbed PP hard-sided check-in luggage bag 28.9 inch | 73.4 cm</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$57.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -144,14 +169,14 @@
 				<p class="list-items__description">American tourister x-bags soft-sided casual red fabric 65 cm gym bag 28.5 inch | 72.3 cm</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$54.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
+		</section>
 
-<section id="camps" class="camps">
+		<section id="camps" class="camps">
 	<div class="white-bg">
 		<div class="header-container">
 			<div class="separation-line"></div>
@@ -164,7 +189,7 @@
 				<p class="list-items__description">Diswa quick setup all season. Standard tent quality for 4 persons</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$67.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -173,7 +198,7 @@
 				<p class="list-items__description">Dealcrox new for 4 person, tent for camping, waterproof, outdoor</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$74.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -182,14 +207,14 @@
 				<p class="list-items__description">Ozoy picnic camping portable. For 6 person, tent for camping, waterproof, outdoor</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$100.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
+		</section>
 
-<section id="cameras" class="cameras">
+		<section id="cameras" class="cameras">
 	<div class="white-bg">
 		<div class="header-container">
 			<div class="separation-line"></div>
@@ -202,7 +227,7 @@
 				<p class="list-items__description">Basics 60-inch lightweight tripod with bag (black)</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$212.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -211,7 +236,7 @@
 				<p class="list-items__description">Photron tripod stedy 450 with 4.5 feet pan head + extra quick release plate + foam grip + carry case</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$240.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -220,14 +245,14 @@
 				<p class="list-items__description">SONY G7 mirrorless сamera with LUMIX G VARIO 14-42mm f/3.5-5.6 II ASPH./MEGA O.I.S. lens - black</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$450.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
+		</section>
 
-<section id="lenses" class="lenses">
+		<section id="lenses" class="lenses">
 	<div class="white-bg">
 		<div class="header-container">
 			<div class="separation-line"></div>
@@ -240,7 +265,7 @@
 				<p class="list-items__description">Tamron A17E AF 70-300mm F/4-5.6 Di LD macro telephoto zoom lens with hood for canon DSLR camera (black)</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$221.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -249,7 +274,7 @@
 				<p class="list-items__description">Nikon AF 70-300mm f/4-5.6G telephoto zoom lens for Nikon DSLR camera matte black</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$327.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 
@@ -258,12 +283,12 @@
 				<p class="list-items__description">Yongnuo EF YN 50mm F/1.8 1:1.8 standard prime lens for canon rebel digital camera works well with 5D, 7D, 60D, 70D, T3, T3i, T5, T5i, plus Nikon AF-S DX Nikkor 55-300mm F/4.5-5.6G ED VR telephoto zoom lens for Nikon DSLR camera</p>
 				<div class="list-items__cost-box">
 					<p class="list-items__cost">$375.00</p>
-					<p class="list-items__cart-icon"><i class="fas fa-cart-plus"></i></p>
+					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
 			</div>
 		</div>
 	</div>
-</section>
+		</section>
 
 <section class="newsletter">
 	<div class="header-container">
