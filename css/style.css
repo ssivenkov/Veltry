@@ -178,7 +178,7 @@ body {
 ::-webkit-scrollbar-button {
   background-image: url("");
   background-repeat: no-repeat;
-  min-width: 10px;
+  min-width: 16px;
   width: 1vmax;
   height: 0px;
 }
@@ -202,13 +202,14 @@ body {
 ::-webkit-resizer {
   background-image: url("");
   background-repeat: no-repeat;
-  min-width: 10px;
+  min-width: 16px;
   width: 1vmax;
   height: 0px;
 }
 
 ::-webkit-scrollbar {
-  width: 1.7vmin;
+  min-width: 16px;
+  width: 1vmax;
 }
 
 ::-webkit-scrollbar-track-piece:start {
@@ -1818,7 +1819,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 1224px) {
+@media only screen and (min-width: 1024px) and (hover: hover) {
   .tools {
     position: relative;
   }
@@ -2692,12 +2693,12 @@ body {
 
 .webp .newsletter{ background: url(../img/footer/bg.webp) 0 0/cover no-repeat; }
 
-@media only screen and (min-width: 1224px){
+@media only screen and (min-width: 1024px) and (hover: hover){
 
   .webp .mouse-parallax-bg1{ background-image: url(../img/header/bg1.webp); }
 }
 
-@media only screen and (min-width: 1224px){
+@media only screen and (min-width: 1024px) and (hover: hover){
 
   .webp .mouse-parallax-bg2{ background-image: url(../img/header/bg2.webp); }
 }
