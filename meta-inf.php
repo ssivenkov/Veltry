@@ -17,3 +17,4 @@
 
 <body>
 <main>
+<?php require 'db.php'; ?>
