@@ -178,7 +178,7 @@ body {
 ::-webkit-scrollbar-button {
   background-image: url("");
   background-repeat: no-repeat;
-  min-width: 16px;
+  min-width: 10px;
   width: 1vmax;
   height: 0px;
 }
@@ -202,14 +202,13 @@ body {
 ::-webkit-resizer {
   background-image: url("");
   background-repeat: no-repeat;
-  min-width: 16px;
+  min-width: 10px;
   width: 1vmax;
   height: 0px;
 }
 
 ::-webkit-scrollbar {
-  min-width: 16px;
-  width: 1vmax;
+  width: 1.7vmin;
 }
 
 ::-webkit-scrollbar-track-piece:start {
@@ -839,17 +838,6 @@ body {
   transition: box-shadow 0.25s linear, -webkit-box-shadow 0.25s linear;
 }
 
-.link-btn:hover {
-  background-color: #21ecf7;
-  -webkit-box-shadow: 0 0 10px 1px #21ecf7;
-          box-shadow: 0 0 10px 1px #21ecf7;
-  -webkit-transition: -webkit-box-shadow 0.12s linear;
-  transition: -webkit-box-shadow 0.12s linear;
-  -o-transition: box-shadow 0.12s linear;
-  transition: box-shadow 0.12s linear;
-  transition: box-shadow 0.12s linear, -webkit-box-shadow 0.12s linear;
-}
-
 .link-btn:active {
   background-color: #21ecf7;
   -webkit-box-shadow: 0 0 10px 1px #21ecf7;
@@ -1171,17 +1159,6 @@ body {
   transition: box-shadow 0.25s linear, -webkit-box-shadow 0.25s linear;
   position: relative;
   z-index: 10;
-}
-
-.newsletter__btn:hover {
-  background-color: #21ecf7;
-  -webkit-box-shadow: 0 0 10px 1px #21ecf7;
-          box-shadow: 0 0 10px 1px #21ecf7;
-  -webkit-transition: -webkit-box-shadow 0.07s linear;
-  transition: -webkit-box-shadow 0.07s linear;
-  -o-transition: box-shadow 0.07s linear;
-  transition: box-shadow 0.07s linear;
-  transition: box-shadow 0.07s linear, -webkit-box-shadow 0.07s linear;
 }
 
 .newsletter__btn:active {
@@ -1819,7 +1796,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 1024px) and (hover: hover) {
+@media only screen and (min-width: 1224px) {
   .tools {
     position: relative;
   }
@@ -2401,6 +2378,17 @@ body {
     margin-left: 25%;
   }
 
+  .link-btn:hover {
+    background-color: #21ecf7;
+    -webkit-box-shadow: 0 0 10px 1px #21ecf7;
+            box-shadow: 0 0 10px 1px #21ecf7;
+    -webkit-transition: -webkit-box-shadow 0.12s linear;
+    transition: -webkit-box-shadow 0.12s linear;
+    -o-transition: box-shadow 0.12s linear;
+    transition: box-shadow 0.12s linear;
+    transition: box-shadow 0.12s linear, -webkit-box-shadow 0.12s linear;
+  }
+
   .link-btn-position {
     margin-top: 0;
     margin-bottom: 0;
@@ -2530,6 +2518,17 @@ body {
     font-size: 1.5vmax;
     padding: 0.5em 0;
     margin-bottom: 1em;
+  }
+
+  .newsletter__btn:hover {
+    background-color: #21ecf7;
+    -webkit-box-shadow: 0 0 10px 1px #21ecf7;
+            box-shadow: 0 0 10px 1px #21ecf7;
+    -webkit-transition: -webkit-box-shadow 0.07s linear;
+    transition: -webkit-box-shadow 0.07s linear;
+    -o-transition: box-shadow 0.07s linear;
+    transition: box-shadow 0.07s linear;
+    transition: box-shadow 0.07s linear, -webkit-box-shadow 0.07s linear;
   }
 
   .newsletter__gradient {
@@ -2693,12 +2692,12 @@ body {
 
 .webp .newsletter{ background: url(../img/footer/bg.webp) 0 0/cover no-repeat; }
 
-@media only screen and (min-width: 1024px) and (hover: hover){
+@media only screen and (min-width: 1224px){
 
   .webp .mouse-parallax-bg1{ background-image: url(../img/header/bg1.webp); }
 }
 
-@media only screen and (min-width: 1024px) and (hover: hover){
+@media only screen and (min-width: 1224px){
 
   .webp .mouse-parallax-bg2{ background-image: url(../img/header/bg2.webp); }
 }
