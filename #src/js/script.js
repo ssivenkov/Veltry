@@ -16,7 +16,7 @@ testWebP(function (support) {
    }
 });
 
-// tools cnange color on click
+// change the color of the tool buttons on click
 const path1 = document.querySelector(".path1");
 function ChangeOver1() {
    path1.setAttribute("fill", "url(#linear-gradient)");
@@ -39,6 +39,68 @@ function ChangeOut2() {
    path2.removeAttribute("fill", "url(#linear-gradient)");
    document.getElementsByClassName("search-btn")[0].style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
+}
+
+// change the color of the sort buttons on click
+const BagsСheap = document.querySelector(".sort-bags__cheap");
+const BagsExpensive = document.querySelector(".sort-bags__expensive");
+function BagsСheapActive() {
+   BagsExpensive.classList.remove("sort-bags__expensive--active");
+   BagsExpensive.classList.add("sort-bags__expensive--deactive");
+   BagsСheap.classList.remove("sort-bags__cheap--deactive");
+   BagsСheap.classList.add("sort-bags__cheap--active");
+}
+
+function BagsExpensiveActive() {
+   BagsСheap.classList.remove("sort-bags__cheap--active");
+   BagsСheap.classList.add("sort-bags__cheap--deactive");
+   BagsExpensive.classList.remove("sort-bags__expensive--deactive");
+   BagsExpensive.classList.add("sort-bags__expensive--active");
+}
+
+const CampsСheap = document.querySelector(".sort-camps__cheap");
+const CampsExpensive = document.querySelector(".sort-camps__expensive");
+function CampsСheapActive() {
+   CampsExpensive.classList.remove("sort-camps__expensive--active");
+   CampsExpensive.classList.add("sort-camps__expensive--deactive");
+   CampsСheap.classList.remove("sort-camps__cheap--deactive");
+   CampsСheap.classList.add("sort-camps__cheap--active");
+}
+function CampsExpensiveActive() {
+   CampsСheap.classList.remove("sort-camps__cheap--active");
+   CampsСheap.classList.add("sort-camps__cheap--deactive");
+   CampsExpensive.classList.remove("sort-camps__expensive--deactive");
+   CampsExpensive.classList.add("sort-camps__expensive--active");
+}
+
+const CamerasСheap = document.querySelector(".sort-cameras__cheap");
+const CamerasExpensive = document.querySelector(".sort-cameras__expensive");
+function CamerasСheapActive() {
+   CamerasExpensive.classList.remove("sort-cameras__expensive--active");
+   CamerasExpensive.classList.add("sort-cameras__expensive--deactive");
+   CamerasСheap.classList.remove("sort-cameras__cheap--deactive");
+   CamerasСheap.classList.add("sort-cameras__cheap--active");
+}
+function CamerasExpensiveActive() {
+   CamerasСheap.classList.remove("sort-cameras__cheap--active");
+   CamerasСheap.classList.add("sort-cameras__cheap--deactive");
+   CamerasExpensive.classList.remove("sort-cameras__expensive--deactive");
+   CamerasExpensive.classList.add("sort-cameras__expensive--active");
+}
+
+const LensesСheap = document.querySelector(".sort-lenses__cheap");
+const LensesExpensive = document.querySelector(".sort-lenses__expensive");
+function LensesСheapActive() {
+   LensesExpensive.classList.remove("sort-lenses__expensive--active");
+   LensesExpensive.classList.add("sort-lenses__expensive--deactive");
+   LensesСheap.classList.remove("sort-lenses__cheap--deactive");
+   LensesСheap.classList.add("sort-lenses__cheap--active");
+}
+function LensesExpensiveActive() {
+   LensesСheap.classList.remove("sort-lenses__cheap--active");
+   LensesСheap.classList.add("sort-lenses__cheap--deactive");
+   LensesExpensive.classList.remove("sort-lenses__expensive--deactive");
+   LensesExpensive.classList.add("sort-lenses__expensive--active");
 }
 
 // tools resize on tablet
@@ -146,3 +208,33 @@ for (camera of cameras) {
       });
    }
 }
+
+// TypeIt.js
+new TypeIt("#foratrip", {
+   strings: "for a trip",
+   speed: 50,
+   cursor: false,
+}).go();
+
+// List.js
+let optionsBags = {
+   valueNames: ["cost-bag"], // item class
+   listClass: ["bags-list"], // item container
+};
+let optionsCamps = {
+   valueNames: ["cost-camp"],
+   listClass: ["camps-list"],
+};
+let optionsCameras = {
+   valueNames: ["cost-camera"],
+   listClass: ["cameras-list"],
+};
+let optionsLenses = {
+   valueNames: ["cost-lense"],
+   listClass: ["lenses-list"],
+};
+
+let BagsList = new List("sorting-bags-container", optionsBags); // generic container
+let CampsList = new List("sorting-camps-container", optionsCamps);
+let CamerasList = new List("sorting-cameras-container", optionsCameras);
+let LensesList = new List("sorting-lenses-container", optionsLenses);

@@ -269,6 +269,7 @@ body {
       color: #000;
       max-width: 95vw;
       padding: 4vmin;
+      border-radius: 8vmin 0 8vmin 8vmin;
       position: relative;
       transform: translate(0px, -100%);
       transition: all 0.5s ease 0s;
@@ -427,7 +428,7 @@ body {
    &__cost {
       font-family: Roboto, serif;
       font-weight: 500;
-      font-size: 18px;
+      font-size: 20px;
       text-align: center;
       word-break: break-word;
    }
@@ -638,9 +639,76 @@ body {
    font-size: 16px;
    color: #242424;
    margin-top: 1em;
-   margin-bottom: 1.3em;
+   margin-bottom: 1.1em;
    display: block;
    word-break: break-word;
+}
+
+.sort {
+   &-bags__buttons-container,
+   &-camps__container,
+   &-cameras__container,
+   &-lenses__container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1em;
+   }
+   &-bags__cheap,
+   &-camps__cheap,
+   &-cameras__cheap,
+   &-lenses__cheap,
+   &-bags__expensive,
+   &-camps__expensive,
+   &-cameras__expensive,
+   &-lenses__expensive {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      @include no-select;
+      font-family: Roboto, sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      width: 18vmin;
+      background-color: #dadada;
+      border: 2px solid #000;
+      border-right: 1px solid #000;
+      border-radius: 4vmin 0 0 4vmin;
+   }
+   &-bags__expensive,
+   &-camps__expensive,
+   &-cameras__expensive,
+   &-lenses__expensive {
+      border-radius: 0 4vmin 4vmin 0;
+      border-right: 2px solid #000;
+      border-left: 1px solid #000;
+   }
+   &-bags__cheap--active,
+   &-camps__cheap--active,
+   &-cameras__cheap--active,
+   &-lenses__cheap--active,
+   &-bags__expensive--active,
+   &-camps__expensive--active,
+   &-cameras__expensive--active,
+   &-lenses__expensive--active {
+      background-color: $primary-color;
+      border: 2px solid $primary-color;
+      color: #fff;
+      text-shadow: #000 0 0 4px;
+      font-weight: 400;
+      cursor: auto;
+   }
+   &-bags__cheap--deactive,
+   &-camps__cheap--deactive,
+   &-cameras__cheap--deactive,
+   &-lenses__cheap--deactive {
+      border-right: 0;
+   }
+   &-bags__expensive--deactive,
+   &-camps__expensive--deactive,
+   &-cameras__expensive--deactive,
+   &-lenses__expensive--deactive {
+      border-left: 0;
+   }
 }
 
 .list-items-1-container {
@@ -1081,7 +1149,7 @@ body {
 
    .amount {
       &__number {
-         font-size: 3vmin;
+         font-size: 3.5vmin;
          width: 9vmin;
       }
       &__btn-addition,
@@ -1101,7 +1169,7 @@ body {
       }
       &__text,
       &__cost {
-         font-size: 3.5vmin;
+         font-size: 3.8vmin;
       }
    }
    .order-buttons {
@@ -1188,8 +1256,56 @@ body {
 
    .subheader {
       font-size: 2vmax;
-      margin-top: 1em;
-      margin-bottom: 1.5em;
+      margin-top: 0.7em;
+      margin-bottom: 1em;
+   }
+
+   .sort {
+      &-bags__cheap,
+      &-camps__cheap,
+      &-cameras__cheap,
+      &-lenses__cheap,
+      &-bags__expensive,
+      &-camps__expensive,
+      &-cameras__expensive,
+      &-lenses__expensive {
+         font-size: 2.5vmax;
+         width: 10vmax;
+         border: 0.3vmax solid #000;
+         border-right: 0.15vmax solid #000;
+         border-radius: 5vmax 0 0 5vmax;
+      }
+      &-bags__expensive,
+      &-camps__expensive,
+      &-cameras__expensive,
+      &-lenses__expensive {
+         border-radius: 0 5vmax 5vmax 0;
+         border-right: 0.3vmax solid #000;
+         border-left: 0.15vmax solid #000;
+      }
+      &-bags__cheap--active,
+      &-camps__cheap--active,
+      &-cameras__cheap--active,
+      &-lenses__cheap--active,
+      &-bags__expensive--active,
+      &-camps__expensive--active,
+      &-cameras__expensive--active,
+      &-lenses__expensive--active {
+         border: 0.3vmax solid $primary-color;
+         text-shadow: #000 0 0 0.4vmax;
+      }
+      &-bags__cheap--deactive,
+      &-camps__cheap--deactive,
+      &-cameras__cheap--deactive,
+      &-lenses__cheap--deactive {
+         border-right: 0;
+      }
+      &-bags__expensive--deactive,
+      &-camps__expensive--deactive,
+      &-cameras__expensive--deactive,
+      &-lenses__expensive--deactive {
+         border-left: 0;
+      }
    }
 
    .list-items-1-container {
@@ -1466,6 +1582,7 @@ body {
       }
       &__content {
          padding: 1.5vmax 1.5vmax 1.15vmax 1.5vmax;
+         border-radius: 2.5vmax 0 2.5vmax 2.5vmax;
          max-width: 40vw;
       }
       &__close {
@@ -1516,15 +1633,15 @@ body {
          display: inline-block;
          font-family: Roboto, sans-serif;
          font-weight: 700;
-         font-size: 0.95vmax;
+         font-size: 1.15vmax;
          margin-right: 4vmin;
          word-break: break-word;
          line-height: 1.4;
       }
       &__trash-icon {
          display: inline-block;
-         font-size: 1.1vmax;
-         height: 1.1vmax;
+         font-size: 1.2vmax;
+         height: 1.2vmax;
          margin-left: 3vmax;
          cursor: pointer;
          transition: color 0.075s linear;
@@ -1549,7 +1666,7 @@ body {
          font-weight: 500;
          text-align: center;
          word-break: break-word;
-         font-size: 0.95vmax;
+         font-size: 1.15vmax;
          width: 3.5vmax;
          background-color: #d6d6d6;
       }
@@ -1561,8 +1678,8 @@ body {
          cursor: pointer;
          color: #fff;
          background-color: rgb(32, 89, 173);
-         font-size: 1.1vmax;
-         width: 1.15vmax;
+         font-size: 1.5vmax;
+         width: 1.5vmax;
          line-height: 1;
          border-radius: 0.3vmax 0 0 0.3vmax;
          @include no-select;
@@ -1597,7 +1714,7 @@ body {
       &__cost {
          font-family: Roboto, serif;
          font-weight: 500;
-         font-size: 0.95vmax;
+         font-size: 1.2vmax;
          text-align: center;
          word-break: break-word;
       }
@@ -1869,8 +1986,55 @@ body {
 
    .subheader {
       font-size: 1.1vmax;
-      margin-top: 1em;
-      margin-bottom: 1.5em;
+      margin-top: 0.8em;
+      margin-bottom: 1em;
+   }
+
+   .sort {
+      &-bags__cheap,
+      &-camps__cheap,
+      &-cameras__cheap,
+      &-lenses__cheap,
+      &-bags__expensive,
+      &-camps__expensive,
+      &-cameras__expensive,
+      &-lenses__expensive {
+         font-size: 1.3vmax;
+         width: 5vmax;
+         border: 0.15vmax solid #000;
+         border-right: 0.075vmax solid #000;
+         padding-bottom: 0.1vmax;
+      }
+      &-bags__expensive,
+      &-camps__expensive,
+      &-cameras__expensive,
+      &-lenses__expensive {
+         border-right: 0.15vmax solid #000;
+         border-left: 0.075vmax solid #000;
+      }
+      &-bags__cheap--active,
+      &-camps__cheap--active,
+      &-cameras__cheap--active,
+      &-lenses__cheap--active,
+      &-bags__expensive--active,
+      &-camps__expensive--active,
+      &-cameras__expensive--active,
+      &-lenses__expensive--active {
+         border: 0.15vmax solid $primary-color;
+         text-shadow: #000 0 0 0.4vmax;
+      }
+      &-bags__cheap--deactive,
+      &-camps__cheap--deactive,
+      &-cameras__cheap--deactive,
+      &-lenses__cheap--deactive {
+         border-right: 0;
+      }
+      &-bags__expensive--deactive,
+      &-camps__expensive--deactive,
+      &-cameras__expensive--deactive,
+      &-lenses__expensive--deactive {
+         border-left: 0;
+      }
    }
 
    .list-items-4-container {

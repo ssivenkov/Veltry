@@ -39,7 +39,7 @@
 					</div>
 					<div class="order-buttons order-buttons-box">
 						<a href="##" class="order-buttons__close">close</a>
-						<a href="order_page" class="order-buttons__confirm">confirm</a>
+						<a href="order_page.php" class="order-buttons__confirm">confirm</a>
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 <!-- links accordeon -->
 <section class="links">
 	<div class="tab">
-		<input id="tab-one" type="checkbox">
+		<input id="tab-one" type="radio" name="tab">
 		<label for="tab-one">
 			<h4 class="links__header">Shop now</h4>
 		</label>
@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	<div class="tab">
-		<input id="tab-two" type="checkbox">
+		<input id="tab-two" type="radio" name="tab">
 		<label for="tab-two">
 			<h4 class="links__header">About Veltry</h4>
 		</label>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="tab">
-		<input id="tab-three" type="checkbox">
+		<input id="tab-three" type="radio" name="tab">
 		<label for="tab-three">
 			<h4 class="links__header">Help</h4>
 		</label>

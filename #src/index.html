@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="content-language" content="en">
 	<meta name="robots" content="index, nofollow">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, maximum-scale=2.5">
 	<meta name="keywords" content="travel, stuff, buy">
 	<meta name="description" content="The best trip stuff with delivery to any state!">
 	<meta name="author" content="Sergei Sivenkov">
@@ -74,221 +74,267 @@
 	</div>
 </section>
 <main>
-	<header class="intro">
+<header class="intro">
+	<div class="mouse-parallax">
+		<div class="mouse-parallax-bg1"></div>
+		<div class="mouse-parallax-bg2"></div>
+	</div>
 
-		<div class="mouse-parallax">
-			<div class="mouse-parallax-bg1"></div>
-			<div class="mouse-parallax-bg2"></div>
+	<div class="logo intro-container text-center z-index-max">
+		<p class="logo__text">Veltry</p>
+	</div>
+
+	<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row" id="foratrip"></span></h1>
+
+	<div class="subintro">
+		<div class="people-container">
+			<img class="people" src="img/header/people.png" alt="people on stone">
 		</div>
-
-		<div class="logo intro-container text-center z-index-max">
-			<p class="logo__text">Veltry</p>
+		<div class="intro-polygon-container">
+			<svg class="intro-polygon" viewBox="0 0 768 167.542">
+				<path d="M0 0v167.542h768V162.9z"/>
+			</svg>
 		</div>
-
-		<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row">for a trip</span></h1>
-
-		<div class="subintro">
-			<div class="people-container">
-				<img class="people" src="img/header/people.png" alt="people on stone">
-			</div>
-			<div class="intro-polygon-container">
-				<svg class="intro-polygon" viewBox="0 0 768 167.542">
-					<path d="M0 0v167.542h768V162.9z"/>
-				</svg>
-			</div>
-			<div class="subtitle-wrapper white-bg">
-				<div class="intro-container subtitle-position">
-					<div class="intro-float-polygon"></div>
-					<h2 class="subtitle">Best&nbsp;Travel<span class="subtitle__2row">accessories</span></h2>
-					<div class="subtitle__wrapper">
-						<p class="subtitle__desc">With our accessories you will have an unforgettable stay, many impressions and memories</p>
-						<div class="btn-wrapper">
-							<a class="link-btn link-btn-position" href="#bags">view all</a>
-						</div>
+		<div class="subtitle-wrapper white-bg">
+			<div class="intro-container subtitle-position">
+				<div class="intro-float-polygon"></div>
+				<h2 class="subtitle">Best&nbsp;Travel<span class="subtitle__2row">accessories</span></h2>
+				<div class="subtitle__wrapper">
+					<p class="subtitle__desc">With our accessories you will have an unforgettable stay, many impressions and memories</p>
+					<div class="btn-wrapper">
+						<a class="link-btn link-btn-position" href="#bags">view all</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+</header>
 
-	</header>
-
-		<section id="bags" class="bags">
-	<div class="white-bg">
+<section id="bags" class="bags">
+	<div id="sorting-bags-container" class="white-bg">
 		<div class="header-container">
 			<h3 class="header text-center">bags</h3>
 			<p class="subheader text-center">Find something new for your trip</p>
 		</div>
-		<div class="list-items list-items-2-container list-3-container list-items-4-container">
-			<div class="list-items__item">
+
+		<div class="sort-bags">
+         <div class="sort-bags__buttons-container">
+            <div class="sort sort-bags__cheap" data-sort="cost-bag" data-order="asc" onclick="BagsСheapActive()">
+               <p>$&#65516;</p>
+            </div>
+            <div class="sort sort-bags__expensive" data-sort="cost-bag" data-order="desc" onclick="BagsExpensiveActive()">
+               <p>$&#65514;</p>
+            </div>
+         </div>
+      </div>
+
+		<ul class="bags-list list-items list-items-2-container list-3-container list-items-4-container bags-sort-container">
+			<li class="list-items__item bag-item">
 				<img class="list-items__image" src="img/items/bags/1.png" alt="American tourister polyester black hard-sided 28.4 inch | 72.1 cm">
 				<p class="list-items__description">American tourister polyester black hard-sided 28.4 inch | 72.1 cm</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$63.00</p>
+					<p class="list-items__cost cost-bag">$63.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item bag-item">
 				<img class="list-items__image" src="img/items/bags/2.png" alt="American tourister polyester black hard-sided ribbed 29.5 inch | 74.9 cm">
 				<p class="list-items__description">American tourister polyester black hard-sided ribbed 29.5 inch | 74.9 cm</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$75.00</p>
+					<p class="list-items__cost cost-bag">$75.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item bag-item">
 				<img class="list-items__image" src="img/items/bags/3.png" alt="Nasher miles manarola hard-sided luggage blue set of trolley/travel/tourist bag 27 inch | 68.6 cm">
 				<p class="list-items__description">Nasher miles manarola hard-sided luggage blue set of trolley/travel/tourist bag 27 inch | 68.6 cm</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$44.00</p>
+					<p class="list-items__cost cost-bag">$44.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item bag-item">
 				<img class="list-items__image" src="img/items/bags/4.png" alt="Nasher miles santorini orange PP hard-sided luggage set of 1 trolley/travel/tourist bag 27,3 inch | 69.3 cm">
 				<p class="list-items__description">Nasher miles santorini orange PP hard-sided luggage set of 1 trolley/travel/tourist bag 27,3 inch | 69.3 cm</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$50.00</p>
+					<p class="list-items__cost cost-bag">$50.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item bag-item">
 				<img class="list-items__image" src="img/items/bags/5.png" alt="Nasher miles olivia green ribbed PP hard-sided check-in luggage bag 28.9 inch | 73.4 cm">
 				<p class="list-items__description">Nasher miles olivia green ribbed PP hard-sided check-in luggage bag 28.9 inch | 73.4 cm</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$57.00</p>
+					<p class="list-items__cost cost-bag">$57.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item bag-item">
 				<img class="list-items__image" src="img/items/bags/6.png" alt="American tourister x-bags soft-sided casual red fabric 65 cm gym bag 28.5 inch | 72.3 cm">
 				<p class="list-items__description">American tourister x-bags soft-sided casual red fabric 65 cm gym bag 28.5 inch | 72.3 cm</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$54.00</p>
+					<p class="list-items__cost cost-bag">$54.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
 	</div>
-		</section>
+</section>
 
-		<section id="camps" class="camps">
-	<div class="white-bg">
+<section id="camps" class="camps">
+	<div id="sorting-camps-container" class="white-bg">
 		<div class="header-container">
 			<div class="separation-line"></div>
 			<h3 class="header text-center">camps</h3>
 			<p class="subheader text-center">Our camps are easy to deploy and take up minimal space</p>
 		</div>
-		<div class="list-items list-items-2-container">
-			<div class="list-items__item">
+
+		<div class="sort-camps">
+         <div class="sort-camps__container">
+            <div class="sort sort-camps__cheap" data-sort="cost-camp" data-order="asc" onclick="CampsСheapActive()">
+               <p>$&#65516;</p>
+            </div>
+            <div class="sort sort-camps__expensive" data-sort="cost-camp" data-order="desc" onclick="CampsExpensiveActive()">
+               <p>$&#65514;</p>
+            </div>
+         </div>
+      </div>
+
+		<ul class="camps-list list-items list-items-2-container">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/camps/1.png" alt="Diswa quick setup all season. Standard tent quality for 4 persons">
 				<p class="list-items__description">Diswa quick setup all season. Standard tent quality for 4 persons</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$67.00</p>
+					<p class="list-items__cost cost-camp">$67.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/camps/2.png" alt="Dealcrox new for 4 person, tent for camping, waterproof, outdoor">
 				<p class="list-items__description">Dealcrox new for 4 person, tent for camping, waterproof, outdoor</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$74.00</p>
+					<p class="list-items__cost cost-camp">$74.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/camps/3.png" alt="Ozoy Picnic Camping Portable Waterproof Tent For 6 Person/Camping Dome Tents">
 				<p class="list-items__description">Ozoy picnic camping portable. For 6 person, tent for camping, waterproof, outdoor</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$100.00</p>
+					<p class="list-items__cost cost-camp">$100.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
 	</div>
-		</section>
+</section>
 
-		<section id="cameras" class="cameras">
-	<div class="white-bg">
+<section id="cameras" class="cameras">
+	<div id="sorting-cameras-container" class="white-bg">
 		<div class="header-container">
 			<div class="separation-line"></div>
 			<h3 class="header text-center">cameras & tripods</h3>
 			<p class="subheader text-center">Professional cameras for the best moments of travel</p>
 		</div>
-		<div class="list-items list-items-2-container">
-			<div class="list-items__item">
+
+		<div class="sort-cameras">
+         <div class="sort-cameras__container">
+            <div class="sort sort-cameras__cheap" data-sort="cost-camera" data-order="asc" onclick="CamerasСheapActive()">
+               <p>$&#65516;</p>
+            </div>
+            <div class="sort sort-cameras__expensive" data-sort="cost-camera" data-order="desc" onclick="CamerasExpensiveActive()">
+               <p>$&#65514;</p>
+            </div>
+         </div>
+      </div>
+
+		<ul class="cameras-list list-items list-items-2-container">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/cameras_and_tripods/1.png" alt="Basics 60-inch lightweight tripod with bag (black)">
 				<p class="list-items__description">Basics 60-inch lightweight tripod with bag (black)</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$212.00</p>
+					<p class="list-items__cost cost-camera">$212.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/cameras_and_tripods/2.png" alt="Photron tripod stedy 450 with 4.5 feet pan head + extra quick release plate + foam grip + carry case">
 				<p class="list-items__description">Photron tripod stedy 450 with 4.5 feet pan head + extra quick release plate + foam grip + carry case</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$240.00</p>
+					<p class="list-items__cost cost-camera">$240.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/cameras_and_tripods/3.png" alt="SONY G7 mirrorless сamera with LUMIX G VARIO 14-42mm f/3.5-5.6 II ASPH./MEGA O.I.S. lens - black">
 				<p class="list-items__description">SONY G7 mirrorless сamera with LUMIX G VARIO 14-42mm f/3.5-5.6 II ASPH./MEGA O.I.S. lens - black</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$450.00</p>
+					<p class="list-items__cost cost-camera">$450.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
 	</div>
-		</section>
+</section>
 
-		<section id="lenses" class="lenses">
-	<div class="white-bg">
+<section id="lenses" class="lenses">
+	<div id="sorting-lenses-container" class="white-bg">
 		<div class="header-container">
 			<div class="separation-line"></div>
 			<h3 class="header text-center">camera lenses<h3>
 			<p class="subheader text-center">Lenses are an important part of cameras, they allow you to get the best photo quality</p>
 		</div>
-		<div class="list-items list-items-1-container">
-			<div class="list-items__item">
+
+		<div class="sort-lenses">
+         <div class="sort-lenses__container">
+            <div class="sort sort-lenses__cheap" data-sort="cost-lense" data-order="asc" onclick="LensesСheapActive()">
+               <p>$&#65516;</p>
+            </div>
+            <div class="sort sort-lenses__expensive" data-sort="cost-lense" data-order="desc" onclick="LensesExpensiveActive()">
+               <p>$&#65514;</p>
+            </div>
+         </div>
+      </div>
+
+		<ul class="lenses-list list-items list-items-1-container">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/cameras_lens/1.png" alt="Tamron A17E AF 70-300mm F/4-5.6 Di LD macro telephoto zoom lens with hood for canon DSLR camera (black)">
 				<p class="list-items__description">Tamron A17E AF 70-300mm F/4-5.6 Di LD macro telephoto zoom lens with hood for canon DSLR camera (black)</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$221.00</p>
+					<p class="list-items__cost cost-lense">$221.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/cameras_lens/2.png" alt="Nikon AF 70-300mm f/4-5.6G telephoto zoom lens for Nikon DSLR camera matte black">
 				<p class="list-items__description">Nikon AF 70-300mm f/4-5.6G telephoto zoom lens for Nikon DSLR camera matte black</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$327.00</p>
+					<p class="list-items__cost cost-lense">$327.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
+			</li>
 
-			<div class="list-items__item">
+			<li class="list-items__item">
 				<img class="list-items__image" src="img/items/cameras_lens/3.png" alt="Yongnuo EF YN 50mm F/1.8 1:1.8 standard prime lens for canon rebel digital camera works well with 5D, 7D, 60D, 70D, T3, T3i, T5, T5i, plus Nikon AF-S DX Nikkor 55-300mm F/4.5-5.6G ED VR telephoto zoom lens for Nikon DSLR camera">
 				<p class="list-items__description">Yongnuo EF YN 50mm F/1.8 1:1.8 standard prime lens for canon rebel digital camera works well with 5D, 7D, 60D, 70D, T3, T3i, T5, T5i, plus Nikon AF-S DX Nikkor 55-300mm F/4.5-5.6G ED VR telephoto zoom lens for Nikon DSLR camera</p>
 				<div class="list-items__cost-box">
-					<p class="list-items__cost">$375.00</p>
+					<p class="list-items__cost cost-lense">$375.00</p>
 					<p class="list-items__icon"><i class="fas fa-cart-plus"></i></p>
 				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
 	</div>
-		</section>
+</section>
 
 <section class="newsletter">
 	<div class="header-container">
@@ -313,7 +359,7 @@
 <!-- links accordeon -->
 <section class="links">
 	<div class="tab">
-		<input id="tab-one" type="checkbox">
+		<input id="tab-one" type="radio" name="tab">
 		<label for="tab-one">
 			<h4 class="links__header">Shop now</h4>
 		</label>
@@ -327,7 +373,7 @@
 		</div>
 	</div>
 	<div class="tab">
-		<input id="tab-two" type="checkbox">
+		<input id="tab-two" type="radio" name="tab">
 		<label for="tab-two">
 			<h4 class="links__header">About Veltry</h4>
 		</label>
@@ -341,7 +387,7 @@
 		</div>
 	</div>
 	<div class="tab">
-		<input id="tab-three" type="checkbox">
+		<input id="tab-three" type="radio" name="tab">
 		<label for="tab-three">
 			<h4 class="links__header">Help</h4>
 		</label>
@@ -402,6 +448,8 @@
 	</div>
 </footer>
 </main>
+<script src="js/typeit.min.js"></script>
+<script src="js/list.min.js"></script>
 <script src="js/script.min.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
 	<div class="logo intro-container text-center z-index-max">
 		<p class="logo__text">Veltry</p>
 	</div>
-	<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row">for a trip</span></h1>
+	<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row" id="foratrip"></span></h1>
 	<div class="subintro">
 		<div class="people-container">
 			<picture>
