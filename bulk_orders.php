@@ -31,7 +31,7 @@
 						Best regards, Veltry team.
 					</p>
 					<div class="btn-wrapper">
-						<a class="link-btn link-btn-position link-btn-position_min-margin" href="index.php">Go home</a>
+						<a class="link-btn link-btn-position link-btn-position_min-margin" href="index">Go home</a>
 					</div>
 				</div>
 			</div>

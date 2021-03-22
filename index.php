@@ -25,6 +25,6 @@
 
 <?php require 'newsletter.php'; ?>
 
-<?php require 'links.php'; ?>
+<?php require 'links_for_index.php'; ?>
 
 <?php require 'footer.php'; ?>

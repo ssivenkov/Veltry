@@ -7,10 +7,10 @@
 		</label>
 		<div class="tab-content">
 			<ul class="links__items">
-				<li><a class="links__item" href="index.php#cameras">Cameras and tripods</a></li>
-				<li><a class="links__item" href="index.php#lenses">Camera lenses</a></li>
-				<li><a class="links__item" href="index.php#camps">Camps</a></li>
-				<li><a class="links__item" href="index.php#bags">Bags</a></li>
+				<li><a class="links__item" href="#cameras">Cameras and tripods</a></li>
+				<li><a class="links__item" href="#lenses">Camera lenses</a></li>
+				<li><a class="links__item" href="#camps">Camps</a></li>
+				<li><a class="links__item" href="#bags">Bags</a></li>
 			</ul>
 		</div>
 	</div>
@@ -53,10 +53,10 @@
 		<div>
 			<h4 class="links-desktop__header">Shop now</h4>
 			<ul class="links-desktop__items">
-				<li><a class="links-desktop__item" href="index.php#cameras">Cameras and tripods</a></li>
-				<li><a class="links-desktop__item" href="index.php#lenses">Camera lenses</a></li>
-				<li><a class="links-desktop__item" href="index.php#camps">Camps</a></li>
-				<li><a class="links-desktop__item" href="index.php#bags">Bags</a></li>
+				<li><a class="links-desktop__item" href="#cameras">Cameras and tripods</a></li>
+				<li><a class="links-desktop__item" href="#lenses">Camera lenses</a></li>
+				<li><a class="links-desktop__item" href="#camps">Camps</a></li>
+				<li><a class="links-desktop__item" href="#bags">Bags</a></li>
 			</ul>
 		</div>
 		<div>

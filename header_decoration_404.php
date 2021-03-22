@@ -7,7 +7,7 @@
 	<div class="logo intro-container text-center z-index-max">
 		<p class="logo__text">Veltry</p>
 	</div>
-	<h1 class="title intro-container text-center z-index-max">find everything you need<span class="title__2row" id="typeit">for a trip</span></h1>
+	<h1 class="title intro-container text-center z-index-max"><span class="title__2row" id="typeit">Error 404</span></h1>
 	<div class="subintro">
 		<div class="people-container">
 			<picture>
@@ -20,4 +20,4 @@
 				<path d="M0 0v167.542h768V162.9z"/>
 			</svg>
 		</div>
-		<!-- end header decoration -->
+		<!-- end header decoration 404 -->

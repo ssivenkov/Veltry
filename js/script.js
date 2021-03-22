@@ -210,8 +210,7 @@ for (camera of cameras) {
 }
 
 // TypeIt.js
-new TypeIt("#foratrip", {
-   strings: "for a trip",
+new TypeIt("#typeit", {
    speed: 50,
    cursor: false,
 }).go();

@@ -1,0 +1,14 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+RewriteRule ^about_us?$ about_us.php [NC,L]
+RewriteRule ^affiliate_program?$ affiliate_program.php [NC,L]
+RewriteRule ^work_with_us?$ work_with_us.php [NC,L]
+RewriteRule ^payment_options?$ payment_options.php [NC,L]
+RewriteRule ^bulk_orders?$ bulk_orders.php [NC,L]
+RewriteRule ^international_orders?$ international_orders.php [NC,L]
+RewriteRule ^order_page?$ order_page.php [NC,L]
+RewriteRule ^404?$ 404.php [NC,L]
+RewriteRule ^index?$ index.php [NC,L]
+
+ErrorDocument 404 /404.php
