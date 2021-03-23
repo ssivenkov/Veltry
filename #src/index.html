@@ -343,9 +343,9 @@
 		<p class="newsletter__description">Subscribe to our newsletter, we promise to send only the most interesting</p>
 	</div>
 	<div class="newsletter__form">
-		<form action="">
-			<input type="email" required class="newsletter__email" name="email-form" placeholder="Enter your E-mail" autocomplete="email" autocapitalize="off" autocorrect="off">
-			<button type="submit" class="newsletter__btn">send</button>
+		<form action="check.php" method="post">
+			<input type="email" name="email" required class="newsletter__email" name="email-form" placeholder="Enter your E-mail" autocomplete="email" autocapitalize="off" autocorrect="off">
+			<button type="submit" name="send" class="newsletter__btn">send</button>
 			<div class="newsletter__gradient"></div>
 			<div class="footer-polygon-container">
 				<svg class="footer-polygon" viewBox="0 0 768 144.455">
