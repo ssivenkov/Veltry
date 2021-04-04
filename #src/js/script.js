@@ -17,29 +17,55 @@ testWebP(function (support) {
 });
 
 // change the color of the tool buttons on click
-const path1 = document.querySelector(".path1");
-function ChangeOver1() {
-   path1.setAttribute("fill", "url(#linear-gradient)");
-   document.getElementsByClassName("cart")[0].style =
+let CartBtnColor = document.querySelector(".cart-svg");
+function ChangeCartBtnColorIn() {
+   CartBtnColor.setAttribute("fill", "url(#linear-gradient)");
+   document.querySelector(".cart-btn").style =
       "background-image: linear-gradient(0deg, #dddddd, #777777)";
 }
-function ChangeOut1() {
-   path1.removeAttribute("fill", "url(#linear-gradient)");
-   document.getElementsByClassName("cart")[0].style =
+function ChangeCartBtnColorOut() {
+   CartBtnColor.removeAttribute("fill", "url(#linear-gradient)");
+   document.querySelector(".cart-btn").style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
 }
 
-const path2 = document.querySelector(".path2");
-function ChangeOver2() {
-   path2.setAttribute("fill", "url(#linear-gradient)");
+let SearchBtnColor = document.querySelector(".search-svg");
+function ChangeSearchBtnColorIn() {
+   SearchBtnColor.setAttribute("fill", "url(#linear-gradient)");
    document.getElementsByClassName("search-btn")[0].style =
       "background-image: linear-gradient(0deg, #dddddd, #777777)";
 }
-function ChangeOut2() {
-   path2.removeAttribute("fill", "url(#linear-gradient)");
+function ChangeSearchBtnColorOut() {
+   SearchBtnColor.removeAttribute("fill", "url(#linear-gradient)");
    document.getElementsByClassName("search-btn")[0].style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
 }
+
+// change the color of the tool buttons on hover cursor
+let cartBtn = document.querySelector(".cart-btn");
+cartBtn.addEventListener("mouseover", ChangeCartBtnColorIn);
+cartBtn.addEventListener("mouseout", ChangeCartBtnColorOut);
+
+let searchBtn = document.querySelector(".search-btn");
+searchBtn.addEventListener("mouseover", ChangeSearchBtnColorIn);
+searchBtn.addEventListener("mouseout", ChangeSearchBtnColorOut);
+
+// open and close cart window
+let cartWindow = document.querySelector(".popup-cart");
+let closeBtn = document.querySelector(".order-buttons__close");
+let body = document.querySelector("body");
+
+function openCart() {
+   body.classList.add("cart-scroll-off");
+   cartWindow.classList.add("popup-cart-visible");
+}
+function closeCart() {
+   body.classList.remove("cart-scroll-off");
+   cartWindow.classList.remove("popup-cart-visible");
+}
+
+cartBtn.addEventListener("click", openCart);
+closeBtn.addEventListener("click", closeCart);
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");
@@ -50,7 +76,6 @@ function BagsСheapActive() {
    BagsСheap.classList.remove("sort-bags__cheap--deactive");
    BagsСheap.classList.add("sort-bags__cheap--active");
 }
-
 function BagsExpensiveActive() {
    BagsСheap.classList.remove("sort-bags__cheap--active");
    BagsСheap.classList.add("sort-bags__cheap--deactive");
