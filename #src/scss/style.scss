@@ -35,6 +35,61 @@ $primary-light-color: #21ecf7;
    user-select: none;
 }
 
+* {
+   // hide default background color on click
+   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+   -webkit-tap-highlight-color: transparent;
+}
+
+.simplebar-track.simplebar-vertical {
+   // vertical track
+   width: 4px; // ~ 10 real px on mobile
+   max-width: 4px;
+   background-color: transparent;
+}
+
+.simplebar-track.simplebar-horizontal {
+   // horizontal track
+   height: 4px;
+   max-height: 4px;
+   background-color: transparent;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+   // bar vertical
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   width: 10px;
+   max-width: 10px;
+   border-radius: 0;
+   background-color: #000;
+}
+
+.simplebar-track.simplebar-horizontal .simplebar-scrollbar::before {
+   // bar horizontal
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   height: 10px;
+   max-height: 10px;
+   border-radius: 0;
+   background-color: #000;
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+   // bar before delay
+   opacity: 0.252;
+}
+
+.simplebar-scrollbar::before {
+   // bar after delay
+   opacity: 0;
+   transition: opacity 0.2s linear;
+}
+
 a:active {
    color: #000;
 }
@@ -55,64 +110,6 @@ a:active {
 
 .text-center {
    text-align: center;
-}
-
-// scroll
-// ie
-body {
-   scrollbar-track-color: #ffffff;
-   scrollbar-arrow-color: #56999f;
-   scrollbar-face-color: $primary-color;
-   scrollbar-shadow-color: #56999f;
-}
-
-// firefox
-html,
-body {
-   scrollbar-color: $primary-color #ffffff;
-   scrollbar-width: auto;
-}
-
-// webkit
-::-webkit-scrollbar-button {
-   background-image: url("");
-   background-repeat: no-repeat;
-   min-width: 10px;
-   width: 1vmax;
-   height: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-   background-image: linear-gradient(to bottom, #56999f 0%, #223e41 100%);
-   border: 2px solid transparent;
-   border-image: linear-gradient(to top, #325f63, #152729);
-   -webkit-border-image: -webkit-linear-gradient(to top, #325f63, #152729);
-   border-image-slice: 1 1 15 1;
-}
-
-::-webkit-scrollbar-thumb:hover {
-   background-image: linear-gradient(to bottom, #45f6ff 0%, #1e6a6e 100%);
-   border: 2px solid #1e6a6e;
-}
-
-::-webkit-resizer {
-   background-image: url("");
-   background-repeat: no-repeat;
-   min-width: 10px;
-   width: 1vmax;
-   height: 0px;
-}
-
-::-webkit-scrollbar {
-   width: 1.7vmin;
-}
-
-::-webkit-scrollbar-track-piece:start {
-   background: transparent url("../img/other/Scrollbar.png") repeat-y !important;
-}
-
-::-webkit-scrollbar-track-piece:end {
-   background: transparent url("../img/other/Scrollbar.png") repeat-y !important;
 }
 
 .cart-scroll-off {
@@ -302,12 +299,10 @@ body {
       margin-left: 9vmin;
       padding: 10px;
       cursor: pointer;
-      transition: color 0.075s linear;
       @include no-select;
    }
    &__trash-icon:active {
       color: $primary-color;
-      transition: color 0.075s linear;
    }
 }
 
@@ -1021,6 +1016,21 @@ body {
 
 // tablet design
 @media only screen and (min-width: 768px) {
+   // scroll
+   .simplebar-track.simplebar-vertical {
+      // vertical track
+      width: 5px;
+      max-width: 5px;
+      background-color: transparent;
+   }
+
+   .simplebar-track.simplebar-horizontal {
+      // horizontal track
+      height: 5px;
+      max-height: 5px;
+      background-color: transparent;
+   }
+
    // tools
    .search-input {
       height: 72px;
@@ -1420,6 +1430,57 @@ body {
 
 // desktop design
 @media only screen and (min-width: 1224px) {
+   // scroll
+   .simplebar-track.simplebar-vertical {
+      // vertical track
+      width: 10px;
+      max-width: 10px;
+      background-color: transparent;
+   }
+
+   .simplebar-track.simplebar-horizontal {
+      // horizontal track
+      height: 12px;
+      max-height: 12px;
+      background-color: transparent;
+   }
+
+   .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
+      // bar vertical
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      max-width: 10px;
+      opacity: 1;
+      border-radius: 30px;
+      background-image: linear-gradient(to bottom, #45f6ff 0%, #207479 100%);
+   }
+
+   .simplebar-track.simplebar-horizontal .simplebar-scrollbar::before {
+      // bar horizontal
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      opacity: 1;
+      height: 10px;
+      max-height: 10px;
+      border-radius: 30px;
+      background-image: linear-gradient(to left, #45f6ff 0%, #207479 100%);
+   }
+
+   .simplebar-scrollbar.simplebar-visible::before {
+      // bar before delay
+      opacity: 1;
+   }
+
+   .simplebar-scrollbar::before {
+      // bar after delay
+      opacity: 1;
+   }
+
    // tools
    .tools {
       position: relative;
@@ -1575,12 +1636,10 @@ body {
          margin-left: 3vmax;
          padding: 0;
          cursor: pointer;
-         transition: color 0.075s linear;
          @include no-select;
       }
       &__trash-icon:active {
          color: $primary-color;
-         transition: color 0.075s linear;
       }
    }
 
@@ -2086,7 +2145,7 @@ body {
    .links-desktop-white-block {
       position: absolute;
       width: 100%;
-      height: 2.5vmax;
+      height: 2.65vmax;
       bottom: 16.4vmax;
       background-color: #fff;
       z-index: 12;

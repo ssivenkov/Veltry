@@ -10,6 +10,7 @@
 	<meta name="author" content="Sergei Sivenkov">
    <meta name="copyright" content="code from Sergei Sivenkov, free use design has been improved by Sergei Sivenkov">
 	<title>Veltry - trip stuff</title>
+	<link rel="stylesheet" href="css/simplebar.css">
 	<link rel="stylesheet" href="css/style.min.css">
 	<link rel="shortcut icon" href="img/icon.png" type="image/png">
 	<script src="https://kit.fontawesome.com/4871a893c0.js" crossorigin="anonymous"></script>

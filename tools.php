@@ -18,7 +18,7 @@
 
 				<div class="cart-item">
 					<div class="cart-item__image-and-text">
-						<img class="cart-item__image" src="img/items/camps/1.png" alt="American tourister polyester black hard-sided 28.4 inch | 72.1 cm">
+					<picture><source srcset="img/items/camps/1.webp" type="image/webp"><img class="cart-item__image" src="img/items/camps/1.png" alt="American tourister polyester black hard-sided 28.4 inch | 72.1 cm"></picture>
 						<p class="cart-item__description">Yongnuo EF YN 50mm F/1.8 1:1.8 standard prime lens for canon rebel digital camera works well with 5D, 7D, 60D, 70D, T3, T3i, T5, T5i, plus Nikon AF-S DX Nikkor 55-300mm F/4.5-5.6G ED VR telephoto zoom lens for Nikon DSLR camera</p>
 						<div class="cart-item__string-container">
 							<p class="cart-item__cost">$375.00</p>

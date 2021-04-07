@@ -10,6 +10,7 @@
 <!-- end footer -->
 
 </main>
+<script src="js/simplebar.min.js"></script>
 <script src="js/typeit.min.js"></script>
 <script src="js/list.min.js"></script>
 <script src="js/script.min.js"></script>

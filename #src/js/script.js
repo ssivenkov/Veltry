@@ -50,7 +50,7 @@ let searchBtn = document.querySelector(".search-btn");
 searchBtn.addEventListener("mouseover", ChangeSearchBtnColorIn);
 searchBtn.addEventListener("mouseout", ChangeSearchBtnColorOut);
 
-// open and close cart window
+// cart modal window
 let cartWindow = document.querySelector(".popup-cart");
 let closeBtn = document.querySelector(".order-buttons__close");
 let body = document.querySelector("body");
@@ -66,6 +66,12 @@ function closeCart() {
 
 cartBtn.addEventListener("click", openCart);
 closeBtn.addEventListener("click", closeCart);
+
+// custom scroll (Simplebar.js)
+body.classList.add("simplebar");
+document.querySelectorAll(".simplebar").forEach((el) => {
+   new SimpleBar(el, { timeout = 500 });
+});
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");
@@ -234,13 +240,13 @@ for (camera of cameras) {
    }
 }
 
-// TypeIt.js
+// printed title (TypeIt.js)
 new TypeIt("#typeit", {
    speed: 50,
    cursor: false,
 }).go();
 
-// List.js
+// sorting (List.js)
 let optionsBags = {
    valueNames: ["cost-bag"], // item class
    listClass: ["bags-list"], // item container
