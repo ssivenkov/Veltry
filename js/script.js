@@ -1,21 +1,3 @@
-// if the browser can display webp then the webp class is added to the body tag
-function testWebP(callback) {
-   var webP = new Image();
-   webP.onload = webP.onerror = function () {
-      callback(webP.height == 2);
-   };
-   webP.src =
-      "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-}
-
-testWebP(function (support) {
-   if (support == true) {
-      document.querySelector("body").classList.add("webp");
-   } else {
-      document.querySelector("body").classList.add("no-webp");
-   }
-});
-
 // change the color of the tool buttons on click
 let CartBtnColor = document.querySelector(".cart-svg");
 function ChangeCartBtnColorIn() {
@@ -32,12 +14,12 @@ function ChangeCartBtnColorOut() {
 let SearchBtnColor = document.querySelector(".search-svg");
 function ChangeSearchBtnColorIn() {
    SearchBtnColor.setAttribute("fill", "url(#linear-gradient)");
-   document.getElementsByClassName("search-btn")[0].style =
+   document.querySelector(".search-btn").style =
       "background-image: linear-gradient(0deg, #dddddd, #777777)";
 }
 function ChangeSearchBtnColorOut() {
    SearchBtnColor.removeAttribute("fill", "url(#linear-gradient)");
-   document.getElementsByClassName("search-btn")[0].style =
+   document.querySelector(".search-btn").style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
 }
 
@@ -50,22 +32,79 @@ let searchBtn = document.querySelector(".search-btn");
 searchBtn.addEventListener("mouseover", ChangeSearchBtnColorIn);
 searchBtn.addEventListener("mouseout", ChangeSearchBtnColorOut);
 
-// open and close cart window
+// cart modal window
 let cartWindow = document.querySelector(".popup-cart");
 let closeBtn = document.querySelector(".order-buttons__close");
 let body = document.querySelector("body");
 
+let offScroll = function () {
+   body.classList.add("native-cart-scroll-off");
+   document.body.onmousedown = function (e) {
+      if (e.button === 1) return false;
+   }; // disable middle mouse button
+   document.querySelectorAll(".simplebar-track")[(0, 1)].style =
+      "opacity: 0; visibility: hidden;";
+};
+let onScroll = function () {
+   body.classList.remove("native-cart-scroll-off");
+   document.body.onmousedown = function (e) {
+      if (e.button === 1) return true;
+   }; // enable middle mouse button
+   document.querySelectorAll(".simplebar-track")[(0, 1)].style =
+      "opacity: 1; visibility: visible;";
+};
+
 function openCart() {
-   body.classList.add("cart-scroll-off");
+   offScroll();
    cartWindow.classList.add("popup-cart-visible");
 }
 function closeCart() {
-   body.classList.remove("cart-scroll-off");
+   onScroll();
    cartWindow.classList.remove("popup-cart-visible");
 }
 
 cartBtn.addEventListener("click", openCart);
 closeBtn.addEventListener("click", closeCart);
+
+// product image enlargement
+let openWindowEnlargedImage = function () {
+   offScroll();
+   let imgPath = this.getAttribute("src");
+   let windowEnlargedImage = document.createElement("div");
+   windowEnlargedImage.innerHTML = `
+	<div class="enlarged-image">
+		<div class="enlarged-image__area">
+			<div class="enlarged-image__align-container">
+				<div class="enlarged-image__image-container">
+					<img class="enlarged-image__image" src="${imgPath}">
+					<i class="enlarged-image__close-btn fas fa-times"></i>
+				</div>
+			</div>
+		</div>
+	</div>`;
+   document.body.append(windowEnlargedImage);
+   let closeBtnsWindowEnlargedImage = document.querySelectorAll(
+      ".enlarged-image__area, .enlarged-image__image, .enlarged-image__close-btn"
+   );
+   closeBtnsWindowEnlargedImage.forEach((closeBtn) => {
+      closeBtn.addEventListener("click", closeWindowEnlargedImage);
+   });
+};
+let closeWindowEnlargedImage = function () {
+   let openedWindowEnlargedImage = document.querySelector(".enlarged-image");
+   openedWindowEnlargedImage.remove();
+   onScroll();
+};
+let imgArray = document.querySelectorAll(".list-items__image");
+imgArray.forEach((image) => {
+   image.addEventListener("click", openWindowEnlargedImage);
+});
+
+// custom scroll (Simplebar.js)
+body.classList.add("simplebar");
+document.querySelectorAll(".simplebar").forEach((el) => {
+   new SimpleBar(el, { timeout: 500 });
+});
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");
@@ -234,13 +273,13 @@ for (camera of cameras) {
    }
 }
 
-// TypeIt.js
+// printed title (TypeIt.js)
 new TypeIt("#typeit", {
    speed: 50,
    cursor: false,
 }).go();
 
-// List.js
+// sorting (List.js)
 let optionsBags = {
    valueNames: ["cost-bag"], // item class
    listClass: ["bags-list"], // item container
