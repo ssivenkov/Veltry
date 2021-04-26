@@ -100,6 +100,70 @@ imgArray.forEach((image) => {
    image.addEventListener("click", openWindowEnlargedImage);
 });
 
+// buy button click animation
+let buyBtnArray = document.querySelectorAll(".list-items__icon");
+let buyBtnChangeColor = function () {
+   this.classList.add("list-items__icon--active");
+   setTimeout(() => {
+      this.classList.remove("list-items__icon--active");
+   }, 200);
+};
+buyBtnArray.forEach((buyBtn) => {
+   buyBtn.addEventListener("click", buyBtnChangeColor);
+});
+
+// buy button tooltip click
+function clickHandler(e) {
+   e.stopPropagation();
+   e.preventDefault();
+}
+let offClickBuyBtn = function () {
+   buyBtnArray.forEach((buyBtn) => {
+      buyBtn.addEventListener("click", clickHandler, true);
+   });
+};
+let onClickBuyBtn = function () {
+   buyBtnArray.forEach((buyBtn) => {
+      buyBtn.removeEventListener("click", clickHandler, true);
+   });
+};
+let offHoverBuyBtn = function () {
+   buyBtnArray.forEach((buyBtn) => {
+      buyBtn.classList.add("buyBtnCursorDefault");
+   });
+};
+let onHoverBuyBtn = function () {
+   buyBtnArray.forEach((buyBtn) => {
+      buyBtn.classList.remove("buyBtnCursorDefault");
+   });
+};
+
+// buy button tooltip window
+let buyBtnTooltip = document.createElement("div");
+buyBtnTooltip.innerHTML = `<p class="tooltip">Added to cart!</p>`;
+let buyBtnTooltipShowAndHide = function () {
+   offClickBuyBtn();
+   offHoverBuyBtn();
+   this.append(buyBtnTooltip);
+   let tooltip = document.querySelector(".tooltip");
+   setTimeout(() => {
+      tooltip.classList.add("opacity1");
+   }, 0);
+   setTimeout(() => {
+      tooltip.classList.remove("opacity1");
+   }, 1500);
+   setTimeout(() => {
+      buyBtnTooltip.remove();
+   }, 1700);
+   setTimeout(() => {
+      onClickBuyBtn();
+      onHoverBuyBtn();
+   }, 1700);
+};
+buyBtnArray.forEach((buyBtn) => {
+   buyBtn.addEventListener("click", buyBtnTooltipShowAndHide);
+});
+
 // custom scroll (Simplebar.js)
 body.classList.add("simplebar");
 document.querySelectorAll(".simplebar").forEach((el) => {
