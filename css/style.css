@@ -1061,9 +1061,9 @@ a:active {
 
 .list-items__icon--active {
   color: #3acdd5;
-  -webkit-transition: color 0.075s linear;
-  -o-transition: color 0.075s linear;
-  transition: color 0.075s linear;
+  -webkit-transition: color 0.08s linear;
+  -o-transition: color 0.08s linear;
+  transition: color 0.08s linear;
 }
 
 .tooltip {
@@ -1110,7 +1110,6 @@ a:active {
 
 .buyBtnCursorDefault {
   cursor: auto !important;
-  color: #000 !important;
 }
 
 .separation-line {
@@ -2719,19 +2718,13 @@ a:active {
     font-size: 1.5vmax;
   }
 
-  .list-items__icon:hover {
-    color: #3acdd5;
-    -webkit-transition: color 0.075s linear;
-    -o-transition: color 0.075s linear;
-    transition: color 0.075s linear;
-  }
-
   .tooltip {
     top: -4.4vmax;
     right: -2.33vmax;
     width: 6vmax;
     padding: 0.5vmax 1vmax;
     font-size: 1.05vmax;
+    text-shadow: none;
     border-radius: 0.5vmax;
   }
 

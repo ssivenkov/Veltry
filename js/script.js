@@ -106,7 +106,7 @@ let buyBtnChangeColor = function () {
    this.classList.add("list-items__icon--active");
    setTimeout(() => {
       this.classList.remove("list-items__icon--active");
-   }, 200);
+   }, 280);
 };
 buyBtnArray.forEach((buyBtn) => {
    buyBtn.addEventListener("click", buyBtnChangeColor);

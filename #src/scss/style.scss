@@ -782,7 +782,7 @@ a:active {
    }
    &__icon--active {
       color: $primary-color;
-      transition: color 0.075s linear;
+      transition: color 0.08s linear;
    }
 }
 
@@ -825,7 +825,6 @@ a:active {
 
 .buyBtnCursorDefault {
    cursor: auto !important;
-   color: #000 !important;
 }
 
 .separation-line {
@@ -2174,10 +2173,6 @@ a:active {
       &__icon {
          font-size: 1.5vmax;
       }
-      &__icon:hover {
-         color: $primary-color;
-         transition: color 0.075s linear;
-      }
    }
 
    .tooltip {
@@ -2186,6 +2181,7 @@ a:active {
       width: 6vmax;
       padding: 0.5vmax 1vmax;
       font-size: 1.05vmax;
+      text-shadow: none;
       border-radius: 0.5vmax;
    }
 
