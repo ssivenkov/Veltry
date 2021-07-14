@@ -19,6 +19,10 @@ $color-list: #fff, rgba(0, 0, 0, 0);
 $primary-color: #3acdd5;
 $primary-light-color: #21ecf7;
 
+$mobile-input: calc(100vw - 64px);
+$tablet-input: calc(100vw - 88px);
+$desktop-input: 20vw;
+
 @mixin gradient($direction, $color-list) {
    background: -webkit-linear-gradient($direction, $color-list);
    background: -moz-linear-gradient($direction, $color-list);
@@ -126,6 +130,50 @@ a:active {
 .tools {
    position: relative;
 }
+.search-wrapper {
+   position: absolute;
+   top: 48px;
+   right: 0;
+}
+.search-item-wrapper {
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   margin-left: 0;
+}
+.search-item {
+   display: none;
+   grid-template: minmax(1px, 100%) / 0.6fr 1fr;
+   align-items: center;
+   position: relative;
+   z-index: 20;
+   width: $mobile-input;
+   cursor: pointer;
+   background-color: #ddd;
+   border: 2px solid #444;
+   border-top: 0;
+}
+.search-item:last-child {
+   border-radius: 0 0 5vw 5vw;
+}
+.search-image {
+   padding: 0.8vmax;
+   width: 100%;
+   max-width: 100%;
+   min-height: 25vw;
+   max-height: 15vh;
+   object-fit: contain;
+}
+.search-description {
+   font-family: Roboto, serif;
+   font-weight: 500;
+   font-size: 14px;
+   text-align: center;
+   margin: 0.5em;
+   margin-left: 0;
+   display: block;
+   word-break: break-word;
+}
 .search-form {
    position: fixed;
    display: block;
@@ -135,13 +183,13 @@ a:active {
 }
 .search-input {
    height: 48px;
-   width: 48px;
-   padding-right: 48px;
+   width: 0;
+   padding-right: 0;
    border: none;
    border-bottom: 0px solid transparent;
    outline: none;
    background: transparent;
-   transition: 0.4s cubic-bezier(0, 1, 0, 1);
+   transition: 0.4s cubic-bezier(0, 0.85, 0, 1);
    position: absolute;
    top: 0;
    right: 0;
@@ -152,7 +200,7 @@ a:active {
    font-size: 18px;
    border-radius: 0 0 0 24px;
    &:focus {
-      width: calc(100vw - 64px);
+      width: $mobile-input;
       z-index: 15;
       padding: 0 57px 0 10px;
       border-radius: 0 0 0 0;
@@ -161,6 +209,19 @@ a:active {
       cursor: initial;
    }
 }
+
+.search-input:focus,
+.search-item-wrapper {
+   position: fixed;
+   top: 48px;
+   right: 0;
+   z-index: 16;
+}
+
+.search-input:focus {
+   top: 0;
+}
+
 .search-btn {
    display: block;
    border: none;
@@ -174,7 +235,12 @@ a:active {
    background-image: linear-gradient(180deg, #ddd, #777);
    border-radius: 0 0 0 50%;
    overflow: hidden;
-   z-index: 20;
+   z-index: 30;
+   & svg {
+      position: relative;
+      left: 6px;
+      top: 4px;
+   }
 }
 
 .cart-btn {
@@ -611,10 +677,10 @@ a:active {
 
 // items
 
-.bags,
-.camps,
-.cameras,
-.lenses {
+#bags,
+#camps,
+#cameras,
+#lenses {
    padding-top: 3vmin;
 }
 
@@ -1122,22 +1188,81 @@ a:active {
    }
 
    // tools
+   .search-wrapper {
+      position: absolute;
+      top: 72px;
+      right: 0;
+   }
+   .search-item-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-left: 0;
+   }
+   .search-item {
+      display: none;
+      grid-template: minmax(1px, 100%) / 0.5fr 1fr;
+      align-items: center;
+      position: relative;
+      z-index: 45;
+      width: $tablet-input;
+      cursor: pointer;
+      background-color: #ddd;
+      border: 0.3vmax solid #444;
+      border-top: 0;
+   }
+   .search-item:last-child {
+      border-radius: 0 0 3.5vw 3.5vw;
+   }
+   .search-image {
+      padding: 0.8vmax;
+      width: 100%;
+      max-width: 100%;
+      min-height: 15vw;
+      max-height: 15vh;
+      object-fit: contain;
+   }
+   .search-description {
+      font-family: Roboto, serif;
+      font-weight: 500;
+      font-size: 2vmax;
+      text-align: center;
+      margin: 0.5em;
+      margin-left: 0;
+      display: block;
+      word-break: break-word;
+   }
    .search-input {
       height: 72px;
-      width: 72px;
+      width: 0;
       padding-right: 72px;
       font-size: 30px;
       border-radius: 0 0 0 36px;
       &:focus {
-         width: calc(100vw - 88px);
+         width: $tablet-input;
          padding: 0 88px 0 15px;
          border-bottom: 4px solid #000;
          border-radius: 0 0 0 0;
       }
    }
+   .search-input:focus,
+   .search-item-wrapper {
+      position: fixed;
+      top: 72px;
+      right: 0;
+      z-index: 16;
+   }
+   .search-input:focus {
+      top: 0;
+   }
    .search-btn {
       height: 72px;
       width: 72px;
+      & svg {
+         position: relative;
+         left: 9px;
+         top: 7px;
+      }
    }
 
    .cart-btn {
@@ -1293,14 +1418,6 @@ a:active {
    }
 
    // items
-
-   .bags,
-   .camps,
-   .cameras,
-   .lenses {
-      padding-top: 3vmin;
-   }
-
    .header {
       font-size: 4vmax;
    }
@@ -1599,6 +1716,45 @@ a:active {
       top: 4vmax;
       right: 15vmax;
    }
+   .search-item-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-left: 1vw;
+   }
+   .search-item {
+      display: none;
+      grid-template: minmax(1px, 100%) / 0.7fr 1fr;
+      align-items: center;
+      position: relative;
+      z-index: 45;
+      width: 18vw;
+      cursor: pointer;
+      background-color: #ddd;
+      border: 0.15vmax solid #444;
+      border-top: 0;
+   }
+   .search-item:last-child {
+      border-radius: 0 0 1vmax 1vmax;
+   }
+   .search-image {
+      padding: 0.5vw;
+      width: 100%;
+      max-width: 100%;
+      min-height: 6vw;
+      max-height: 15vh;
+      object-fit: contain;
+   }
+   .search-description {
+      font-family: Roboto, serif;
+      font-weight: 500;
+      font-size: 0.7vmax;
+      text-align: center;
+      margin: 0.5em;
+      margin-left: 0;
+      display: block;
+      word-break: break-word;
+   }
    .search-form {
       position: relative;
       display: block;
@@ -1609,14 +1765,13 @@ a:active {
       z-index: 20;
    }
    .search-input {
-      width: 20vw;
+      width: $desktop-input;
       height: 2.2vmax;
       border: 0.15vmax solid #000;
       outline: none;
       background: #fff;
       padding-right: initial;
       padding: 0 0.8vmax 0 0.8vmax;
-      transition: 0.4s cubic-bezier(0, 0.8, 0, 1);
       position: relative;
       top: initial;
       right: initial;
@@ -1624,16 +1779,23 @@ a:active {
       cursor: initial;
       overflow: initial;
       font-size: 1vmax;
-      border-radius: 100px 0 0 100px;
+      border-radius: 100px;
       &:focus {
-         width: 20vw;
+         width: $desktop-input;
          z-index: 25;
          padding: 0 0.8vmax 0 0.8vmax;
-         border-radius: 100px 0 0 100px;
+         border-radius: 100px;
          border-bottom: initial;
          border: 0.15vmax solid #000;
          background: #fff;
       }
+   }
+   .search-input:focus,
+   .search-item-wrapper {
+      position: static;
+      top: auto;
+      right: auto;
+      z-index: auto;
    }
    .search-btn {
       position: absolute;
@@ -1650,10 +1812,11 @@ a:active {
       transition: initial;
       display: initial;
       overflow: hidden;
+      display: none;
       & svg {
          position: relative;
-         left: -0.2vmax;
-         top: 0vmax;
+         left: 0.2vmax;
+         top: 0.3vmax;
          width: 1.5vmax;
          height: 1.5vmax;
       }
@@ -2080,13 +2243,6 @@ a:active {
    }
 
    // items
-
-   .bags,
-   .camps,
-   .cameras,
-   .lenses {
-      padding-top: 3vmin;
-   }
 
    .header {
       font-size: 2vmax;

@@ -1,34 +1,32 @@
 // change the color of the tool buttons on click
 let CartBtnColor = document.querySelector(".cart-svg");
+let cartBtn = document.querySelector(".cart-btn");
 function ChangeCartBtnColorIn() {
    CartBtnColor.setAttribute("fill", "url(#linear-gradient)");
-   document.querySelector(".cart-btn").style =
-      "background-image: linear-gradient(0deg, #dddddd, #777777)";
+   cartBtn.style = "background-image: linear-gradient(0deg, #dddddd, #777777)";
 }
 function ChangeCartBtnColorOut() {
    CartBtnColor.removeAttribute("fill", "url(#linear-gradient)");
-   document.querySelector(".cart-btn").style =
+   cartBtn.style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
 }
 
 let SearchBtnColor = document.querySelector(".search-svg");
+let searchBtn = document.querySelector(".search-btn");
 function ChangeSearchBtnColorIn() {
    SearchBtnColor.setAttribute("fill", "url(#linear-gradient)");
-   document.querySelector(".search-btn").style =
+   searchBtn.style =
       "background-image: linear-gradient(0deg, #dddddd, #777777)";
 }
 function ChangeSearchBtnColorOut() {
    SearchBtnColor.removeAttribute("fill", "url(#linear-gradient)");
-   document.querySelector(".search-btn").style =
+   searchBtn.style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
 }
 
 // change the color of the tool buttons on hover cursor
-let cartBtn = document.querySelector(".cart-btn");
 cartBtn.addEventListener("mouseover", ChangeCartBtnColorIn);
 cartBtn.addEventListener("mouseout", ChangeCartBtnColorOut);
-
-let searchBtn = document.querySelector(".search-btn");
 searchBtn.addEventListener("mouseover", ChangeSearchBtnColorIn);
 searchBtn.addEventListener("mouseout", ChangeSearchBtnColorOut);
 
@@ -83,12 +81,11 @@ let openWindowEnlargedImage = function () {
 		</div>
 	</div>`;
    document.body.append(windowEnlargedImage);
-   let closeBtnsWindowEnlargedImage = document.querySelectorAll(
-      ".enlarged-image__area, .enlarged-image__image, .enlarged-image__close-btn"
+   let openedWindowEnlargedImage = document.querySelector(".enlarged-image");
+   openedWindowEnlargedImage.addEventListener(
+      "click",
+      closeWindowEnlargedImage
    );
-   closeBtnsWindowEnlargedImage.forEach((closeBtn) => {
-      closeBtn.addEventListener("click", closeWindowEnlargedImage);
-   });
 };
 let closeWindowEnlargedImage = function () {
    let openedWindowEnlargedImage = document.querySelector(".enlarged-image");
@@ -96,7 +93,7 @@ let closeWindowEnlargedImage = function () {
    onScroll();
 };
 let imgArray = document.querySelectorAll(".list-items__image");
-imgArray.forEach((image) => {
+imgArray.forEach(image => {
    image.addEventListener("click", openWindowEnlargedImage);
 });
 
@@ -108,7 +105,7 @@ let buyBtnChangeColor = function () {
       this.classList.remove("list-items__icon--active");
    }, 280);
 };
-buyBtnArray.forEach((buyBtn) => {
+buyBtnArray.forEach(buyBtn => {
    buyBtn.addEventListener("click", buyBtnChangeColor);
 });
 
@@ -118,22 +115,22 @@ function clickHandler(e) {
    e.preventDefault();
 }
 let offClickBuyBtn = function () {
-   buyBtnArray.forEach((buyBtn) => {
+   buyBtnArray.forEach(buyBtn => {
       buyBtn.addEventListener("click", clickHandler, true);
    });
 };
 let onClickBuyBtn = function () {
-   buyBtnArray.forEach((buyBtn) => {
+   buyBtnArray.forEach(buyBtn => {
       buyBtn.removeEventListener("click", clickHandler, true);
    });
 };
 let offHoverBuyBtn = function () {
-   buyBtnArray.forEach((buyBtn) => {
+   buyBtnArray.forEach(buyBtn => {
       buyBtn.classList.add("buyBtnCursorDefault");
    });
 };
 let onHoverBuyBtn = function () {
-   buyBtnArray.forEach((buyBtn) => {
+   buyBtnArray.forEach(buyBtn => {
       buyBtn.classList.remove("buyBtnCursorDefault");
    });
 };
@@ -160,15 +157,176 @@ let buyBtnTooltipShowAndHide = function () {
       onHoverBuyBtn();
    }, 1700);
 };
-buyBtnArray.forEach((buyBtn) => {
+buyBtnArray.forEach(buyBtn => {
    buyBtn.addEventListener("click", buyBtnTooltipShowAndHide);
 });
 
 // custom scroll (Simplebar.js)
 body.classList.add("simplebar");
-document.querySelectorAll(".simplebar").forEach((el) => {
+document.querySelectorAll(".simplebar").forEach(el => {
    new SimpleBar(el, { timeout: 500 });
 });
+
+// search products (List.js)
+let searchInput = document.querySelector("form.search-form input.search-input");
+let url = document.URL;
+console.log(url);
+let searchItemWrapper = document.querySelector("div.search-item-wrapper");
+
+if (
+   // if open home page
+   url == "http://localhost:3000/" ||
+   url == "http://localhost:3000/index.html" ||
+   url == "http://veltry.loc/" ||
+   url == "http://veltry.loc/index" ||
+   url == "http://veltry.loc/index.php" ||
+   url == "http://veltry.site/" ||
+   url == "http://veltry.site/index" ||
+   url == "http://veltry.site/index.php" ||
+   url == "http://veltry.site/" ||
+   url == "http://veltry.site/index" ||
+   url == "http://veltry.site/index.php" ||
+   url == "https://veltry.site/" ||
+   url == "https://veltry.site/index" ||
+   url == "https://veltry.site/index.php"
+) {
+   let bagsSection = document.querySelector("#bags");
+   let campsSection = document.querySelector("#camps");
+   let camerasSection = document.querySelector("#cameras");
+   let lensesSection = document.querySelector("#lenses");
+   let sectionList = [bagsSection, campsSection, camerasSection, lensesSection];
+   sectionList.forEach(section => {
+      let sectionType = section.id;
+      let itemList = section.querySelectorAll("li");
+      itemList.forEach(item => {
+         let cloneItem = item.cloneNode(true);
+         cloneItem.querySelector("div.list-items__cost-box").remove();
+         cloneItem.classList.remove("list-items__item");
+         cloneItem.classList.add("search-item");
+         cloneItem
+            .querySelector("img.list-items__image")
+            .classList.add("search-image");
+         cloneItem
+            .querySelector("img.list-items__image")
+            .classList.remove("list-items__image");
+         cloneItem
+            .querySelector("p.list-items__description")
+            .classList.add("search-description");
+         cloneItem
+            .querySelector("p.list-items__description")
+            .classList.remove("list-items__description");
+         cloneItem.classList.add(sectionType);
+         searchItemWrapper.append(cloneItem);
+      });
+      /* products from all cycles are sequentially changed for the search
+		field and added to the container */
+   });
+   let scrollToSection = function (event) {
+      let target = event.target.closest("li");
+      if (!target) return;
+      if (!searchItemWrapper.contains(target)) return;
+      let sectionType;
+      if (event.target.closest("li.bags")) {
+         sectionType = 0;
+      } else if (event.target.closest("li.camps")) {
+         sectionType = 1;
+      } else if (event.target.closest("li.cameras")) {
+         sectionType = 2;
+      } else if (event.target.closest("li.lenses")) {
+         sectionType = 3;
+      }
+      searchInput.value = "";
+      let currentItemsList = document.querySelectorAll(".search-item");
+      currentItemsList.forEach(item => {
+         item.style = "display: none";
+      });
+      sectionList[sectionType].scrollIntoView({
+         behavior: "smooth",
+      });
+   };
+   searchItemWrapper.addEventListener("click", scrollToSection);
+} else {
+   /* если текущий url не совападает с url главной страницы, то пусть
+	js попросит ajax'ом у сервера картинки товаров, сервер через php вернет ему
+	картинки товаров, js через промис запишет их в local storage, и после этого
+	каждый раз картинки будут загружаться оттуда, если проверка покажет
+	что картинки есть в local storage */
+   console.log("текущий url отличается от url главной страницы");
+
+   /*
+   const requestURL = "https://jsonplaceholder.typicode.com/users";
+   // http://veltry.loc/all_images.php
+   const xhr = new XMLHttpRequest();
+   xhr.open("GET", requestURL);
+   xhr.responseType = "json";
+   xhr.onload = () => {
+      console.log(xhr.response);
+   };
+   xhr.send();
+	*/
+}
+
+let searchOptions = {
+   valueNames: ["search-description"], // item sorting class
+   listClass: ["search-item-wrapper"], // items container
+   page: 5, // max count of displaying search position
+};
+
+let searchItemsList = new List("searchitemslist", searchOptions);
+searchItemsList.sort("search-description");
+
+let inputFilter = function () {
+   searchInput.addEventListener("keyup", function () {
+      let inputValue = searchInput.value;
+      if (inputValue.length >= 1) {
+         let currentItemsList = document.querySelectorAll(".search-item");
+         currentItemsList.forEach(item => {
+            item.style = "display: grid";
+         });
+      } else {
+         let currentItemsList = document.querySelectorAll(".search-item");
+         currentItemsList.forEach(item => {
+            item.style = "display: none";
+         });
+      }
+   });
+};
+inputFilter(); // show items if input is not empty, hide items if input is empty
+
+let hideProductsInSearchInput = function () {
+   let currentItemsList = document.querySelectorAll(".search-item");
+   currentItemsList.forEach(item => {
+      item.style = "display: none";
+   });
+};
+
+let showProductsInSearchInput = function () {
+   searchInput.addEventListener("focus", function () {
+      let inputValue = searchInput.value;
+      if (inputValue.length >= 1) {
+         let currentItemsList = document.querySelectorAll(".search-item");
+         currentItemsList.forEach(item => {
+            item.style = "display: grid";
+         });
+      }
+   });
+};
+
+let globalClickForSearchInput = function () {
+   document.addEventListener("click", function (event) {
+      if (event.target.closest("div.search-wrapper")) {
+         showProductsInSearchInput(); // show product items if the input received focus
+      } else {
+         hideProductsInSearchInput(); // hide product items if the input has lost focus
+      }
+   });
+};
+globalClickForSearchInput();
+
+let searchInputGetFocus = function () {
+   searchInput.focus();
+};
+searchBtn.addEventListener("click", searchInputGetFocus); // for mobile and tablet
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");
@@ -267,7 +425,7 @@ window.addEventListener("mousemove", function (e) {
 });
 
 // smooth scroll
-let headers = document.querySelectorAll('header a[href*="#"]');
+let headers = document.querySelectorAll('a[href*="#"]');
 for (header of headers) {
    if (header) {
       header.addEventListener("click", function (e) {
@@ -275,13 +433,12 @@ for (header of headers) {
          headerId = this.getAttribute("href");
          document.querySelector(headerId).scrollIntoView({
             behavior: "smooth",
-            block: "start",
          });
       });
    }
 }
 
-let bags = document.querySelectorAll('section a[href="#bags"]');
+let bags = document.querySelectorAll('a[href="#bags"]');
 for (bag of bags) {
    if (bag) {
       bag.addEventListener("click", function (e) {
@@ -289,13 +446,12 @@ for (bag of bags) {
          bagId = this.getAttribute("href");
          document.querySelector(bagId).scrollIntoView({
             behavior: "smooth",
-            block: "start",
          });
       });
    }
 }
 
-let camps = document.querySelectorAll('section a[href="#camps"]');
+let camps = document.querySelectorAll('a[href="#camps"]');
 for (camp of camps) {
    if (camp) {
       camp.addEventListener("click", function (e) {
@@ -303,13 +459,12 @@ for (camp of camps) {
          campId = this.getAttribute("href");
          document.querySelector(campId).scrollIntoView({
             behavior: "smooth",
-            block: "start",
          });
       });
    }
 }
 
-let lenses = document.querySelectorAll('section a[href="#lenses"]');
+let lenses = document.querySelectorAll('a[href="#lenses"]');
 for (lense of lenses) {
    if (lense) {
       lense.addEventListener("click", function (e) {
@@ -317,13 +472,12 @@ for (lense of lenses) {
          lenseId = this.getAttribute("href");
          document.querySelector(lenseId).scrollIntoView({
             behavior: "smooth",
-            block: "start",
          });
       });
    }
 }
 
-let cameras = document.querySelectorAll('section a[href="#cameras"]');
+let cameras = document.querySelectorAll('a[href="#cameras"]');
 for (camera of cameras) {
    if (camera) {
       camera.addEventListener("click", function (e) {
@@ -331,7 +485,6 @@ for (camera of cameras) {
          cameraId = this.getAttribute("href");
          document.querySelector(cameraId).scrollIntoView({
             behavior: "smooth",
-            block: "start",
          });
       });
    }
@@ -343,10 +496,10 @@ new TypeIt("#typeit", {
    cursor: false,
 }).go();
 
-// sorting (List.js)
+// sorting buttons (List.js)
 let optionsBags = {
-   valueNames: ["cost-bag"], // item class
-   listClass: ["bags-list"], // item container
+   valueNames: ["cost-bag"], // item sorting class
+   listClass: ["bags-list"], // items container
 };
 let optionsCamps = {
    valueNames: ["cost-camp"],
@@ -361,7 +514,7 @@ let optionsLenses = {
    listClass: ["lenses-list"],
 };
 
-let BagsList = new List("sorting-bags-container", optionsBags); // generic container
+let BagsList = new List("sorting-bags-container", optionsBags); // class of shared container
 let CampsList = new List("sorting-camps-container", optionsCamps);
 let CamerasList = new List("sorting-cameras-container", optionsCameras);
 let LensesList = new List("sorting-lenses-container", optionsLenses);

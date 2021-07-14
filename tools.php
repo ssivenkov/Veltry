@@ -48,15 +48,16 @@
 		</div>
 	</div>
 
-	<div class="search-wrapper">
+	<div id="searchitemslist" class="search-wrapper">
 		<form class="search-form" action="" method="get">
-			<input class="search-input" placeholder="Search..." type="text" required>
-			<button class="search-btn" type="submit">
+			<div class="search-btn">
 				<svg class="searchsize" aria-hidden="true" width="36" height="36" viewBox="0 0 36 36" id="star">
 					<path class="search-svg" d="M4.245 24.733A14.462 14.458 0 0023.37 25.92l9.578 9.575a1.801 1.8 0 002.546-2.546l-9.577-9.575A14.48 14.476 0 004.245 4.25a14.484 14.48 0 000 20.482zM6.79 6.8a10.884 10.88 0 11-3.187 7.695A10.806 10.803 0 016.79 6.796z"></path>
 				</svg>
-			</button>
+			</div>
+			<input class="search search-input" required placeholder="Search..." aria-label="Search through site content">
 		</form>
+		<div class="search-item-wrapper"></div>
 	</div>
 </section>
 <!-- end tools -->
