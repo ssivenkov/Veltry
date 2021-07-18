@@ -170,9 +170,7 @@ document.querySelectorAll(".simplebar").forEach(el => {
 // search products (List.js)
 let searchInput = document.querySelector("form.search-form input.search-input");
 let url = document.URL;
-console.log(url);
 let searchItemWrapper = document.querySelector("div.search-item-wrapper");
-
 if (
    // if open home page
    url == "http://localhost:3000/" ||
@@ -180,15 +178,18 @@ if (
    url == "http://veltry.loc/" ||
    url == "http://veltry.loc/index" ||
    url == "http://veltry.loc/index.php" ||
+   url == "http://veltry.loc/?" ||
+   url == "http://veltry.loc/?.php" ||
    url == "http://veltry.site/" ||
    url == "http://veltry.site/index" ||
    url == "http://veltry.site/index.php" ||
-   url == "http://veltry.site/" ||
-   url == "http://veltry.site/index" ||
-   url == "http://veltry.site/index.php" ||
+   url == "http://veltry.site/?" ||
+   url == "http://veltry.site/?.php" ||
    url == "https://veltry.site/" ||
    url == "https://veltry.site/index" ||
-   url == "https://veltry.site/index.php"
+   url == "https://veltry.site/index.php" ||
+   url == "https://veltry.site/?" ||
+   url == "https://veltry.site/?.php"
 ) {
    let bagsSection = document.querySelector("#bags");
    let campsSection = document.querySelector("#camps");
@@ -225,24 +226,27 @@ if (
       let target = event.target.closest("li");
       if (!target) return;
       if (!searchItemWrapper.contains(target)) return;
-      let sectionType;
+      let sectionNumber;
       if (event.target.closest("li.bags")) {
-         sectionType = 0;
+         sectionNumber = 0;
       } else if (event.target.closest("li.camps")) {
-         sectionType = 1;
+         sectionNumber = 1;
       } else if (event.target.closest("li.cameras")) {
-         sectionType = 2;
+         sectionNumber = 2;
       } else if (event.target.closest("li.lenses")) {
-         sectionType = 3;
+         sectionNumber = 3;
       }
       searchInput.value = "";
+      searchInput.blur();
       let currentItemsList = document.querySelectorAll(".search-item");
       currentItemsList.forEach(item => {
          item.style = "display: none";
       });
-      sectionList[sectionType].scrollIntoView({
-         behavior: "smooth",
-      });
+      setTimeout(() => {
+         sectionList[sectionNumber].scrollIntoView({
+            behavior: "smooth",
+         });
+      }, 150); // setTimeout needed to almost complete fix scroll bug in mobile Chrome
    };
    searchItemWrapper.addEventListener("click", scrollToSection);
 } else {
@@ -269,7 +273,7 @@ if (
 let searchOptions = {
    valueNames: ["search-description"], // item sorting class
    listClass: ["search-item-wrapper"], // items container
-   page: 5, // max count of displaying search position
+   page: 4, // max count of displaying search position
 };
 
 let searchItemsList = new List("searchitemslist", searchOptions);
@@ -425,6 +429,7 @@ window.addEventListener("mousemove", function (e) {
 });
 
 // smooth scroll
+// "for of cycle - for mobile/tablet and desktop links section"
 let headers = document.querySelectorAll('a[href*="#"]');
 for (header of headers) {
    if (header) {
