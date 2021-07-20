@@ -31,7 +31,7 @@
 						Best regards, Veltry team.
 					</p>
 					<div class="btn-wrapper">
-						<a class="link-btn link-btn-position link-btn-position_min-margin" href="index">Go home</a>
+						<a class="link-btn link-btn-position link-btn-position_min-margin" href="/">Go home</a>
 					</div>
 				</div>
 			</div>
@@ -40,6 +40,8 @@
 	</div>
 </header>
 <!-- end header -->
+
+<?php require 'content_items_from_serv.php'; ?>
 
 <?php require 'links.php'; ?>
 

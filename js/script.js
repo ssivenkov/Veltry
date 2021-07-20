@@ -168,11 +168,11 @@ document.querySelectorAll(".simplebar").forEach(el => {
 });
 
 // search products (List.js)
-let searchInput = document.querySelector("form.search-form input.search-input");
+let searchInput = document.querySelector("input.search-input");
 let url = document.URL;
 let searchItemWrapper = document.querySelector("div.search-item-wrapper");
 if (
-   // if open home page
+   // when the home page is open
    url == "http://localhost:3000/" ||
    url == "http://localhost:3000/index.html" ||
    url == "http://veltry.loc/" ||
@@ -219,9 +219,10 @@ if (
          cloneItem.classList.add(sectionType);
          searchItemWrapper.append(cloneItem);
       });
-      /* products from all cycles are sequentially changed for the search
-		field and added to the container */
+      /* products from all cycles are sequentially changed for the field of
+		search and added to the container */
    });
+
    let scrollToSection = function (event) {
       let target = event.target.closest("li");
       if (!target) return;
@@ -238,6 +239,7 @@ if (
       }
       searchInput.value = "";
       searchInput.blur();
+      ChangeSearchBtnColorOut();
       let currentItemsList = document.querySelectorAll(".search-item");
       currentItemsList.forEach(item => {
          item.style = "display: none";
@@ -249,88 +251,270 @@ if (
       }, 150); // setTimeout needed to almost complete fix scroll bug in mobile Chrome
    };
    searchItemWrapper.addEventListener("click", scrollToSection);
-} else {
-   /* если текущий url не совападает с url главной страницы, то пусть
-	js попросит ajax'ом у сервера картинки товаров, сервер через php вернет ему
-	картинки товаров, js через промис запишет их в local storage, и после этого
-	каждый раз картинки будут загружаться оттуда, если проверка покажет
-	что картинки есть в local storage */
-   console.log("текущий url отличается от url главной страницы");
 
-   /*
-   const requestURL = "https://jsonplaceholder.typicode.com/users";
-   // http://veltry.loc/all_images.php
-   const xhr = new XMLHttpRequest();
-   xhr.open("GET", requestURL);
-   xhr.responseType = "json";
-   xhr.onload = () => {
-      console.log(xhr.response);
+   let searchOptions = {
+      valueNames: ["search-description"], // item sorting class
+      listClass: ["search-item-wrapper"], // items container
+      page: 4, // max count of displaying search position
    };
-   xhr.send();
-	*/
-}
 
-let searchOptions = {
-   valueNames: ["search-description"], // item sorting class
-   listClass: ["search-item-wrapper"], // items container
-   page: 4, // max count of displaying search position
-};
+   let searchItemsList = new List("searchitemslist", searchOptions);
+   searchItemsList.sort("search-description");
 
-let searchItemsList = new List("searchitemslist", searchOptions);
-searchItemsList.sort("search-description");
+   let inputFilter = function () {
+      searchInput.addEventListener("keyup", function () {
+         let inputValue = searchInput.value;
+         if (inputValue.length >= 1) {
+            let currentItemsList = document.querySelectorAll(".search-item");
+            currentItemsList.forEach(item => {
+               item.style = "display: grid";
+            });
+         } else {
+            let currentItemsList = document.querySelectorAll(".search-item");
+            currentItemsList.forEach(item => {
+               item.style = "display: none";
+            });
+         }
+      });
+   };
+   inputFilter(); // show items if input is not empty, hide items if input is empty
 
-let inputFilter = function () {
-   searchInput.addEventListener("keyup", function () {
-      let inputValue = searchInput.value;
-      if (inputValue.length >= 1) {
-         let currentItemsList = document.querySelectorAll(".search-item");
-         currentItemsList.forEach(item => {
-            item.style = "display: grid";
-         });
-      } else {
+   let hideProductsInSearchInput = function () {
+      let currentItemsList = document.querySelectorAll(".search-item");
+      currentItemsList.forEach(item => {
+         item.style = "display: none";
+      });
+   };
+
+   let showProductsInSearchInput = function () {
+      searchInput.addEventListener("focus", function () {
+         let inputValue = searchInput.value;
+         if (inputValue.length >= 1) {
+            let currentItemsList = document.querySelectorAll(".search-item");
+            currentItemsList.forEach(item => {
+               item.style = "display: grid";
+            });
+         }
+      });
+   };
+
+   let searchInputClick = function () {
+      ChangeSearchBtnColorIn();
+   };
+   searchInput.addEventListener("click", searchInputClick); // to save the color of the search icon
+
+   let globalClickForSearchInput = function () {
+      document.addEventListener("click", function (event) {
+         if (event.target.closest("div.search-wrapper")) {
+            showProductsInSearchInput(); // show product items if the input received focus
+         } else {
+            hideProductsInSearchInput(); // hide product items and make inactive search icon
+            ChangeSearchBtnColorOut();
+         }
+      });
+   };
+   globalClickForSearchInput();
+
+   let searchInputGetFocus = function () {
+      searchInput.focus();
+   };
+   searchBtn.addEventListener("click", searchInputGetFocus); // for mobile and tablet
+} else {
+   // when any page other than the home page is open
+   async function getResponse() {
+      let response = await fetch("/all_images.php");
+      let content = await response.json();
+      /* 1. Функция должна быть асинхронной(async), потому что await работает только
+		в async функциях.
+		Пока fetch получает данные с сервера, await ждёт выполнения промиса справа от
+		await(т.е. когда все данные будут получены), и пока промис не выполнится в
+		переменную response ничего не запишется. Когда данные будут полностью
+		получены, созданный fetch'ем промис завершится и fetch вернёт ответ сервера
+		(со всей информацией, включая сам ответ, заголовки, статус код и т.д.),
+		и только после этого await запишет ответ в переменную response.
+		2. Для того чтобы распарсить ответ формата json строки в формат массива с
+		объектами, нужно дождаться завершения получения данных, поэтому снова нужен
+		await. */
+
+      let searchItemIndex;
+      for (searchItemIndex in content) {
+         if (`${content[searchItemIndex].category}` == "bag") {
+            let searchItem = document.createElement("li");
+            searchItem.classList.add("search-item");
+            searchItem.classList.add(`${content[searchItemIndex].category}s`);
+            searchItem.innerHTML = `
+					<p class="search-description">${content[searchItemIndex].title}</p>
+					<img class="search-image" src="${content[searchItemIndex].url}">
+				`;
+            searchItemWrapper.append(searchItem);
+         }
+      }
+      for (searchItemIndex in content) {
+         if (`${content[searchItemIndex].category}` == "camp") {
+            let searchItem = document.createElement("li");
+            searchItem.classList.add("search-item");
+            searchItem.classList.add(`${content[searchItemIndex].category}s`);
+            searchItem.innerHTML = `
+					<p class="search-description">${content[searchItemIndex].title}</p>
+					<img class="search-image" src="${content[searchItemIndex].url}">
+				`;
+            searchItemWrapper.append(searchItem);
+         }
+      }
+      for (searchItemIndex in content) {
+         if (`${content[searchItemIndex].category}` == "camera") {
+            let searchItem = document.createElement("li");
+            searchItem.classList.add("search-item");
+            searchItem.classList.add(`${content[searchItemIndex].category}s`);
+            searchItem.innerHTML = `
+					<p class="search-description">${content[searchItemIndex].title}</p>
+					<img class="search-image" src="${content[searchItemIndex].url}">
+				`;
+            searchItemWrapper.append(searchItem);
+         }
+      }
+      for (searchItemIndex in content) {
+         if (`${content[searchItemIndex].category}` == "lense") {
+            let searchItem = document.createElement("li");
+            searchItem.classList.add("search-item");
+            searchItem.classList.add(`${content[searchItemIndex].category}s`);
+            searchItem.innerHTML = `
+					<p class="search-description">${content[searchItemIndex].title}</p>
+					<img class="search-image" src="${content[searchItemIndex].url}">
+				`;
+            searchItemWrapper.append(searchItem);
+         }
+      }
+      // adding goods from the server to the container
+
+      let bagsSection = document.querySelector("#bags");
+      let campsSection = document.querySelector("#camps");
+      let camerasSection = document.querySelector("#cameras");
+      let lensesSection = document.querySelector("#lenses");
+      let sectionList = [
+         bagsSection,
+         campsSection,
+         camerasSection,
+         lensesSection,
+      ];
+
+      let scrollToSection = function (event) {
+         let target = event.target.closest("li");
+         if (!target) return;
+         if (!searchItemWrapper.contains(target)) return;
+         let sectionNumber;
+         if (event.target.closest("li.bags")) {
+            sectionNumber = 0;
+            localStorage.setItem("scrollTosection", sectionNumber);
+         } else if (event.target.closest("li.camps")) {
+            sectionNumber = 1;
+            localStorage.setItem("scrollTosection", sectionNumber);
+         } else if (event.target.closest("li.cameras")) {
+            sectionNumber = 2;
+            localStorage.setItem("scrollTosection", sectionNumber);
+         } else if (event.target.closest("li.lenses")) {
+            sectionNumber = 3;
+            localStorage.setItem("scrollTosection", sectionNumber);
+         }
+         searchInput.value = "";
+         searchInput.blur();
+         ChangeSearchBtnColorOut();
          let currentItemsList = document.querySelectorAll(".search-item");
          currentItemsList.forEach(item => {
             item.style = "display: none";
          });
-      }
-   });
-};
-inputFilter(); // show items if input is not empty, hide items if input is empty
+         setTimeout(() => {
+            window.location.href = "/";
+         }, 150); // setTimeout needed to almost complete fix scroll bug in mobile Chrome
+      };
+      searchItemWrapper.addEventListener("click", scrollToSection);
 
-let hideProductsInSearchInput = function () {
-   let currentItemsList = document.querySelectorAll(".search-item");
-   currentItemsList.forEach(item => {
-      item.style = "display: none";
-   });
-};
+      let searchOptions = {
+         valueNames: ["search-description"], // item sorting class
+         listClass: ["search-item-wrapper"], // items container
+         page: 4, // max count of displaying search position
+      };
 
-let showProductsInSearchInput = function () {
-   searchInput.addEventListener("focus", function () {
-      let inputValue = searchInput.value;
-      if (inputValue.length >= 1) {
+      let searchItemsList = new List("searchitemslist", searchOptions);
+      searchItemsList.sort("search-description");
+
+      let inputFilter = function () {
+         searchInput.addEventListener("keyup", function () {
+            let inputValue = searchInput.value;
+            if (inputValue.length >= 1) {
+               let currentItemsList = document.querySelectorAll(".search-item");
+               currentItemsList.forEach(item => {
+                  item.style = "display: grid";
+               });
+            } else {
+               let currentItemsList = document.querySelectorAll(".search-item");
+               currentItemsList.forEach(item => {
+                  item.style = "display: none";
+               });
+            }
+         });
+      };
+      inputFilter(); // show items if input is not empty, hide items if input is empty
+
+      let hideProductsInSearchInput = function () {
          let currentItemsList = document.querySelectorAll(".search-item");
          currentItemsList.forEach(item => {
-            item.style = "display: grid";
+            item.style = "display: none";
          });
-      }
-   });
-};
+      };
 
-let globalClickForSearchInput = function () {
-   document.addEventListener("click", function (event) {
-      if (event.target.closest("div.search-wrapper")) {
-         showProductsInSearchInput(); // show product items if the input received focus
-      } else {
-         hideProductsInSearchInput(); // hide product items if the input has lost focus
-      }
-   });
-};
-globalClickForSearchInput();
+      let showProductsInSearchInput = function () {
+         searchInput.addEventListener("focus", function () {
+            let inputValue = searchInput.value;
+            if (inputValue.length >= 1) {
+               let currentItemsList = document.querySelectorAll(".search-item");
+               currentItemsList.forEach(item => {
+                  item.style = "display: grid";
+               });
+            }
+         });
+      };
 
-let searchInputGetFocus = function () {
-   searchInput.focus();
+      let searchInputClick = function () {
+         ChangeSearchBtnColorIn();
+      };
+      searchInput.addEventListener("click", searchInputClick); // to save the color of the search icon
+
+      let globalClickForSearchInput = function () {
+         document.addEventListener("click", function (event) {
+            if (event.target.closest("div.search-wrapper")) {
+               showProductsInSearchInput(); // show product items if the input received focus
+            } else {
+               hideProductsInSearchInput(); // hide product items and make inactive search icon
+               ChangeSearchBtnColorOut();
+            }
+         });
+      };
+      globalClickForSearchInput();
+
+      let searchInputGetFocus = function () {
+         searchInput.focus();
+      };
+      searchBtn.addEventListener("click", searchInputGetFocus); // for mobile and tablet
+   }
+   getResponse();
+}
+
+// after load page
+let scrollToSectionFromLocalStorage = function () {
+   let bagsSection = document.querySelector("#bags");
+   let campsSection = document.querySelector("#camps");
+   let camerasSection = document.querySelector("#cameras");
+   let lensesSection = document.querySelector("#lenses");
+   let sectionList = [bagsSection, campsSection, camerasSection, lensesSection];
+   sectionList[Number(localStorage.getItem("scrollTosection"))].scrollIntoView({
+      behavior: "smooth",
+   });
+   localStorage.removeItem("scrollTosection");
 };
-searchBtn.addEventListener("click", searchInputGetFocus); // for mobile and tablet
+if (typeof localStorage.getItem("scrollTosection") == "string") {
+   window.onload = scrollToSectionFromLocalStorage;
+}
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");
