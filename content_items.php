@@ -4,7 +4,7 @@
 			<h3 class="header text-center">bags</h3>
 			<p class="subheader text-center">Find something new for your trip</p>
 		</div>
-		
+
 		<div class="sort-bags">
          <div class="sort-bags__buttons-container">
 				<div class="sort sort-bags__cheap" data-sort="cost-bag" data-order="asc" onclick="BagsСheapActive()">
@@ -20,7 +20,7 @@
 			<?php
 				$bags = get_all_bags();
 				foreach ($bags as $item): ?>
-					<li class="list-items__item">
+					<li id="bag<?php echo $item["id"]; ?>" class="list-items__item">
 						<picture><source srcset="<?php echo $item["links_webp"]; ?>" type="image/webp"><img class="list-items__image" src="<?php echo $item["links_png"]; ?>" alt="<?php echo $item["descs"]; ?>"></picture>
 						<p class="list-items__description"><?php echo $item["descs"]; ?></p>
 						<div class="list-items__cost-box">
@@ -57,7 +57,7 @@
 			<?php
 				$camps = get_all_camps();
 				foreach ($camps as $item): ?>
-					<li class="list-items__item">
+					<li id="camp<?php echo $item["id"]; ?>" class="list-items__item">
 						<picture><source srcset="<?php echo $item["links_webp"]; ?>" type="image/webp"><img class="list-items__image" src="<?php echo $item["links_png"]; ?>" alt="<?php echo $item["descs"]; ?>"></picture>
 						<p class="list-items__description"><?php echo $item["descs"]; ?></p>
 						<div class="list-items__cost-box">
@@ -94,7 +94,7 @@
 			<?php
 				$cameras = get_all_cameras();
 				foreach ($cameras as $item): ?>
-					<li class="list-items__item">
+					<li id="camera<?php echo $item["id"]; ?>" class="list-items__item">
 						<picture><source srcset="<?php echo $item["links_webp"]; ?>" type="image/webp"><img class="list-items__image" src="<?php echo $item["links_png"]; ?>" alt="<?php echo $item["descs"]; ?>"></picture>
 						<p class="list-items__description"><?php echo $item["descs"]; ?></p>
 						<div class="list-items__cost-box">
@@ -131,7 +131,7 @@
 			<?php
 				$lenses = get_all_lenses();
 				foreach ($lenses as $item): ?>
-					<li class="list-items__item">
+					<li id="lense<?php echo $item["id"]; ?>" class="list-items__item">
 						<picture><source srcset="<?php echo $item["links_webp"]; ?>" type="image/webp"><img class="list-items__image" src="<?php echo $item["links_png"]; ?>" alt="<?php echo $item["descs"]; ?>"></picture>
 						<p class="list-items__description"><?php echo $item["descs"]; ?></p>
 						<div class="list-items__cost-box">

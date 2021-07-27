@@ -32,11 +32,16 @@ searchBtn.addEventListener("mouseout", ChangeSearchBtnColorOut);
 
 // cart modal window
 let cartWindow = document.querySelector(".popup-cart");
-let closeBtn = document.querySelector(".order-buttons__close");
-let body = document.querySelector("body");
+let closeBtnCartWindow = document.querySelector(".order-buttons__close");
+
+// custom scroll (Simplebar.js)
+document.body.classList.add("simplebar");
+document.querySelectorAll(".simplebar").forEach(el => {
+   new SimpleBar(el, { timeout: 500 });
+});
 
 let offScroll = function () {
-   body.classList.add("native-cart-scroll-off");
+   document.body.classList.add("native-cart-scroll-off");
    document.body.onmousedown = function (e) {
       if (e.button === 1) return false;
    }; // disable middle mouse button
@@ -44,7 +49,7 @@ let offScroll = function () {
       "opacity: 0; visibility: hidden;";
 };
 let onScroll = function () {
-   body.classList.remove("native-cart-scroll-off");
+   document.body.classList.remove("native-cart-scroll-off");
    document.body.onmousedown = function (e) {
       if (e.button === 1) return true;
    }; // enable middle mouse button
@@ -53,16 +58,14 @@ let onScroll = function () {
 };
 
 function openCart() {
-   offScroll();
    cartWindow.classList.add("popup-cart-visible");
 }
 function closeCart() {
-   onScroll();
    cartWindow.classList.remove("popup-cart-visible");
 }
 
 cartBtn.addEventListener("click", openCart);
-closeBtn.addEventListener("click", closeCart);
+closeBtnCartWindow.addEventListener("click", closeCart);
 
 // product image enlargement
 let openWindowEnlargedImage = function () {
@@ -88,28 +91,249 @@ let openWindowEnlargedImage = function () {
    );
 };
 let closeWindowEnlargedImage = function () {
+   onScroll();
    let openedWindowEnlargedImage = document.querySelector(".enlarged-image");
    openedWindowEnlargedImage.remove();
-   onScroll();
 };
 let imgArray = document.querySelectorAll(".list-items__image");
 imgArray.forEach(image => {
    image.addEventListener("click", openWindowEnlargedImage);
 });
 
-// buy button click animation
-let buyBtnArray = document.querySelectorAll(".list-items__icon");
-let buyBtnChangeColor = function () {
-   this.classList.add("list-items__icon--active");
-   setTimeout(() => {
-      this.classList.remove("list-items__icon--active");
-   }, 280);
+// initial cart value
+localStorage.setItem("cartIsEmpty", true);
+
+// setting the state of the cart after loading the page
+window.onload = function () {
+   let emptyCartText = document.querySelector(".popup-cart__empty");
+   if (emptyCartText == null) {
+      console.log("в корзине есть товары - первоначальная загрузка");
+   }
+   if (emptyCartText != null) {
+      console.log("корзина пустая - первоначальная загрузка");
+      //emptyCartText.remove();
+      // добавить кнопки корзины и блока стоимости
+   }
 };
+
+// create total cost component
+let cartContainer = document.querySelector(".popup-cart__content");
+let orderButtonsContainer = document.querySelector(".order-buttons");
+
+let createTotalCostComponent = function () {
+   let totalCostComponent = document.createElement("div");
+   totalCostComponent.classList.add("total-cost");
+   totalCostComponent.classList.add("total-cost-box");
+   totalCostComponent.innerHTML = `
+			<div class="total-cost__line"></div>
+			<div class="total-cost__inner">
+				<p class="total-cost__text">Total cost:</p>
+				<p class="total-cost__cost">1000$</p>
+			</div>`;
+   cartContainer.prepend(totalCostComponent);
+};
+
+// create confirm button component
+let createConfirmButtonComponent = function () {
+   let confirmButton = document.createElement("a");
+   confirmButton.classList.add("order-buttons__confirm");
+   confirmButton.innerHTML = "confirm";
+   confirmButton.setAttribute("href", "order_page");
+   orderButtonsContainer.append(confirmButton);
+};
+
+// create clear button component
+let createClearButtonComponent = function () {
+   let cartClearButton = document.createElement("div");
+   cartClearButton.classList.add("order-buttons__clear");
+   cartClearButton.classList.add("fas");
+   cartClearButton.classList.add("fa-trash-alt");
+   orderButtonsContainer.append(cartClearButton);
+   cartClearButton.addEventListener("click", clearCart);
+};
+
+// add cart item to an empty cart
+let renderCartItemInEmptyCart = function () {
+   let keysFromLocalStorage = Object.keys(localStorage);
+   let keyItem;
+   for (keyItem of keysFromLocalStorage) {
+      /* let's say the keyItem is item camp2. Check happens for both the product
+		category and its number. searchItemIndex becomes equal to 7, because
+		it will stop in the correct category on the correct item */
+      async function getItemData() {
+         let response = await fetch("/all_images.php");
+         let content = await response.json();
+
+         let searchItemIndex;
+         for (searchItemIndex in content) {
+            let itemUrl = content[searchItemIndex].url;
+            let itemWebp = content[searchItemIndex].webp;
+            let itemCost = content[searchItemIndex].cost;
+            let itemTitle = content[searchItemIndex].title;
+
+            if (
+               `${content[searchItemIndex].category}` ==
+                  keyItem.replace(/\d/g, "") &&
+               `${itemUrl.replace(/\D/g, "")}` == keyItem.replace(/\D/g, "")
+            ) {
+               let cartItem = document.createElement("li");
+               cartItem.classList.add("cart-item");
+               cartItem.innerHTML = `
+						<div class="cart-item__image-and-text">
+						<picture>
+							<source srcset="${itemWebp}"
+							type="image/webp">
+							<img class="list-items__image" src="${itemUrl}"
+							alt="${itemTitle}">
+						</picture>
+							<p class="cart-item__description">${itemTitle}</p>
+							<div class="cart-item__string-container">
+								<p class="cart-item__cost">$${itemCost}.00</p>
+								<div class="amount amount-box">
+									<a class="amount__btn-addition">&plus;</a>
+									<p class="amount__number">1</p>
+									<a class="amount__btn-subtract">&minus;</a>
+								</div>
+								<p class="cart-item__trash-icon"><i class="fas fa-trash-alt"></i></p>
+							</div>
+						</div>`;
+               cartContainer.prepend(cartItem);
+            }
+         }
+      }
+   }
+   getItemData();
+};
+
+// add cart item to a non-empty cart
+let renderCartItemInNonEmptyCart = function () {
+   let keysFromLocalStorage = Object.keys(localStorage);
+   let keyItem;
+   for (keyItem of keysFromLocalStorage) {
+      /* let's say the keyItem is item camp2. Check happens for both the product
+		category and its number. searchItemIndex becomes equal to 7, because
+		it will stop in the correct category on the correct item */
+      async function getItemData() {
+         let response = await fetch("/all_images.php");
+         let content = await response.json();
+
+         let searchItemIndex;
+         for (searchItemIndex in content) {
+            let itemUrl = content[searchItemIndex].url;
+            let itemWebp = content[searchItemIndex].webp;
+            let itemCost = content[searchItemIndex].cost;
+            let itemTitle = content[searchItemIndex].title;
+
+            if (
+               `${content[searchItemIndex].category}` ==
+                  keyItem.replace(/\d/g, "") &&
+               `${itemUrl.replace(/\D/g, "")}` == keyItem.replace(/\D/g, "")
+            ) {
+               let cartItem = document.createElement("li");
+               cartItem.classList.add("cart-item");
+               cartItem.innerHTML = `
+						<div class="cart-item__image-and-text">
+						<picture>
+							<source srcset="${itemWebp}"
+							type="image/webp">
+							<img class="list-items__image" src="${itemUrl}"
+							alt="${itemTitle}">
+						</picture>
+							<p class="cart-item__description">${itemTitle}</p>
+							<div class="cart-item__string-container">
+								<p class="cart-item__cost">$${itemCost}.00</p>
+								<div class="amount amount-box">
+									<a class="amount__btn-addition">&plus;</a>
+									<p class="amount__number">1</p>
+									<a class="amount__btn-subtract">&minus;</a>
+								</div>
+								<p class="cart-item__trash-icon"><i class="fas fa-trash-alt"></i></p>
+							</div>
+						</div>`;
+               cartContainer.prepend(cartItem);
+            }
+         }
+      }
+   }
+   getItemData();
+};
+
+// buy button on click
+let buyBtnArray = document.querySelectorAll(".list-items__icon");
+let buyButtonScript = function () {
+   // tooltip render
+   let f1 = function () {
+      this.classList.add("list-items__icon--active");
+      let f2 = function () {
+         setTimeout(() => {
+            this.classList.remove("list-items__icon--active");
+         }, 280);
+      };
+      let f3 = f2.bind(this);
+      f3();
+   };
+   let f4 = f1.bind(this);
+   f4();
+
+   // buy button tooltip animation on click
+   offClickBuyBtn();
+   offHoverBuyBtn();
+   let buyBtnTooltip = document.createElement("div");
+   let thisItemIdInLocalStorage = localStorage.getItem(this.closest("li").id);
+   if (this.closest("li").id == thisItemIdInLocalStorage) {
+      buyBtnTooltip.innerHTML = `<p class="tooltip">Has already!</p>`;
+   } else {
+      buyBtnTooltip.innerHTML = `<p class="tooltip">Added to cart!</p>`;
+   }
+   this.append(buyBtnTooltip);
+   let tooltip = document.querySelector(".tooltip");
+   setTimeout(() => {
+      tooltip.classList.add("opacity1");
+   }, 0);
+   setTimeout(() => {
+      tooltip.classList.remove("opacity1");
+   }, 900);
+   setTimeout(() => {
+      buyBtnTooltip.remove();
+   }, 1100);
+   setTimeout(() => {
+      onClickBuyBtn();
+      onHoverBuyBtn();
+   }, 1100);
+
+   // add item in cart logic
+   let id = this.closest("li").id;
+   if (localStorage.getItem(id) != id) {
+      localStorage.removeItem("cartIsEmpty");
+      localStorage.setItem(id, id);
+      let fillingCart = function () {
+         let emptyCartText = document.querySelector(".popup-cart__empty");
+         if (emptyCartText == null) {
+            console.log("в корзине есть товары emptyCartText == null");
+            console.log(emptyCartText);
+            renderCartItemInNonEmptyCart();
+         }
+         if (emptyCartText != null) {
+            console.log(
+               "в пустую корзину был добавлен товар - корзина перерисована emptyCartText != null"
+            );
+            console.log(emptyCartText);
+            emptyCartText.remove();
+            createTotalCostComponent();
+            renderCartItemInEmptyCart();
+            createConfirmButtonComponent();
+            createClearButtonComponent();
+         }
+      };
+      fillingCart();
+   }
+};
+
 buyBtnArray.forEach(buyBtn => {
-   buyBtn.addEventListener("click", buyBtnChangeColor);
+   buyBtn.addEventListener("click", buyButtonScript);
 });
 
-// buy button tooltip click
+// buy button tooltip functions for click
 function clickHandler(e) {
    e.stopPropagation();
    e.preventDefault();
@@ -134,38 +358,6 @@ let onHoverBuyBtn = function () {
       buyBtn.classList.remove("buyBtnCursorDefault");
    });
 };
-
-// buy button tooltip window
-let buyBtnTooltip = document.createElement("div");
-buyBtnTooltip.innerHTML = `<p class="tooltip">Added to cart!</p>`;
-let buyBtnTooltipShowAndHide = function () {
-   offClickBuyBtn();
-   offHoverBuyBtn();
-   this.append(buyBtnTooltip);
-   let tooltip = document.querySelector(".tooltip");
-   setTimeout(() => {
-      tooltip.classList.add("opacity1");
-   }, 0);
-   setTimeout(() => {
-      tooltip.classList.remove("opacity1");
-   }, 1500);
-   setTimeout(() => {
-      buyBtnTooltip.remove();
-   }, 1700);
-   setTimeout(() => {
-      onClickBuyBtn();
-      onHoverBuyBtn();
-   }, 1700);
-};
-buyBtnArray.forEach(buyBtn => {
-   buyBtn.addEventListener("click", buyBtnTooltipShowAndHide);
-});
-
-// custom scroll (Simplebar.js)
-body.classList.add("simplebar");
-document.querySelectorAll(".simplebar").forEach(el => {
-   new SimpleBar(el, { timeout: 500 });
-});
 
 // search products (List.js)
 let searchInput = document.querySelector("input.search-input");
@@ -338,49 +530,18 @@ if (
 
       let searchItemIndex;
       for (searchItemIndex in content) {
-         if (`${content[searchItemIndex].category}` == "bag") {
+         if (
+            `${content[searchItemIndex].category}` == "bag" ||
+            "camp" ||
+            "camera" ||
+            "lense"
+         ) {
             let searchItem = document.createElement("li");
             searchItem.classList.add("search-item");
             searchItem.classList.add(`${content[searchItemIndex].category}s`);
             searchItem.innerHTML = `
-					<p class="search-description">${content[searchItemIndex].title}</p>
 					<img class="search-image" src="${content[searchItemIndex].url}">
-				`;
-            searchItemWrapper.append(searchItem);
-         }
-      }
-      for (searchItemIndex in content) {
-         if (`${content[searchItemIndex].category}` == "camp") {
-            let searchItem = document.createElement("li");
-            searchItem.classList.add("search-item");
-            searchItem.classList.add(`${content[searchItemIndex].category}s`);
-            searchItem.innerHTML = `
 					<p class="search-description">${content[searchItemIndex].title}</p>
-					<img class="search-image" src="${content[searchItemIndex].url}">
-				`;
-            searchItemWrapper.append(searchItem);
-         }
-      }
-      for (searchItemIndex in content) {
-         if (`${content[searchItemIndex].category}` == "camera") {
-            let searchItem = document.createElement("li");
-            searchItem.classList.add("search-item");
-            searchItem.classList.add(`${content[searchItemIndex].category}s`);
-            searchItem.innerHTML = `
-					<p class="search-description">${content[searchItemIndex].title}</p>
-					<img class="search-image" src="${content[searchItemIndex].url}">
-				`;
-            searchItemWrapper.append(searchItem);
-         }
-      }
-      for (searchItemIndex in content) {
-         if (`${content[searchItemIndex].category}` == "lense") {
-            let searchItem = document.createElement("li");
-            searchItem.classList.add("search-item");
-            searchItem.classList.add(`${content[searchItemIndex].category}s`);
-            searchItem.innerHTML = `
-					<p class="search-description">${content[searchItemIndex].title}</p>
-					<img class="search-image" src="${content[searchItemIndex].url}">
 				`;
             searchItemWrapper.append(searchItem);
          }
@@ -405,16 +566,16 @@ if (
          let sectionNumber;
          if (event.target.closest("li.bags")) {
             sectionNumber = 0;
-            localStorage.setItem("scrollTosection", sectionNumber);
+            sessionStorage.setItem("scrollTosection", sectionNumber);
          } else if (event.target.closest("li.camps")) {
             sectionNumber = 1;
-            localStorage.setItem("scrollTosection", sectionNumber);
+            sessionStorage.setItem("scrollTosection", sectionNumber);
          } else if (event.target.closest("li.cameras")) {
             sectionNumber = 2;
-            localStorage.setItem("scrollTosection", sectionNumber);
+            sessionStorage.setItem("scrollTosection", sectionNumber);
          } else if (event.target.closest("li.lenses")) {
             sectionNumber = 3;
-            localStorage.setItem("scrollTosection", sectionNumber);
+            sessionStorage.setItem("scrollTosection", sectionNumber);
          }
          searchInput.value = "";
          searchInput.blur();
@@ -500,21 +661,117 @@ if (
    getResponse();
 }
 
-// after load page
+// check for search after load page
 let scrollToSectionFromLocalStorage = function () {
    let bagsSection = document.querySelector("#bags");
    let campsSection = document.querySelector("#camps");
    let camerasSection = document.querySelector("#cameras");
    let lensesSection = document.querySelector("#lenses");
    let sectionList = [bagsSection, campsSection, camerasSection, lensesSection];
-   sectionList[Number(localStorage.getItem("scrollTosection"))].scrollIntoView({
+   sectionList[
+      Number(sessionStorage.getItem("scrollTosection"))
+   ].scrollIntoView({
       behavior: "smooth",
    });
-   localStorage.removeItem("scrollTosection");
+   sessionStorage.removeItem("scrollTosection");
 };
-if (typeof localStorage.getItem("scrollTosection") == "string") {
+if (typeof sessionStorage.getItem("scrollTosection") == "string") {
    window.onload = scrollToSectionFromLocalStorage;
 }
+
+// checking cart for emptiness
+let checkingCartForEmptiness = function () {
+   let keys = Object.keys(localStorage);
+   if (keys.length > 1) {
+      localStorage.removeItem("cartIsEmpty");
+   }
+};
+checkingCartForEmptiness();
+
+// todo: cart buttons clicks
+let setCartEmpty = function () {
+   let emptyCart = document.createElement("div");
+   emptyCart.classList.add("popup-cart__empty");
+   emptyCart.innerHTML = "Now cart is empty";
+   cartContainer.prepend(emptyCart);
+};
+
+let clearCart = function () {
+   localStorage.clear();
+   localStorage.setItem("cartIsEmpty", true);
+   let allCartItems = document.querySelectorAll(".cart-item");
+   allCartItems.forEach(item => {
+      item.remove();
+   });
+   document.querySelector(".total-cost-box").remove();
+   document.querySelector(".order-buttons__confirm").remove();
+   document.querySelector(".order-buttons__clear").remove();
+   setCartEmpty();
+};
+
+// check for cart items after load page
+let keysLocalStorage = Object.keys(localStorage);
+let valuesLocalStorage = Object.values(localStorage);
+let checkCartItemsFromLocalStorage = function () {
+   if (JSON.stringify(keysLocalStorage) == JSON.stringify(valuesLocalStorage)) {
+      let keysArrayFromLocalStorage = Object.keys(localStorage);
+      createTotalCostComponent();
+
+      for (let key of keysArrayFromLocalStorage) {
+         /* let's say the key is item camp2. Check happens for both the product
+			category and its number. searchItemIndex becomes equal to 7, because
+			it will stop in the correct category on the correct item */
+         async function getItemsData() {
+            let response = await fetch("/all_images.php");
+            let content = await response.json();
+
+            let searchItemIndex;
+            for (searchItemIndex in content) {
+               let itemUrl = content[searchItemIndex].url;
+               let itemWebp = content[searchItemIndex].webp;
+               let itemCost = content[searchItemIndex].cost;
+               let itemTitle = content[searchItemIndex].title;
+               if (
+                  `${content[searchItemIndex].category}` ==
+                     key.replace(/\d/g, "") &&
+                  `${itemUrl.replace(/\D/g, "")}` == key.replace(/\D/g, "")
+               ) {
+                  let cartItem = document.createElement("li");
+                  cartItem.classList.add("cart-item");
+                  cartItem.innerHTML = `
+							<div class="cart-item__image-and-text">
+							<picture>
+								<source srcset="${itemWebp}"
+								type="image/webp">
+								<img class="list-items__image" src="${itemUrl}"
+								alt="${itemTitle}">
+							</picture>
+								<p class="cart-item__description">${itemTitle}</p>
+								<div class="cart-item__string-container">
+									<p class="cart-item__cost">$${itemCost}.00</p>
+									<div class="amount amount-box">
+										<a class="amount__btn-addition">&plus;</a>
+										<p class="amount__number">1</p>
+										<a class="amount__btn-subtract">&minus;</a>
+									</div>
+									<p class="cart-item__trash-icon"><i class="fas fa-trash-alt"></i></p>
+								</div>
+							</div>`;
+                  cartContainer.prepend(cartItem);
+               }
+            }
+         }
+         getItemsData();
+      }
+
+      createConfirmButtonComponent();
+      createClearButtonComponent();
+   }
+   if (localStorage.getItem("cartIsEmpty")) {
+      setCartEmpty();
+   }
+};
+checkCartItemsFromLocalStorage(); // search scrolling does not work when called through a method window.onliad
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");

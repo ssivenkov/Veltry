@@ -428,12 +428,10 @@ a:active {
   color: #000;
   max-width: 95vw;
   padding: 4vmin;
+  margin: 2vw 0;
   border-radius: 8vmin;
   overflow: visible;
   position: relative;
-  -webkit-transform: translate(0%, -5%);
-      -ms-transform: translate(0%, -5%);
-          transform: translate(0%, -5%);
 }
 
 .popup-cart__empty {
@@ -444,6 +442,13 @@ a:active {
   font-size: 5.5vmin;
   font-family: Roboto, serif;
   font-weight: 300;
+  padding: 2em;
+}
+
+.cart-item {
+  list-style-type: none;
+  border-bottom: 3px dashed #777;
+  padding-top: 2vw;
 }
 
 .cart-item__image-and-text {
@@ -458,10 +463,14 @@ a:active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  max-height: 30vmin;
   -o-object-fit: contain;
      object-fit: contain;
 }
@@ -489,6 +498,8 @@ a:active {
   text-align: center;
   margin-left: 15px;
   display: block;
+  -ms-grid-row-align: center;
+      align-self: center;
   word-break: break-word;
   grid-area: grid-text;
 }
@@ -506,7 +517,8 @@ a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 1vmin;
+  margin-top: 0;
+  margin-bottom: 0;
   grid-area: grid-cost;
 }
 
@@ -535,6 +547,15 @@ a:active {
 
 .cart-item__trash-icon:active {
   color: #3acdd5;
+}
+
+.cart-item:first-child {
+  padding-top: 0;
+}
+
+.cart-item:nth-last-of-type(1) {
+  border-bottom: 0px dashed #777;
+  margin-bottom: 0;
 }
 
 .amount-box {
@@ -605,9 +626,13 @@ a:active {
   transition: color 0.075s linear;
 }
 
+.total-cost-box {
+  margin-top: 0;
+}
+
 .total-cost__line {
-  width: 75%;
-  border-top: 0.65vmin dashed #000;
+  width: 90%;
+  border-top: 4px dashed #000;
   margin: 0 auto;
   margin-top: 1vmin;
   margin-bottom: 3vmin;
@@ -677,6 +702,23 @@ a:active {
   text-shadow: #000 0px 0px 1px;
 }
 
+.order-buttons__clear {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-family: Roboto, serif;
+  font-weight: 500;
+  text-align: center;
+  word-break: break-word;
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: #fff;
+  background-color: #c80000;
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+  text-shadow: #000 0px 0px 1px;
+}
+
 .order-buttons__close:active {
   background-color: #555;
   color: #fff;
@@ -687,6 +729,17 @@ a:active {
 
 .order-buttons__confirm:active {
   background-color: #0f0;
+  color: #fff;
+  -webkit-transition: color 0.075s linear;
+  -o-transition: color 0.075s linear;
+  transition: color 0.075s linear;
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+  text-shadow: #000 0px 0px 4px;
+}
+
+.order-buttons__clear:active {
+  background-color: #f00;
   color: #fff;
   -webkit-transition: color 0.075s linear;
   -o-transition: color 0.075s linear;
@@ -1348,7 +1401,7 @@ a:active {
   transition: box-shadow 0.25s linear;
   transition: box-shadow 0.25s linear, -webkit-box-shadow 0.25s linear;
   position: relative;
-  z-index: 10;
+  z-index: 5;
 }
 
 .newsletter__btn:active {
@@ -1684,6 +1737,7 @@ a:active {
 
   .popup-cart__empty {
     font-size: 3.5vmax;
+    padding: 1.3em;
   }
 
   .popup-cart__content {
@@ -1691,10 +1745,18 @@ a:active {
     overflow: visible;
   }
 
+  .cart-item {
+    padding-top: 2vw;
+  }
+
   .cart-item__image-and-text {
     -ms-grid-columns: 0.5fr 1fr;
         grid-template: auto / 0.5fr 1fr;
         grid-template-areas: "grid-image grid-text" "grid-cost grid-cost";
+  }
+
+  .cart-item__image {
+    max-height: 20vmin;
   }
 
   .cart-item picture {
@@ -1715,12 +1777,13 @@ a:active {
   }
 
   .cart-item__string-container {
-    margin-top: 2vmin;
+    margin-top: 0.5vmin;
+    margin-bottom: 2vmin;
   }
 
   .cart-item__cost {
     font-size: 3.5vmin;
-    margin-right: 5vmin;
+    margin-right: 6vmin;
   }
 
   .cart-item__trash-icon {
@@ -1741,12 +1804,12 @@ a:active {
   }
 
   .total-cost-box {
-    margin-top: 3vmin;
+    margin-top: 2vmin;
   }
 
   .total-cost__line {
     margin-bottom: 2.4vmin;
-    border-top: 0.4vmin dashed #000;
+    border-top: 5px dashed #000;
   }
 
   .total-cost__text,
@@ -1765,6 +1828,13 @@ a:active {
   }
 
   .order-buttons__confirm {
+    font-size: 3vmin;
+    padding: 2vmin 4vmin;
+    border-radius: 100px;
+    text-shadow: #000 0px 0px 3px;
+  }
+
+  .order-buttons__clear {
     font-size: 3vmin;
     padding: 2vmin 4vmin;
     border-radius: 100px;
@@ -2338,6 +2408,7 @@ a:active {
 
   .popup-cart__empty {
     font-size: 1.2vmax;
+    padding: 2em;
   }
 
   .popup-cart__content {
@@ -2345,6 +2416,11 @@ a:active {
     border-radius: 2.5vmax;
     max-width: 40vw;
     overflow: auto;
+  }
+
+  .cart-item {
+    border-bottom: 3px dashed #777;
+    padding-top: 1vw;
   }
 
   .cart-item__image-and-text {
@@ -2361,7 +2437,7 @@ a:active {
         -ms-flex-align: center;
             align-items: center;
     width: 100%;
-    max-height: 9vmax;
+    max-height: 6vmax;
     -o-object-fit: contain;
        object-fit: contain;
     margin: 0 auto;
@@ -2399,7 +2475,8 @@ a:active {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin-top: 0.7vmin;
+    margin-top: 0;
+    margin-bottom: 0.7vw;
   }
 
   .cart-item__cost {
@@ -2502,8 +2579,7 @@ a:active {
   }
 
   .total-cost__line {
-    width: 75%;
-    border-top: 0.15vmax dashed #000;
+    border-top: 4px dashed #000;
     margin: 0 auto;
     margin-bottom: 15px;
   }
@@ -2561,6 +2637,22 @@ a:active {
     text-shadow: #000 0px 0px 2px;
   }
 
+  .order-buttons__clear {
+    text-transform: uppercase;
+    font-size: 0.95vmax;
+    font-family: Roboto, serif;
+    font-weight: 500;
+    text-align: center;
+    word-break: break-word;
+    padding: 0.5vmax 1vmax;
+    border-radius: 100px;
+    color: #fff;
+    background-color: #8c0000;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+            box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+    text-shadow: #000 0px 0px 2px;
+  }
+
   .order-buttons__close:active {
     background-color: #555;
     color: #fff;
@@ -2571,6 +2663,17 @@ a:active {
 
   .order-buttons__confirm:active {
     background-color: #0f0;
+    color: #fff;
+    -webkit-transition: color 0.075s linear;
+    -o-transition: color 0.075s linear;
+    transition: color 0.075s linear;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+            box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+    text-shadow: #000 0px 0px 4px;
+  }
+
+  .order-buttons__clear:active {
+    background-color: #f00;
     color: #fff;
     -webkit-transition: color 0.075s linear;
     -o-transition: color 0.075s linear;

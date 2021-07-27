@@ -294,10 +294,10 @@ a:active {
       color: #000;
       max-width: 95vw;
       padding: 4vmin;
+      margin: 2vw 0;
       border-radius: 8vmin;
       overflow: visible;
       position: relative;
-      transform: translate(0%, -5%); // displacement of the cart window
    }
    &__empty {
       width: 100%;
@@ -307,10 +307,14 @@ a:active {
       font-size: 5.5vmin;
       font-family: Roboto, serif;
       font-weight: 300;
+      padding: 2em;
    }
 }
 
 .cart-item {
+   list-style-type: none;
+   border-bottom: 3px dashed #777;
+   padding-top: 2vw;
    &__image-and-text {
       display: grid;
       grid-template: auto / 0.4fr 1fr;
@@ -320,8 +324,10 @@ a:active {
    }
    &__image {
       display: flex;
+      align-self: center;
       align-items: center;
       width: 100%;
+      max-height: 30vmin;
       object-fit: contain;
    }
    picture {
@@ -338,6 +344,7 @@ a:active {
       text-align: center;
       margin-left: 15px;
       display: block;
+      align-self: center;
       word-break: break-word;
       grid-area: grid-text;
    }
@@ -345,7 +352,8 @@ a:active {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 1vmin;
+      margin-top: 0;
+      margin-bottom: 0;
       grid-area: grid-cost;
    }
    &__cost {
@@ -368,6 +376,13 @@ a:active {
    &__trash-icon:active {
       color: $primary-color;
    }
+}
+.cart-item:first-child {
+   padding-top: 0;
+}
+.cart-item:nth-last-of-type(1) {
+   border-bottom: 0px dashed #777;
+   margin-bottom: 0;
 }
 
 .amount {
@@ -417,10 +432,11 @@ a:active {
 
 .total-cost {
    &-box {
+      margin-top: 0;
    }
    &__line {
-      width: 75%;
-      border-top: 0.65vmin dashed #000;
+      width: 90%;
+      border-top: 4px dashed #000;
       margin: 0 auto;
       margin-top: 1vmin;
       margin-bottom: 3vmin;
@@ -477,6 +493,21 @@ a:active {
       box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
       text-shadow: #000 0px 0px 1px;
    }
+   &__clear {
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-family: Roboto, serif;
+      font-weight: 500;
+      text-align: center;
+      word-break: break-word;
+      padding: 10px 20px;
+      border-radius: 50px;
+      color: #fff;
+      background-color: #c80000;
+      box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+      text-shadow: #000 0px 0px 1px;
+   }
    &__close:active {
       background-color: #555;
       color: #fff;
@@ -484,6 +515,13 @@ a:active {
    }
    &__confirm:active {
       background-color: #0f0;
+      color: #fff;
+      transition: color 0.075s linear;
+      box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+      text-shadow: #000 0px 0px 4px;
+   }
+   &__clear:active {
+      background-color: #f00;
       color: #fff;
       transition: color 0.075s linear;
       box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
@@ -1002,7 +1040,7 @@ a:active {
       text-shadow: #000 0px 0px 4px;
       transition: box-shadow 0.25s linear;
       position: relative;
-      z-index: 10;
+      z-index: 5;
    }
    &__btn:active {
       background-color: $primary-light-color;
@@ -1277,6 +1315,7 @@ a:active {
    .popup-cart {
       &__empty {
          font-size: 3.5vmax;
+         padding: 1.3em;
       }
       &__content {
          padding: 4vmin;
@@ -1285,11 +1324,15 @@ a:active {
    }
 
    .cart-item {
+      padding-top: 2vw;
       &__image-and-text {
          grid-template: auto / 0.5fr 1fr;
          grid-template-areas:
             "grid-image grid-text"
             "grid-cost grid-cost";
+      }
+      &__image {
+         max-height: 20vmin;
       }
       picture {
          display: flex;
@@ -1303,11 +1346,12 @@ a:active {
          margin-left: 4vmin;
       }
       &__string-container {
-         margin-top: 2vmin;
+         margin-top: 0.5vmin;
+         margin-bottom: 2vmin;
       }
       &__cost {
          font-size: 3.5vmin;
-         margin-right: 5vmin;
+         margin-right: 6vmin;
       }
       &__trash-icon {
          font-size: 3.5vmin;
@@ -1330,11 +1374,11 @@ a:active {
 
    .total-cost {
       &-box {
-         margin-top: 3vmin;
+         margin-top: 2vmin;
       }
       &__line {
          margin-bottom: 2.4vmin;
-         border-top: 0.4vmin dashed #000;
+         border-top: 5px dashed #000;
       }
       &__text,
       &__cost {
@@ -1351,6 +1395,12 @@ a:active {
          border-radius: 100px;
       }
       &__confirm {
+         font-size: 3vmin;
+         padding: 2vmin 4vmin;
+         border-radius: 100px;
+         text-shadow: #000 0px 0px 3px;
+      }
+      &__clear {
          font-size: 3vmin;
          padding: 2vmin 4vmin;
          border-radius: 100px;
@@ -1845,6 +1895,7 @@ a:active {
    .popup-cart {
       &__empty {
          font-size: 1.2vmax;
+         padding: 2em;
       }
       &__content {
          padding: 1.5vmax 1.5vmax 1.15vmax 1.5vmax;
@@ -1855,6 +1906,8 @@ a:active {
    }
 
    .cart-item {
+      border-bottom: 3px dashed #777;
+      padding-top: 1vw;
       &__image-and-text {
          grid-template: auto / 0.5fr 1fr;
          grid-template-areas:
@@ -1865,7 +1918,7 @@ a:active {
          display: flex;
          align-items: center;
          width: 100%;
-         max-height: 9vmax;
+         max-height: 6vmax;
          object-fit: contain;
          margin: 0 auto;
       }
@@ -1889,7 +1942,8 @@ a:active {
          display: flex;
          justify-content: center;
          align-items: center;
-         margin-top: 0.7vmin;
+         margin-top: 0;
+         margin-bottom: 0.7vw;
       }
       &__cost {
          display: inline-block;
@@ -1963,8 +2017,7 @@ a:active {
          margin-top: 15px;
       }
       &__line {
-         width: 75%;
-         border-top: 0.15vmax dashed #000;
+         border-top: 4px dashed #000;
          margin: 0 auto;
          margin-bottom: 15px;
       }
@@ -2010,6 +2063,20 @@ a:active {
          box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
          text-shadow: #000 0px 0px 2px;
       }
+      &__clear {
+         text-transform: uppercase;
+         font-size: 0.95vmax;
+         font-family: Roboto, serif;
+         font-weight: 500;
+         text-align: center;
+         word-break: break-word;
+         padding: 0.5vmax 1vmax;
+         border-radius: 100px;
+         color: #fff;
+         background-color: #8c0000;
+         box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+         text-shadow: #000 0px 0px 2px;
+      }
       &__close:active {
          background-color: #555;
          color: #fff;
@@ -2017,6 +2084,13 @@ a:active {
       }
       &__confirm:active {
          background-color: #0f0;
+         color: #fff;
+         transition: color 0.075s linear;
+         box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);
+         text-shadow: #000 0px 0px 4px;
+      }
+      &__clear:active {
+         background-color: #f00;
          color: #fff;
          transition: color 0.075s linear;
          box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.6);

@@ -13,36 +13,8 @@
 		<div class="popup-cart__area"></div>
 		<div class="popup-cart__container">
 			<div class="popup-cart__content">
-
-				<!-- <div class="popup-cart__empty">Now cart is empty</div> -->
-
-				<div class="cart-item">
-					<div class="cart-item__image-and-text">
-					<picture><source srcset="img/items/camps/1.webp" type="image/webp"><img class="cart-item__image" src="img/items/camps/1.png" alt="American tourister polyester black hard-sided 28.4 inch | 72.1 cm"></picture>
-						<p class="cart-item__description">Yongnuo EF YN 50mm F/1.8 1:1.8 standard prime lens for canon rebel digital camera works well with 5D, 7D, 60D, 70D, T3, T3i, T5, T5i, plus Nikon AF-S DX Nikkor 55-300mm F/4.5-5.6G ED VR telephoto zoom lens for Nikon DSLR camera</p>
-						<div class="cart-item__string-container">
-							<p class="cart-item__cost">$375.00</p>
-							<div class="amount amount-box">
-								<a class="amount__btn-addition">&plus;</a>
-								<p class="amount__number">1</p>
-								<a class="amount__btn-subtract">&minus;</a>
-							</div>
-							<p class="cart-item__trash-icon"><i class="fas fa-trash-alt"></i></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="total-cost total-cost-box">
-					<div class="total-cost__line"></div>
-					<div class="total-cost__inner">
-						<p class="total-cost__text">Total cost:</p>
-						<p class="total-cost__cost">1000$</p>
-					</div>
-				</div>
-
 				<div class="order-buttons order-buttons-box">
 					<div class="order-buttons__close">close</div>
-					<a href="order_page" class="order-buttons__confirm">confirm</a>
 				</div>
 			</div>
 		</div>
