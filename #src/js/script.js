@@ -201,8 +201,8 @@ let renderCartItemInEmptyCart = function () {
             }
          }
       }
+      getItemData();
    }
-   getItemData();
 };
 
 // add cart item to a non-empty cart
@@ -254,8 +254,11 @@ let renderCartItemInNonEmptyCart = function () {
             }
          }
       }
+      getItemData(); /* если getItemData(); тут, то на проде после добавления в непустую корзину каждого
+		нового товара(если добавлять товар который по индексу в php меньше чем товар что уже есть в корзине)
+		с каждым разом товара добавляется на 1 больше (без эксепшена) */
    }
-   getItemData();
+   // если getItemData(); тут, то на проде товар не добавляется (с эксепшеном)
 };
 
 // buy button on click
@@ -308,21 +311,21 @@ let buyButtonScript = function () {
       localStorage.setItem(id, id);
       let fillingCart = function () {
          let emptyCartText = document.querySelector(".popup-cart__empty");
-         if (emptyCartText == null) {
-            console.log("в корзине есть товары emptyCartText == null");
-            console.log(emptyCartText);
-            renderCartItemInNonEmptyCart();
-         }
-         if (emptyCartText != null) {
+         if ((emptyCartText != null) == true) {
             console.log(
-               "в пустую корзину был добавлен товар - корзина перерисована emptyCartText != null"
+               "корзина пустая -> в пустую корзину был добавлен товар -> корзина перерисована"
             );
-            console.log(emptyCartText);
             emptyCartText.remove();
             createTotalCostComponent();
             renderCartItemInEmptyCart();
             createConfirmButtonComponent();
             createClearButtonComponent();
+         }
+         if ((emptyCartText == null) == true) {
+            console.log(
+               "в корзине есть товары -> товар добавлен -> корзина перерисована"
+            );
+            renderCartItemInNonEmptyCart();
          }
       };
       fillingCart();
@@ -528,6 +531,7 @@ if (
 		объектами, нужно дождаться завершения получения данных, поэтому снова нужен
 		await. */
 
+      // adding goods from the server to the container
       let searchItemIndex;
       for (searchItemIndex in content) {
          if (
@@ -546,18 +550,6 @@ if (
             searchItemWrapper.append(searchItem);
          }
       }
-      // adding goods from the server to the container
-
-      let bagsSection = document.querySelector("#bags");
-      let campsSection = document.querySelector("#camps");
-      let camerasSection = document.querySelector("#cameras");
-      let lensesSection = document.querySelector("#lenses");
-      let sectionList = [
-         bagsSection,
-         campsSection,
-         camerasSection,
-         lensesSection,
-      ];
 
       let scrollToSection = function (event) {
          let target = event.target.closest("li");
