@@ -1,6 +1,8 @@
 // change the color of the tool buttons on click
 let CartBtnColor = document.querySelector(".cart-svg");
 let cartBtn = document.querySelector(".cart-btn");
+let CartBtnStickyColor = document.querySelector(".cart-sticky-svg");
+let cartBtnSticky = document.querySelector(".cart-btn-sticky");
 function ChangeCartBtnColorIn() {
    CartBtnColor.setAttribute("fill", "url(#linear-gradient)");
    cartBtn.style = "background-image: linear-gradient(0deg, #dddddd, #777777)";
@@ -8,6 +10,16 @@ function ChangeCartBtnColorIn() {
 function ChangeCartBtnColorOut() {
    CartBtnColor.removeAttribute("fill", "url(#linear-gradient)");
    cartBtn.style =
+      "background-image: linear-gradient(180deg, #dddddd, #777777)";
+}
+function ChangeCartBtnStickyColorIn() {
+   CartBtnStickyColor.setAttribute("fill", "url(#linear-gradient)");
+   cartBtnSticky.style =
+      "background-image: linear-gradient(0deg, #dddddd, #777777)";
+}
+function ChangeCartBtnStickyColorOut() {
+   CartBtnStickyColor.removeAttribute("fill", "url(#linear-gradient)");
+   cartBtnSticky.style =
       "background-image: linear-gradient(180deg, #dddddd, #777777)";
 }
 
@@ -27,6 +39,8 @@ function ChangeSearchBtnColorOut() {
 // change the color of the tool buttons on hover cursor
 cartBtn.addEventListener("mouseover", ChangeCartBtnColorIn);
 cartBtn.addEventListener("mouseout", ChangeCartBtnColorOut);
+cartBtnSticky.addEventListener("mouseover", ChangeCartBtnStickyColorIn);
+cartBtnSticky.addEventListener("mouseout", ChangeCartBtnStickyColorOut);
 searchBtn.addEventListener("mouseover", ChangeSearchBtnColorIn);
 searchBtn.addEventListener("mouseout", ChangeSearchBtnColorOut);
 
@@ -65,6 +79,7 @@ function closeCart() {
 }
 
 cartBtn.addEventListener("click", openCart);
+cartBtnSticky.addEventListener("click", openCart);
 closeBtnCartWindow.addEventListener("click", closeCart);
 
 // product image enlargement
@@ -103,19 +118,6 @@ imgArray.forEach(image => {
 // initial cart value
 localStorage.setItem("cartIsEmpty", true);
 
-// setting the state of the cart after loading the page
-window.onload = function () {
-   let emptyCartText = document.querySelector(".popup-cart__empty");
-   if (emptyCartText == null) {
-      console.log("в корзине есть товары - первоначальная загрузка");
-   }
-   if (emptyCartText != null) {
-      console.log("корзина пустая - первоначальная загрузка");
-      //emptyCartText.remove();
-      // добавить кнопки корзины и блока стоимости
-   }
-};
-
 // create total cost component
 let cartContainer = document.querySelector(".popup-cart__content");
 let orderButtonsContainer = document.querySelector(".order-buttons");
@@ -128,7 +130,7 @@ let createTotalCostComponent = function () {
 			<div class="total-cost__line"></div>
 			<div class="total-cost__inner">
 				<p class="total-cost__text">Total cost:</p>
-				<p class="total-cost__cost">1000$</p>
+				<p class="total-cost__cost">0$</p>
 			</div>`;
    cartContainer.prepend(totalCostComponent);
 };
@@ -152,9 +154,31 @@ let createClearButtonComponent = function () {
    cartClearButton.addEventListener("click", clearCart);
 };
 
+//	render total cost
+let renderTotalCost = function () {
+   let arrayOfCurrentCostOfItems = [];
+   let currentCartItemsArray = document.querySelectorAll("li.cart-item");
+
+   currentCartItemsArray.forEach(item => {
+      let costOneItem = item.querySelector(".cart-item__cost").innerHTML;
+      let resultCost = costOneItem * 1; // 1 is only needed to display the cost without unnecessary signs
+      arrayOfCurrentCostOfItems.push(resultCost);
+   });
+   let totalCost = 0;
+   let sumAllCost = function () {
+      for (let index = 0; index < arrayOfCurrentCostOfItems.length; index++) {
+         totalCost += arrayOfCurrentCostOfItems[index];
+      }
+   };
+   sumAllCost();
+   let totalCostTag = cartContainer.querySelector(".total-cost__cost");
+   totalCostTag.innerHTML = `$${totalCost}.00`;
+};
+
 // add cart item to an empty cart
-let renderCartItemInEmptyCart = function () {
+let renderCartItemInEmptyCart = function (id) {
    let keysFromLocalStorage = Object.keys(localStorage);
+   let itemId = id;
    let keyItem;
    for (keyItem of keysFromLocalStorage) {
       /* let's say the keyItem is item camp2. Check happens for both the product
@@ -178,6 +202,7 @@ let renderCartItemInEmptyCart = function () {
             ) {
                let cartItem = document.createElement("li");
                cartItem.classList.add("cart-item");
+               cartItem.classList.add(`${keyItem}`);
                cartItem.innerHTML = `
 						<div class="cart-item__image-and-text">
 						<picture>
@@ -188,7 +213,7 @@ let renderCartItemInEmptyCart = function () {
 						</picture>
 							<p class="cart-item__description">${itemTitle}</p>
 							<div class="cart-item__string-container">
-								<p class="cart-item__cost">$${itemCost}.00</p>
+								<p class="cart-item__cost">${itemCost}.00</p>
 								<div class="amount amount-box">
 									<a class="amount__btn-addition">&plus;</a>
 									<p class="amount__number">1</p>
@@ -200,14 +225,16 @@ let renderCartItemInEmptyCart = function () {
                cartContainer.prepend(cartItem);
             }
          }
+         renderTotalCost();
       }
       getItemData();
    }
 };
 
 // add cart item to a non-empty cart
-let renderCartItemInNonEmptyCart = function () {
+let renderCartItemInNonEmptyCart = function (id) {
    let keysFromLocalStorage = Object.keys(localStorage);
+   let itemId = id;
    let keyItem;
    for (keyItem of keysFromLocalStorage) {
       /* let's say the keyItem is item camp2. Check happens for both the product
@@ -225,12 +252,15 @@ let renderCartItemInNonEmptyCart = function () {
             let itemTitle = content[searchItemIndex].title;
 
             if (
-               `${content[searchItemIndex].category}` ==
-                  keyItem.replace(/\d/g, "") &&
-               `${itemUrl.replace(/\D/g, "")}` == keyItem.replace(/\D/g, "")
+               itemId ==
+               `${content[searchItemIndex].category}${itemUrl.replace(
+                  /\D/g,
+                  ""
+               )}`
             ) {
                let cartItem = document.createElement("li");
                cartItem.classList.add("cart-item");
+               cartItem.classList.add(`${id}`);
                cartItem.innerHTML = `
 						<div class="cart-item__image-and-text">
 						<picture>
@@ -241,7 +271,7 @@ let renderCartItemInNonEmptyCart = function () {
 						</picture>
 							<p class="cart-item__description">${itemTitle}</p>
 							<div class="cart-item__string-container">
-								<p class="cart-item__cost">$${itemCost}.00</p>
+								<p class="cart-item__cost">${itemCost}.00</p>
 								<div class="amount amount-box">
 									<a class="amount__btn-addition">&plus;</a>
 									<p class="amount__number">1</p>
@@ -253,30 +283,25 @@ let renderCartItemInNonEmptyCart = function () {
                cartContainer.prepend(cartItem);
             }
          }
+         renderTotalCost();
       }
-      getItemData(); /* если getItemData(); тут, то на проде после добавления в непустую корзину каждого
-		нового товара(если добавлять товар который по индексу в php меньше чем товар что уже есть в корзине)
-		с каждым разом товара добавляется на 1 больше (без эксепшена) */
+      getItemData();
+      return; // need to render one item
    }
-   // если getItemData(); тут, то на проде товар не добавляется (с эксепшеном)
 };
 
 // buy button on click
 let buyBtnArray = document.querySelectorAll(".list-items__icon");
 let buyButtonScript = function () {
    // tooltip render
-   let f1 = function () {
+   let tooltipRender = function () {
       this.classList.add("list-items__icon--active");
-      let f2 = function () {
-         setTimeout(() => {
-            this.classList.remove("list-items__icon--active");
-         }, 280);
-      };
-      let f3 = f2.bind(this);
-      f3();
+      setTimeout(() => {
+         this.classList.remove("list-items__icon--active");
+      }, 280);
    };
-   let f4 = f1.bind(this);
-   f4();
+   let f2 = tooltipRender.bind(this);
+   f2();
 
    // buy button tooltip animation on click
    offClickBuyBtn();
@@ -304,17 +329,18 @@ let buyButtonScript = function () {
       onHoverBuyBtn();
    }, 1100);
 
-   // add item in cart logic
-   let id = this.closest("li").id;
+   // add cart item in local storage and renderings
+   let id;
+   let getIdThisItem = () => {
+      id = this.closest("li").id;
+   };
+   getIdThisItem();
    if (localStorage.getItem(id) != id) {
       localStorage.removeItem("cartIsEmpty");
       localStorage.setItem(id, id);
       let fillingCart = function () {
          let emptyCartText = document.querySelector(".popup-cart__empty");
          if ((emptyCartText != null) == true) {
-            console.log(
-               "корзина пустая -> в пустую корзину был добавлен товар -> корзина перерисована"
-            );
             emptyCartText.remove();
             createTotalCostComponent();
             renderCartItemInEmptyCart();
@@ -322,10 +348,7 @@ let buyButtonScript = function () {
             createClearButtonComponent();
          }
          if ((emptyCartText == null) == true) {
-            console.log(
-               "в корзине есть товары -> товар добавлен -> корзина перерисована"
-            );
-            renderCartItemInNonEmptyCart();
+            renderCartItemInNonEmptyCart(id);
          }
       };
       fillingCart();
@@ -414,8 +437,8 @@ if (
          cloneItem.classList.add(sectionType);
          searchItemWrapper.append(cloneItem);
       });
-      /* products from all cycles are sequentially changed for the field of
-		search and added to the container */
+      /* products from all iterations of the loop are sequentially
+		changed for the search field and added to the container */
    });
 
    let scrollToSection = function (event) {
@@ -519,17 +542,6 @@ if (
    async function getResponse() {
       let response = await fetch("/all_images.php");
       let content = await response.json();
-      /* 1. Функция должна быть асинхронной(async), потому что await работает только
-		в async функциях.
-		Пока fetch получает данные с сервера, await ждёт выполнения промиса справа от
-		await(т.е. когда все данные будут получены), и пока промис не выполнится в
-		переменную response ничего не запишется. Когда данные будут полностью
-		получены, созданный fetch'ем промис завершится и fetch вернёт ответ сервера
-		(со всей информацией, включая сам ответ, заголовки, статус код и т.д.),
-		и только после этого await запишет ответ в переменную response.
-		2. Для того чтобы распарсить ответ формата json строки в формат массива с
-		объектами, нужно дождаться завершения получения данных, поэтому снова нужен
-		await. */
 
       // adding goods from the server to the container
       let searchItemIndex;
@@ -671,7 +683,7 @@ if (typeof sessionStorage.getItem("scrollTosection") == "string") {
    window.onload = scrollToSectionFromLocalStorage;
 }
 
-// checking cart for emptiness
+// checking the cart for emptiness on page load
 let checkingCartForEmptiness = function () {
    let keys = Object.keys(localStorage);
    if (keys.length > 1) {
@@ -680,7 +692,6 @@ let checkingCartForEmptiness = function () {
 };
 checkingCartForEmptiness();
 
-// todo: cart buttons clicks
 let setCartEmpty = function () {
    let emptyCart = document.createElement("div");
    emptyCart.classList.add("popup-cart__empty");
@@ -701,7 +712,7 @@ let clearCart = function () {
    setCartEmpty();
 };
 
-// check for cart items after load page
+// check for cart items on page load
 let keysLocalStorage = Object.keys(localStorage);
 let valuesLocalStorage = Object.values(localStorage);
 let checkCartItemsFromLocalStorage = function () {
@@ -730,6 +741,7 @@ let checkCartItemsFromLocalStorage = function () {
                ) {
                   let cartItem = document.createElement("li");
                   cartItem.classList.add("cart-item");
+                  cartItem.classList.add(`${key}`);
                   cartItem.innerHTML = `
 							<div class="cart-item__image-and-text">
 							<picture>
@@ -740,7 +752,7 @@ let checkCartItemsFromLocalStorage = function () {
 							</picture>
 								<p class="cart-item__description">${itemTitle}</p>
 								<div class="cart-item__string-container">
-									<p class="cart-item__cost">$${itemCost}.00</p>
+									<p class="cart-item__cost">${itemCost}.00</p>
 									<div class="amount amount-box">
 										<a class="amount__btn-addition">&plus;</a>
 										<p class="amount__number">1</p>
@@ -752,6 +764,7 @@ let checkCartItemsFromLocalStorage = function () {
                   cartContainer.prepend(cartItem);
                }
             }
+            renderTotalCost();
          }
          getItemsData();
       }
@@ -763,7 +776,134 @@ let checkCartItemsFromLocalStorage = function () {
       setCartEmpty();
    }
 };
-checkCartItemsFromLocalStorage(); // search scrolling does not work when called through a method window.onliad
+checkCartItemsFromLocalStorage(); // search scrolling does not work when this function called through a method window.onliad
+
+// cart item functions
+cartContainer.onclick = function (event) {
+   let renderAdditionCostItem = function (itemId) {
+      let boxWithCost = event.target.closest(".cart-item__string-container");
+      let costTag = boxWithCost.querySelector(".cart-item__cost");
+      let boxWithButtons = event.target.closest(".amount-box");
+      let textTag = boxWithButtons.querySelector(".amount__number");
+      let count = textTag.innerHTML;
+      let getCartItemCost = function () {
+         let keysArrayFromLocalStorage = Object.keys(localStorage);
+         for (let key of keysArrayFromLocalStorage) {
+            /* let's say the key is item camp2 */
+            async function getItemsData() {
+               let response = await fetch("/all_images.php");
+               let content = await response.json();
+
+               let searchItemIndex;
+               for (searchItemIndex in content) {
+                  let itemUrl = content[searchItemIndex].url;
+                  let itemCost = content[searchItemIndex].cost;
+                  if (
+                     `${content[searchItemIndex].category}${itemUrl.replace(
+                        /\D/g,
+                        ""
+                     )}` == itemId
+                  ) {
+                     count++;
+                     textTag.innerHTML = `${count}`;
+                     let costOneItem = `${itemCost}`;
+                     let newCost = costOneItem * count;
+                     costTag.innerHTML = `${newCost}.00`;
+                     renderTotalCost();
+                  }
+               }
+            }
+            getItemsData();
+            return;
+         }
+      };
+      getCartItemCost();
+   };
+
+   let renderSubtractCostItem = function (itemId) {
+      let boxWithCost = event.target.closest(".cart-item__string-container");
+      let costTag = boxWithCost.querySelector(".cart-item__cost");
+      let boxWithButtons = event.target.closest(".amount-box");
+      let textTag = boxWithButtons.querySelector(".amount__number");
+      let count = textTag.innerHTML;
+      let getCartItemCost = function () {
+         let keysArrayFromLocalStorage = Object.keys(localStorage);
+         for (let key of keysArrayFromLocalStorage) {
+            /* let's say the key is item camp2 */
+            async function getItemsData() {
+               let response = await fetch("/all_images.php");
+               let content = await response.json();
+
+               let searchItemIndex;
+               for (searchItemIndex in content) {
+                  let itemUrl = content[searchItemIndex].url;
+                  let itemCost = content[searchItemIndex].cost;
+                  if (
+                     `${content[searchItemIndex].category}${itemUrl.replace(
+                        /\D/g,
+                        ""
+                     )}` == itemId
+                  ) {
+                     if (count <= 1) {
+                        return;
+                     } else {
+                        let costOneItem = `${itemCost}`;
+                        let oldCost = costOneItem * count;
+                        newCost = oldCost - costOneItem;
+                        costTag.innerHTML = `${newCost}.00`;
+                        count--;
+                        textTag.innerHTML = `${count}`;
+                        renderTotalCost();
+                     }
+                  }
+               }
+            }
+            getItemsData();
+            return;
+         }
+      };
+      getCartItemCost();
+      return;
+   };
+
+   let currentCartItemsArray = document.querySelectorAll("li.cart-item");
+   // delete
+   if (event.target.closest("i")) {
+      if (currentCartItemsArray.length == 1) {
+         clearCart();
+      } else {
+         let stringOfClasses = event.target.closest("li").className;
+         let itemId = stringOfClasses.replace(/cart-item /, "");
+         localStorage.removeItem(itemId);
+         event.target.closest("li").remove();
+         renderTotalCost();
+      }
+   } else if (event.target.closest("a.amount__btn-addition")) {
+      // addition
+      let stringOfClasses = event.target.closest("li").className;
+      let itemId = stringOfClasses.replace(/cart-item /, "");
+      let boxWithButtons = event.target.closest(".amount-box");
+      let textTag = boxWithButtons.querySelector(".amount__number");
+      let count = textTag.innerHTML;
+      if (count < 1) {
+         return;
+      } else {
+         renderAdditionCostItem(itemId);
+      }
+   } else if (event.target.closest("a.amount__btn-subtract")) {
+      // subtract
+      let stringOfClasses = event.target.closest("li").className;
+      let itemId = stringOfClasses.replace(/cart-item /, "");
+      let boxWithButtons = event.target.closest(".amount-box");
+      let textTag = boxWithButtons.querySelector(".amount__number");
+      let count = textTag.innerHTML;
+      if (count <= 1) {
+         return;
+      } else {
+         renderSubtractCostItem(itemId);
+      }
+   }
+};
 
 // change the color of the sort buttons on click
 const BagsСheap = document.querySelector(".sort-bags__cheap");
@@ -846,7 +986,7 @@ let size = window.matchMedia("(min-width: 768px)");
 size.addListener(setup_for_width);
 setup_for_width(size);
 
-// patallax
+// mouse patallax
 let bg1 = document.querySelector(".mouse-parallax-bg1");
 window.addEventListener("mousemove", function (e) {
    let x = e.clientX / window.innerWidth;
@@ -862,7 +1002,7 @@ window.addEventListener("mousemove", function (e) {
 });
 
 // smooth scroll
-// "for of cycle - for mobile/tablet and desktop links section"
+// for of cycle - for mobile/tablet and desktop links section
 let headers = document.querySelectorAll('a[href*="#"]');
 for (header of headers) {
    if (header) {

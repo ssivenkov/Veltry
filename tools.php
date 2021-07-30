@@ -9,6 +9,16 @@
 			<path class="cart-svg" d="M31.5 24.096V22.02H10.26l1.44-2.234 20.7-1.755L36 6.064H8.28L6.84 0H0v2.074h5.04L9.72 18.83l-2.88 5.106v3.032C6.84 28.564 8.28 30 10.08 30c1.8 0 3.42-1.436 3.42-3.032s-1.62-3.032-3.42-3.032H27v3.032C27 28.564 28.62 30 30.42 30c1.8 0 3.42-1.436 3.42-3.032 0-1.436-.9-2.394-2.34-2.872z"></path>
 		</svg>
 	</div>
+	<div class="cart-btn-sticky">
+		<svg aria-hidden="true" width="36" height="30" viewBox="0 0 36 30" id="star">
+			<linearGradient id="linear-gradient" gradientUnits="objectBoundingBox" gradientTransform="rotate(90, .5, .5)">
+				<stop offset="0" stop-color="#41e4ec"></stop>
+				<stop offset=".25" stop-color="#3acdd5"></stop>
+				<stop offset="1" stop-color="#19676b"></stop>
+			</linearGradient>
+			<path class="cart-sticky-svg" d="M31.5 24.096V22.02H10.26l1.44-2.234 20.7-1.755L36 6.064H8.28L6.84 0H0v2.074h5.04L9.72 18.83l-2.88 5.106v3.032C6.84 28.564 8.28 30 10.08 30c1.8 0 3.42-1.436 3.42-3.032s-1.62-3.032-3.42-3.032H27v3.032C27 28.564 28.62 30 30.42 30c1.8 0 3.42-1.436 3.42-3.032 0-1.436-.9-2.394-2.34-2.872z"></path>
+		</svg>
+	</div>
 	<div class="popup-cart">
 		<div class="popup-cart__area"></div>
 		<div class="popup-cart__container">

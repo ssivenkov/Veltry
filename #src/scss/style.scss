@@ -259,6 +259,9 @@ a:active {
       top: 8px;
    }
 }
+.cart-btn-sticky {
+   display: none;
+}
 
 // popup
 .popup-cart {
@@ -1312,6 +1315,10 @@ a:active {
       }
    }
 
+   .cart-btn-sticky {
+      display: none;
+   }
+
    .popup-cart {
       &__empty {
          font-size: 3.5vmax;
@@ -1892,6 +1899,26 @@ a:active {
       }
    }
 
+   .cart-btn-sticky {
+      position: fixed;
+      display: block;
+      width: 5vmax;
+      height: 5vmax;
+      cursor: pointer;
+      right: 9vw;
+      bottom: 35vh;
+      z-index: 13;
+      background-image: linear-gradient(180deg, #ddd, #777);
+      border-radius: 20% 20% 20% 20%;
+      & svg {
+         position: relative;
+         left: 0.4vmax;
+         top: 0.5vmax;
+         width: 4vmax;
+         height: 4vmax;
+      }
+   }
+
    .popup-cart {
       &__empty {
          font-size: 1.2vmax;
@@ -2125,7 +2152,7 @@ a:active {
       position: absolute;
       top: 0;
       overflow: hidden;
-      z-index: 1;
+      z-index: 15;
    }
 
    .mouse-parallax-bg1 {
@@ -2153,7 +2180,7 @@ a:active {
    }
 
    .z-index-max {
-      z-index: 10;
+      z-index: 15;
    }
 
    .intro {
@@ -2189,6 +2216,7 @@ a:active {
       font-size: 2vmax;
       letter-spacing: 0.035em;
       padding-bottom: 0;
+      z-index: 15;
       &__2row {
          font-size: 6vmax;
          letter-spacing: 0.035em;
@@ -2204,7 +2232,7 @@ a:active {
       display: block;
       position: relative;
       height: auto;
-      z-index: 5;
+      z-index: 15;
    }
 
    .people {
@@ -2221,7 +2249,7 @@ a:active {
       display: block;
       position: relative;
       bottom: -1px;
-      z-index: 10;
+      z-index: 15;
    }
 
    .intro-polygon {
@@ -2252,7 +2280,7 @@ a:active {
       width: 100%;
       bottom: 21vmax;
       /*top: calc(-14vmax - (-20vh + 5vmax) - 12vmin);*/
-      z-index: 10;
+      z-index: 20;
    }
 
    .white-bg {
@@ -2485,7 +2513,7 @@ a:active {
       display: block;
       position: relative;
       bottom: 2vmax;
-      z-index: 10;
+      z-index: 15;
    }
 
    .footer-polygon {
@@ -2507,7 +2535,8 @@ a:active {
 
    .links-desktop-container {
       position: relative;
-      bottom: 3vmax;
+      bottom: 2vmax;
+      background-color: #fff;
       z-index: 15;
    }
 
