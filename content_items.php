@@ -8,10 +8,10 @@
 		<div class="sort-bags">
          <div class="sort-bags__buttons-container">
 				<div class="sort sort-bags__cheap" data-sort="cost-bag" data-order="asc" onclick="BagsСheapActive()">
-               <p>$&#65516;</p>
+               <p>$<i class="fas fa-arrow-down"></i></p>
             </div>
             <div class="sort sort-bags__expensive" data-sort="cost-bag" data-order="desc" onclick="BagsExpensiveActive()">
-               <p>$&#65514;</p>
+               <p>$<i class="fas fa-arrow-up"></i></p>
             </div>
          </div>
       </div>
@@ -45,10 +45,10 @@
 		<div class="sort-camps">
          <div class="sort-camps__container">
             <div class="sort sort-camps__cheap" data-sort="cost-camp" data-order="asc" onclick="CampsСheapActive()">
-               <p>$&#65516;</p>
+					<p>$<i class="fas fa-arrow-down"></i></p>
             </div>
             <div class="sort sort-camps__expensive" data-sort="cost-camp" data-order="desc" onclick="CampsExpensiveActive()">
-               <p>$&#65514;</p>
+               <p>$<i class="fas fa-arrow-up"></i></p>
             </div>
          </div>
       </div>
@@ -82,10 +82,10 @@
 		<div class="sort-cameras">
          <div class="sort-cameras__container">
             <div class="sort sort-cameras__cheap" data-sort="cost-camera" data-order="asc" onclick="CamerasСheapActive()">
-               <p>$&#65516;</p>
+					<p>$<i class="fas fa-arrow-down"></i></p>
             </div>
             <div class="sort sort-cameras__expensive" data-sort="cost-camera" data-order="desc" onclick="CamerasExpensiveActive()">
-               <p>$&#65514;</p>
+					<p>$<i class="fas fa-arrow-up"></i></p>
             </div>
          </div>
       </div>
@@ -119,10 +119,10 @@
 		<div class="sort-lenses">
          <div class="sort-lenses__container">
             <div class="sort sort-lenses__cheap" data-sort="cost-lense" data-order="asc" onclick="LensesСheapActive()">
-               <p>$&#65516;</p>
+					<p>$<i class="fas fa-arrow-down"></i></p>
             </div>
             <div class="sort sort-lenses__expensive" data-sort="cost-lense" data-order="desc" onclick="LensesExpensiveActive()">
-               <p>$&#65514;</p>
+					<p>$<i class="fas fa-arrow-up"></i></p>
             </div>
          </div>
       </div>

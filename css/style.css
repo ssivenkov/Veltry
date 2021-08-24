@@ -562,6 +562,11 @@ a:active {
   margin-bottom: 0;
 }
 
+.fa-arrow-down,
+.fa-arrow-up {
+  font-size: 16px;
+}
+
 .amount-box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1800,6 +1805,11 @@ a:active {
     padding: 1vmin;
   }
 
+  .fa-arrow-down,
+  .fa-arrow-up {
+    font-size: 2.2vmin;
+  }
+
   .amount__number {
     font-size: 3.5vmin;
     width: 9vmin;
@@ -2536,6 +2546,11 @@ a:active {
 
   .cart-item__trash-icon:active {
     color: #3acdd5;
+  }
+
+  .fa-arrow-down,
+  .fa-arrow-up {
+    font-size: 0.9vmax;
   }
 
   .amount-box {
